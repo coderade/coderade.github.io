@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
-    <lastBuildDate>Mon, 29 Aug 2016 13:47:08 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Aug 2017 21:44:08 +0200</lastBuildDate>
     
 	<atom:link href="https://coderade.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ES5, ES6, ES7 and ES2015 and ES2016. Isn&#39;t it just all JS?</title>
+      <link>https://coderade.github.io/post/js-es6/</link>
+      <pubDate>Tue, 29 Aug 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/js-es6/</guid>
+      <description>JS, Why we love you? One of my biggest loves on the coding word is the JS (JavaScript) language.
+I don&amp;rsquo;t know why, but since I started to make simple code with JQuery and I started to research about the language under your hood: I got the JS programming, so the first think that I did was thanked how the coding world can be really beautiful and simple with a language like the JavaScript.</description>
+    </item>
     
     <item>
       <title>Rails 5 new features</title>
