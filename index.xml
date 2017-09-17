@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
-    <lastBuildDate>Tue, 29 Aug 2017 21:44:08 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 04 Sep 2017 21:44:08 +0200</lastBuildDate>
     
 	<atom:link href="https://coderade.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Trying Hoisting with var, const and let in ES6, When I use them?</title>
+      <link>https://coderade.github.io/post/es6/const-and-let/</link>
+      <pubDate>Mon, 04 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/es6/const-and-let/</guid>
+      <description>Perhaps the most recognizable addition to the JavaScript language was that of const and let. Two new key words that allow us to declare variables, which behave differently than var.
+When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables?</description>
+    </item>
     
     <item>
       <title>ES5, ES6, ES7 and ES2015 and ES2016. Isn&#39;t it just all JS?</title>
