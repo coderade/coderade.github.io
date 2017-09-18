@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>ES6 - Limitations of using const and let</title>
+      <link>https://coderade.github.io/post/es6/const-and-let-limitations/</link>
+      <pubDate>Mon, 04 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/es6/const-and-let-limitations/</guid>
+      <description>As I mentioned at my previous article, one of the main things that we need to understand about const and let: is that const, is a constant, so, it&amp;rsquo;s not going to change and let is something that might change, it could change.
+Let&amp;rsquo;s explore a little bit what that means because this is actually a gotcha in some cases. So, be careful, const isn&amp;rsquo;t actually an immutable variable, it can be changed.</description>
+    </item>
+    
+    <item>
       <title>var, const and let in ES6, when I use? They can be hoisted?</title>
       <link>https://coderade.github.io/post/es6/const-and-let/</link>
       <pubDate>Mon, 04 Sep 2017 21:44:08 +0200</pubDate>
