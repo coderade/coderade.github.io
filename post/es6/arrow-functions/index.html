@@ -1,0 +1,247 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Coderade blog</title>
+        <meta name="author">
+        <meta name="description" content="The awesome blog of Valdeci Gomes, about code, technology and tips in general.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.27.1" />
+        <link href="https://coderade.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
+        <link href="https://coderade.github.io/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://coderade.github.io/css/styles.css">
+        <link rel="icon" href="https://coderade.github.io/favicon.ico">
+        <link rel="apple-touch-icon" href="https://coderade.github.io/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://coderade.github.io/css/highlightjs/monokai.css">
+        <script src="https://coderade.github.io/js/vendor/modernizr-2.8.0.min.js"></script>
+        
+        <link rel="stylesheet" href="https://coderade.github.io/css/theme.css">
+        
+        <style>
+        .site-header h2 .logo {
+        background: url(https://coderade.github.io/img/puralsight-bg.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(https://coderade.github.io/img/puralsight-bg.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(https://coderade.github.io/img/puralsight-bg.jpg) no-repeat center center;
+         z-index: -1;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2>Coding, Life Hacks and tips in general</h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn home" href="https://coderade.github.io/" title="Back to home">&laquo; Back to home</a>
+            
+<h1><a href="https://coderade.github.io/post/es6/arrow-functions/" title="ES6 Arrow Functions">ES6 Arrow Functions</a></h1>
+
+<footer class="post-info">Posted on <span class="post-meta"><time datetime="2017.09.14">2017.09.14</time>
+
+    
+
+</span>
+</footer>
+
+            <p>Arrow functions are another notable addition that came with ES5, and are available here in ES2016.
+They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and
+the second thing is that they allow us to preserve the context of the wrapping function.</p>
+
+<p>As I write before, the arrow function, one of its main features is that it&rsquo;s more succinct, it reduces boilerplate.
+Let&rsquo;s look at an example:</p>
+
+<pre><code class="language-javascript">function withACallBack(options, callback) {
+  callback(options)
+}
+</code></pre>
+
+<p>I&rsquo;ve created a function and it&rsquo;s called <code>function withACallBack</code> and it accepts two arguments, <code>options</code> and <code>callback</code> and
+then inside of it, it just calls the <code>callback</code> on the <code>options</code>.</p>
+
+<p>Let&rsquo;s see three examples where we call this function now.</p>
+
+<pre><code class="language-javascript">withACallBack('so long', function(options) {
+    return options
+  }
+)
+</code></pre>
+
+<p>On the above example, I call withACallBack, say &ldquo;so long&rdquo; as the option and then I just declare an anonymous function
+and insert it here as the second argument and in this case, I am doing it the old fashioned way, I&rsquo;m saying function,
+options, and then returning our options.</p>
+
+<p>On the next example, I&rsquo;m using an arrow function. You can see already that it&rsquo;s a bit more concise, we didn&rsquo;t have to write
+functions but fundamentally these are pretty much the same thing.</p>
+
+<pre><code class="language-javascript">withACallBack('a little shorter', (options) =&gt; {
+        return options
+    }
+)
+</code></pre>
+
+<p>Look on the below example:</p>
+
+<pre><code class="language-javascript">withACallBack('very short', options =&gt; options)
+</code></pre>
+
+<p>we have an even more concise option. We&rsquo;re calling a function with options as the argument and we&rsquo;re returning the options.
+This function on this example and that of second example do almost exactly the same thing but the last one is a lot more concise.</p>
+
+<p>Let&rsquo;s move on and see the way that arrow functions preserve this.</p>
+
+<p>On the below example, I created an object:</p>
+
+<pre><code class="language-javascript">const store = {
+  address: '7th Ave, New York, NY, USA',
+  what: function() {
+    return this.address
+  },
+  arrow: () =&gt; {
+    return this.address
+  }
+
+}
+</code></pre>
+
+<p>I&rsquo;m calling this object store and then inside of it, I&rsquo;m giving the object a key value pair of address and
+&ldquo;7th Ave, New York, NY, USA&rdquo; and then I&rsquo;m giving it two other key value pairs that are both functions.</p>
+
+<p>One is a traditional function and the other is an arrow function, because the arrow function preserves the context of
+the wrapping function, this address is actually going to end up being undefined, because it&rsquo;s looking at the <code>this</code> of
+our wrapping function, which is this <code>arrow</code> function, where as the <code>this</code> of the traditional function is going to look
+at the <code>this</code> of store.</p>
+
+<p>So, don&rsquo;t just take my word for it, let&rsquo;s console log these and we&rsquo;ll go into the browser and see what happens.
+I&rsquo;ll save my file and I&rsquo;ll navigate to the browser, and I&rsquo;ll refresh the page.</p>
+
+<p><img src="/images/posts/es6/arrow-functions/undefined-error.png" alt="" /></p>
+
+<p>As we can see on the above image I&rsquo;m getting an error in our console and it says that cannot read property address of undefined.
+That&rsquo;s because inside the arrow function, we actually don&rsquo;t have this address.</p>
+
+<p>When we look in the example, we see that this address exists in store but it doesn&rsquo;t exist in the larger wrapping
+function of arrowFunctions.</p>
+
+<p>I think that this article can show how you can use the arrow function in some different ways, if you want to understand more
+about the arrows functions, we can use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">Arrow_functions</a>
+reference doc on the JS Mozilla official <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">documentation</a>.</p>
+
+<hr />
+
+<p>The examples of this article and project that I used to run them and other examples are available on my GitHub
+<a href="https://github.com/coderade/es6-examples">repository</a>.</p>
+
+            <ul class="share-buttons">
+    <li>Share this article:</li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcoderade.github.io%2fpost%2fes6%2farrow-functions%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook"></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=ES6%20Arrow%20Functions&amp;url=https%3a%2f%2fcoderade.github.io%2fpost%2fes6%2farrow-functions%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Tweet this article"></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fcoderade.github.io%2fpost%2fes6%2farrow-functions%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google&#43;"></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fcoderade.github.io%2fpost%2fes6%2farrow-functions%2f&title=ES6%20Arrow%20Functions" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title="Share on Linkedin"></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3>Comments</h3>
+            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coderade" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="https://coderade.github.io/img/profile-image.jpg" alt="Valdeci Gomes" />
+  <p class="name">by 
+  <strong>Valdeci Gomes</strong></p>
+  <p class="address">Curitiba, PR, Brazil</p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/valdessai" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+<li><a href="//facebook.com/valdessai" class="icon-facebook-squared" target="_blank" title="Facebook"></a></li>
+
+
+
+<li><a href="//linkedin.com/in/valdeci/en" class="icon-linkedin" target="_blank" title="Linkedin"></a></li>
+
+
+
+
+
+
+
+<li><a href="//instagram.com/valdessai" class="icon-instagram" target="_blank" title="Instagram"></a></li>
+
+
+
+<li><a href="//github.com/coderade" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="https://coderade.github.io/post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="https://coderade.github.io/post/index.xml" title="RSS"></a>
+        <p>&copy; 2017 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="https:\/\/coderade.github.io\/js\/vendor\/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="https://coderade.github.io/js/plugins.js"></script>
+
+
+
+
+</body>
+</html>
+

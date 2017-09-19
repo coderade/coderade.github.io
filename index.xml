@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
-    <lastBuildDate>Sun, 10 Sep 2017 21:44:08 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 14 Sep 2017 21:44:08 +0200</lastBuildDate>
     
 	<atom:link href="https://coderade.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ES6 Arrow Functions</title>
+      <link>https://coderade.github.io/post/es6/arrow-functions/</link>
+      <pubDate>Thu, 14 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/es6/arrow-functions/</guid>
+      <description>Arrow functions are another notable addition that came with ES5, and are available here in ES2016. They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and the second thing is that they allow us to preserve the context of the wrapping function.
+As I write before, the arrow function, one of its main features is that it&amp;rsquo;s more succinct, it reduces boilerplate.</description>
+    </item>
     
     <item>
       <title>ES6 - Limitations of using const and let</title>
