@@ -3,10 +3,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Coderade blog</title>
-        <meta name="author">
-        <meta name="description" content="The awesome blog of Valdeci Gomes, about code, technology and tips in general.">
+        <title>ES6 Arrow Functions - Coderade blog</title>
+        <meta name="author" content="Valdeci Gomes <valdeci@outlook.com>">
+        <meta name="description" content="Arrow functions are another notable addition that came with ES5 and are available here in ES2016.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://coderade.github.io/post/es6/arrow-functions/">
+        <meta property="og:title" content="ES6 Arrow Functions - Coderade blog">
+        <meta property="og:site_name" content="coderade.github.com">
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="Arrow functions are another notable addition that came with ES5 and are available here in ES2016.">
+        <meta property="og:image" content="https://coderade.github.io/img/puralsight-bg.jpg">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="800">
+        <meta property="og:image:height" content="600">
+
         <meta name="generator" content="Hugo 0.27.1" />
         <link href="https://coderade.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
         <link href="https://coderade.github.io/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
@@ -56,7 +68,7 @@
 </span>
 </footer>
 
-            <p>Arrow functions are another notable addition that came with ES5, and are available here in ES2016.
+            <p>Arrow functions are another notable addition that came with ES5 and are available here in ES2016.
 They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and
 the second thing is that they allow us to preserve the context of the wrapping function.</p>
 
@@ -81,7 +93,7 @@ then inside of it, it just calls the <code>callback</code> on the <code>options<
 
 <p>On the above example, I call withACallBack, say &ldquo;so long&rdquo; as the option and then I just declare an anonymous function
 and insert it here as the second argument and in this case, I am doing it the old fashioned way, I&rsquo;m saying function,
-options, and then returning our options.</p>
+options and then returning our options.</p>
 
 <p>On the next example, I&rsquo;m using an arrow function. You can see already that it&rsquo;s a bit more concise, we didn&rsquo;t have to write
 functions but fundamentally these are pretty much the same thing.</p>
@@ -125,7 +137,7 @@ our wrapping function, which is this <code>arrow</code> function, where as the <
 at the <code>this</code> of store.</p>
 
 <p>So, don&rsquo;t just take my word for it, let&rsquo;s console log these and we&rsquo;ll go into the browser and see what happens.
-I&rsquo;ll save my file and I&rsquo;ll navigate to the browser, and I&rsquo;ll refresh the page.</p>
+I&rsquo;ll save my file and I&rsquo;ll navigate to the browser and I&rsquo;ll refresh the page.</p>
 
 <p><img src="/images/posts/es6/arrow-functions/undefined-error.png" alt="" /></p>
 

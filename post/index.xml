@@ -29,7 +29,7 @@ So, have you ever had a function that was dealing with these enormous deeply nes
       <pubDate>Thu, 14 Sep 2017 21:44:08 +0200</pubDate>
       
       <guid>https://coderade.github.io/post/es6/arrow-functions/</guid>
-      <description>Arrow functions are another notable addition that came with ES5, and are available here in ES2016. They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and the second thing is that they allow us to preserve the context of the wrapping function.
+      <description>Arrow functions are another notable addition that came with ES5 and are available here in ES2016. They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and the second thing is that they allow us to preserve the context of the wrapping function.
 As I write before, the arrow function, one of its main features is that it&amp;rsquo;s more succinct, it reduces boilerplate.</description>
     </item>
     
@@ -69,7 +69,7 @@ I don&amp;rsquo;t know why, but since I started to make simple code with JQuery 
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
       
       <guid>https://coderade.github.io/post/rails-5-new-features/</guid>
-      <description>On this post I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.
+      <description>On this article I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.
 I will try to show how to use the most important features of Rails 5, including Action Cable, Action Controller Renderer, Turbolinks, the Active records, Attributes API and how to use Rails exclusively as a JSON API.
 Besides that I will discuss the many other smaller changes in improvements such as the Rails command Router, new Date and Time methods, Secure Tokens and changes to parameters.</description>
     </item>
