@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
-    <lastBuildDate>Thu, 14 Sep 2017 21:44:08 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 17 Sep 2017 21:44:08 +0200</lastBuildDate>
     
 	<atom:link href="https://coderade.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ES6 Destructuring assignments</title>
+      <link>https://coderade.github.io/post/es6/destructuring-assignments/</link>
+      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/es6/destructuring-assignments/</guid>
+      <description>In this article I&amp;rsquo;am going to talk about Destructuring assignments in ES6.
+The Destructuring Assignments don&amp;rsquo;t really offer us any new features, but rather they enable us to write more readable and less repetitive code.
+So, have you ever had a function that was dealing with these enormous deeply nested objects and it felt like your code was kind of sprawling out of control, it was getting hard to read?</description>
+    </item>
     
     <item>
       <title>ES6 Arrow Functions</title>
