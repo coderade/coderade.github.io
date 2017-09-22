@@ -64,6 +64,18 @@ I don&amp;rsquo;t know why, but since I started to make simple code with JQuery 
     </item>
     
     <item>
+      <title>Android Studio and IntelliJ IDEA</title>
+      <link>https://coderade.github.io/post/android/android-studio-idea/</link>
+      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/android/android-studio-idea/</guid>
+      <description>I personally love the JetBrains tools.
+When I started to code with the Eclipse, Netbeans, ADT tool for Eclipse, Text editors and others tools, I thought to myself:
+ &amp;ldquo;The development with these tools is pretty cool, but the tolls are very far from being awesome, can they be better?&amp;rdquo;
+ So, after some time with a hard time with these above tools I had the opportunity to try Intellij Idea working with Java development.</description>
+    </item>
+    
+    <item>
       <title>Rails 5 new features</title>
       <link>https://coderade.github.io/post/rails-5-new-features/</link>
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
