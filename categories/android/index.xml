@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Coderade blog</title>
+    <link>https://coderade.github.io/categories/android/</link>
+    <description>Recent content in Android on Coderade blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
+    <lastBuildDate>Mon, 12 Dec 2016 13:47:08 +0200</lastBuildDate>
+    
+	<atom:link href="https://coderade.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android Studio and IntelliJ IDEA</title>
+      <link>https://coderade.github.io/post/android/android-studio-idea/</link>
+      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/android/android-studio-idea/</guid>
+      <description>I personally love the JetBrains tools.
+When I started to code with the Eclipse, Netbeans, ADT tool (For android development on Eclipse), Text editors and others tools, I thought to myself:
+ &amp;ldquo;The development with these tools is pretty cool, but the tolls are very far from being awesome, can they be better?&amp;rdquo;
+ So, after some time with a hard time with these tools I had the opportunity to try Intellij Idea working with Java development.</description>
+    </item>
+    
+  </channel>
+</rss>

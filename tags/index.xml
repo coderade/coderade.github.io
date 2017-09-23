@@ -7,9 +7,82 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Powered by [Hugo](http://gohugo.io).</copyright>
+    <lastBuildDate>Mon, 12 Dec 2016 13:47:08 +0200</lastBuildDate>
     
 	<atom:link href="https://coderade.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android</title>
+      <link>https://coderade.github.io/tags/android/</link>
+      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Es6</title>
+      <link>https://coderade.github.io/tags/es6/</link>
+      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Idea</title>
+      <link>https://coderade.github.io/tags/idea/</link>
+      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/idea/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Js</title>
+      <link>https://coderade.github.io/tags/js/</link>
+      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mobile</title>
+      <link>https://coderade.github.io/tags/mobile/</link>
+      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rails</title>
+      <link>https://coderade.github.io/tags/rails/</link>
+      <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/rails/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ruby</title>
+      <link>https://coderade.github.io/tags/ruby/</link>
+      <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://coderade.github.io/tags/web/</link>
+      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/tags/web/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
