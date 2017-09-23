@@ -78,7 +78,7 @@
 
             
 
-<p>In this article I&rsquo;am going to talk about Destructuring assignments in ES6.</p>
+<p>In this article I&rsquo;m going to talk about the Destructuring assignments in ES6.</p>
 
 <p>The Destructuring Assignments don&rsquo;t really offer us any new features, but rather they enable us to write more readable
 and less repetitive code.</p>
@@ -108,9 +108,9 @@ to understand better how we can improve our code with ES6 feature.</p>
 <p>Take a look on the following example:</p>
 
 <pre><code class="language-javascript">let {    
-  name, 
+  name,
   artist
-} = event; 
+} = event;
 </code></pre>
 
 <p>To destructure an object we need to declare a new variable and then choose any number of keys to create into stand alone
@@ -142,7 +142,7 @@ some even cooler stuff.</p>
 as it&rsquo;s own variable, and we can also rename the variables that we&rsquo;re destructuring.</p>
 
 <pre><code class="language-javascript">let {stage, songs: {firstSong}} = event;
-let {lastSong} = event.songs; 
+let {lastSong} = event.songs;
 </code></pre>
 
 <p>Then, let&rsquo;s say we want to get <code>artist</code> out of event but we already have a <code>artist</code> variable somewhere in our code,
@@ -172,14 +172,15 @@ destructuring but with an array.</p>
 </code></pre>
 
 <p>Then, I can create a new variable that holds the index of these objects and I can skip over ones that I don&rsquo;t want to access,
-and then later on in my code.</p>
+and then later on in my code.
+​</p>
 
 <pre><code class="language-javascript">let [eventIdx0, , , eventIdx3] = festivals;
 </code></pre>
 
 <p>So, I can access those variables as these variable names, Rather than use: <code>festivals[0]</code> as we normally do with arrays:</p>
 
-<pre><code>console.log(eventIdx0);    //&quot;Coachella&quot;
+<pre><code class="language-javascript">console.log(eventIdx0);    //&quot;Coachella&quot;
 console.log(eventIdx3);    //&quot;Ultra Music Festival&quot;
 </code></pre>
 
@@ -188,8 +189,7 @@ with the variable I&rsquo;ve assigned it to.</p>
 
 <hr />
 
-<p>The examples of this article and project that I used to run them and other examples are available on my GitHub
-<a href="https://github.com/coderade/es6-examples">repository</a>.</p>
+<p>The examples of this article and project that I used to run them and other examples are available on my GitHub <a href="https://github.com/coderade/es6-examples">repository</a>.</p>
 
             <ul class="share-buttons">
     <li>Share this article:</li>

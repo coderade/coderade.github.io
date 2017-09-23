@@ -18,7 +18,7 @@
       <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
       
       <guid>https://coderade.github.io/post/es6/destructuring-assignments/</guid>
-      <description>In this article I&amp;rsquo;am going to talk about Destructuring assignments in ES6.
+      <description>In this article I&amp;rsquo;m going to talk about the Destructuring assignments in ES6.
 The Destructuring Assignments don&amp;rsquo;t really offer us any new features, but rather they enable us to write more readable and less repetitive code.
 So, have you ever had a function that was dealing with these enormous deeply nested objects and it felt like your code was kind of sprawling out of control, it was getting hard to read?</description>
     </item>
@@ -93,9 +93,9 @@ Besides that I will discuss the many other smaller changes in improvements such 
       
       <guid>https://coderade.github.io/post/first/</guid>
       <description>Hi there.
-After a few attempts with the coderade .in and .io blogs, I started to write in a blog again and now with no expensive domain and freedom in customization excuses, heheh.
-On this blog I will write about code, life hacks and I&amp;rsquo;ll try to share my experiences in this vast life (yeah, with 23 years old).
-The blog is powered by Hugo and I normally use the IDEA to write my posts with Markdown ❤️.</description>
+After a few attempts with the coderade .in and .io blogs, I returned to write in a blog again.
+But now with no expensive domain and freedom in customization excuses, heheh. I&amp;rsquo;m hosting this blog on the GitHub Pages that is totally free and is very easy to use.
+On this blog I will write about code, life hacks and I&amp;rsquo;ll try to share my experiences in this vast life (yeah, with 23 years old).</description>
     </item>
     
   </channel>
