@@ -21,7 +21,7 @@
       <description>The Android Studio 2.2 added a new tool called the APK Analyzer.
 It lets you look at packaged apps, those APK files that are in zip archive format that you use to deploy an application.
 Using the APK Analyzer, you can see inside the APK file and see what files and directories are largest so you can decide how you can shrink down that APK.
-The example application I&amp;rsquo;ll show you how to use this with an existing project that is available on my GitHub, where you can clone or download and try to follow the below steps on your own Android Studio.</description>
+The example application I&amp;rsquo;ll show you how to use the Apk Analyzer tool with an existing project that is available on my GitHub, where you can clone or download and try to follow the below steps on your own Android Studio.</description>
     </item>
     
     <item>
