@@ -182,13 +182,13 @@ This is an important topic if you have an existing project that uses any of thes
 <li>Less memory usage</li>
 <li>Less time doing garbage collection (GC)</li>
 <li>Requires 2.2.2 or greater</li>
-<li><a href="https://www.sitepoint.com/symbol-gc-ruby-2-2/">GC of symbols (Incremental GC)</a></li>
+<li><a href="https://www.sitepoint.com/symbol-gc-ruby-2-2/" target="_blank">GC of symbols (Incremental GC)</a></li>
 <li><strong>Incremental GC: ~2x faster</strong> - Previously, the Ruby would periodically go through all the objects in memory, mark the ones that were still fresh or being used and then make a second pass to remove the unmarked objects from memory.
 The problem with this is that that GC sweep through memory takes some time, it can slow down your code while it&rsquo;s happening. Ruby 2.1 improved the speed of this process somewhat by classifying objects in memory based on the likelihood they would need to be garbage-collected, but a large collection could still slow things down. Well, now, in Ruby 2.2, we get incremental GC and the basic idea is to break up the scanning and removal of objects so that the process happens incrementally, not all in one big sweep, so while the total work and the total time may still be the same, it&rsquo;s broken up among many smaller operations.</li>
 <li><strong>Optimizes common operations</strong> - The core team has optimized common operations, the code has fewer dependencies on other code in libraries and there are fewer object allocations to memory. Now, that may seem like a small point that doesn&rsquo;t make much difference, but, as one example, link and URL generation in Ruby on Rails 5 is 44 percent faster.</li>
 <li>Fewer dependencies</li>
 <li>Fewer object allocations</li>
-<li><strong>Development environment is faster</strong> - The development environment uses the Puma web server now, instead of using <a href="https://github.com/ruby/webrick">Webrick</a> and the development mode used to check the modification time of all of your files in your project to know if anything had changed too, so that it could automatically reload the development environment for you. But now, there is a file system monitor, which notifies Rails whenever something changes. There is no more requirement to check the modification times of all the files. And that makes development feel snappier when you are working. And on top of these performance improvements.</li>
+<li><strong>Development environment is faster</strong> - The development environment uses the Puma web server now, instead of using <a href="https://github.com/ruby/webrick" target="_blank">Webrick</a> and the development mode used to check the modification time of all of your files in your project to know if anything had changed too, so that it could automatically reload the development environment for you. But now, there is a file system monitor, which notifies Rails whenever something changes. There is no more requirement to check the modification times of all the files. And that makes development feel snappier when you are working. And on top of these performance improvements.</li>
 </ul>
 
 <h2 id="major-features">Major features</h2>
@@ -363,7 +363,7 @@ App.room.speak('Hello ActionCable');
 
 <p>Now this is a very simple example, meant to just give you the flow of how things work, there&rsquo;s a lot more that you can do and a lot of configurations to help you to do them.</p>
 
-<p>If you wanna experiment or learn more, a great resource is the Rails ActionCable examples that are on <a href="https://github.com/rails/actioncable-examples">github</a> and official Action Cable <a href="http://guides.rubyonrails.org/action_cable_overview.html">documentation</a>.</p>
+<p>If you wanna experiment or learn more, a great resource is the Rails ActionCable examples that are on <a href="https://github.com/rails/actioncable-examples" target="_blank">github</a> and official Action Cable <a href="http://guides.rubyonrails.org/action_cable_overview.html" target="_blank">documentation</a>.</p>
 
 <h3 id="actioncontroller-renderer">ActionController::Renderer</h3>
 
@@ -451,12 +451,12 @@ App.room.speak('Hello ActionCable');
 
 <p>We could do it inside our jobs, our mailers, inside our rake tasks. There&rsquo;s all sorts of places that rendering can now take place without having to have all that controller code loaded in.</p>
 
-<p>For more information about Renderers see the Ruby <code>ActionController::Renderer</code><a href="http://api.rubyonrails.org/classes/ActionController/Renderer.html">documentation</a>.</p>
+<p>For more information about Renderers see the Ruby <code>ActionController::Renderer</code><a href="http://api.rubyonrails.org/classes/ActionController/Renderer.html" target="_blank">documentation</a>.</p>
 
 <h3 id="rails-as-json-api">Rails as JSON API</h3>
 
 <ul>
-<li>Based on Rails::API <a href="https://github.com/rails-api/rails-api">gem</a></li>
+<li>Based on Rails::API <a href="https://github.com/rails-api/rails-api" target="_blank">gem</a></li>
 <li>API for clients to access data and application logic</li>
 <li>Backend for client-side frameworks (Client eg.: JS, Flash, Iphone, or Rails)</li>
 </ul>
@@ -549,11 +549,11 @@ end
 
 <p>With Ruby on Rails 5, Rails developers who want to create backend applications where Rails serves as a JSON API will find it much easier than they have in the past and it will also omit a lot of the application code that you don&rsquo;t need to make your application as lean and fast as possible.</p>
 
-<p>For more information of how use Rails for API-only Applications, see the official <a href="http://edgeguides.rubyonrails.org/api_app.html">documentation</a>.</p>
+<p>For more information of how use Rails for API-only Applications, see the official <a href="http://edgeguides.rubyonrails.org/api_app.html" target="_blank">documentation</a>.</p>
 
 <h3 id="turbolinks-5">Turbolinks 5</h3>
 
-<p>Turbolinks was first introduced in Ruby on Rails 4. This version of Turbolinks has now been renamed as <a href="https://github.com/turbolinks/turbolinks-classic">Turbolinks Classic</a> and version five, which comes with Ruby on Rails 5, is a ground up rewrite with a new flow and new events, but which still uses the same core idea as Turbolinks Classic.</p>
+<p>Turbolinks was first introduced in Ruby on Rails 4. This version of Turbolinks has now been renamed as <a href="https://github.com/turbolinks/turbolinks-classic" target="_blank">Turbolinks Classic</a> and version five, which comes with Ruby on Rails 5, is a ground up rewrite with a new flow and new events, but which still uses the same core idea as Turbolinks Classic.</p>
 
 <p>The new version is faster than the old one and also offers the ability to do partial replacements of webpages. We&rsquo;ll take a look at that feature in a moment.</p>
 
@@ -690,7 +690,7 @@ Turbolinks.visit('/comments', :flush =&gt; true)
 
 <p>Change, keep, flush, as well we can use append and prepend and those do the exact same thing. If you wanna find out more about Turbolinks. Learn more about some of the configuration options that are available to you.</p>
 
-<p>You can find out more about it at the Turbolinks official <a href="https://github.com/turbolinks/turbolinks">repository</a>.</p>
+<p>You can find out more about it at the Turbolinks official <a href="https://github.com/turbolinks/turbolinks" target="_blank">repository</a>.</p>
 
 <h3 id="activerecord-attributes-api">ActiveRecord Attributes API</h3>
 
@@ -795,7 +795,7 @@ user.backwards_name
 
 <p>Rails gives a sensible default for our attributes. The ActiveRecord Attributes API gives us a way to override those defaults.</p>
 
-<p>You can find out more about the  ActiveRecord Attributes API at the your Rails documentation <a href="http://api.rubyonrails.org/classes/ActiveRecord/Attributes/ClassMethods.html">page</a>.</p>
+<p>You can find out more about the  ActiveRecord Attributes API at the your Rails documentation <a href="http://api.rubyonrails.org/classes/ActiveRecord/Attributes/ClassMethods.html" target="_blank">page</a>.</p>
 
 <h3 id="activerecord-relation-or">ActiveRecord::Relation#or</h3>
 
@@ -922,7 +922,7 @@ ActiveRecord::Base.include(ActsAsCoolFeature)
 
 <p>As we can see on the above example, if I want to add that into my models and I want to have it in all of my models I would have ActiveRecord Base include ActsAsCoolFeature. Now, all of my models have ActsAsCoolFeature built into them.</p>
 
-<p>Pretty cool, right? Except that this technique is called <a href="http://stackoverflow.com/questions/394144/what-does-monkey-patching-exactly-mean-in-ruby">monkey patching</a> and it refers to modifications of a class at run-time with the intent of changing their behavior.
+<p>Pretty cool, right? Except that this technique is called <a href="http://stackoverflow.com/questions/394144/what-does-monkey-patching-exactly-mean-in-ruby" target="_blank">monkey patching</a> and it refers to modifications of a class at run-time with the intent of changing their behavior.
 By patching ActiveRecord Base directly we&rsquo;re patching it for everyone that uses it. If we&rsquo;re running a small app that&rsquo;s not a big deal, but if we&rsquo;re using gems, plug-ins, engines, or writing complex code, each one of those is potentially expecting to have a clean ActiveRecord Base to work with and our module could interfere with their work.</p>
 
 <p>Instead, in Rails 5 with ApplicationRecord we have the ability to include the class in our intermediary class, ApplicationRecord, and not in ActiveRecord Base. ActiveRecord Base stays a pristine class that everyone can use. Our features included, but only for our models which inherit from ApplicationRecord.</p>
@@ -1185,7 +1185,7 @@ invite.auth_token # =&gt; &quot;05oplsfvvkwXI3q2349Oains&quot;
 
 <p>It&rsquo;s an unlikely scenario, but if you add it then you&rsquo;ll never need to worry, and that&rsquo;s all there is to being able to use secure tokens in your ActiveRecord models.</p>
 
-<p>You can find out more about the ActiveRecord Secure Tokens at the your Rails documentation <a href="http://api.rubyonrails.org/classes/ActiveRecord/SecureToken/ClassMethods.html">page</a>.</p>
+<p>You can find out more about the ActiveRecord Secure Tokens at the your Rails documentation <a href="http://api.rubyonrails.org/classes/ActiveRecord/SecureToken/ClassMethods.html" target="_blank">page</a>.</p>
 
 <h3 id="abort-activerecord-callbacks">Abort ActiveRecord Callbacks</h3>
 
@@ -1251,7 +1251,7 @@ ActiveSupport.halt_callback_chains_on_return_false = false
 
 <h3 id="changes-to-parameters-params">Changes to parameters/params</h3>
 
-<p>Ruby on Rails 5 has made a few improvements to the strong parameters code that we use in our controllers, you&rsquo;re going to want to beware of any code which treats the parameters as if it was a simple hash, because it&rsquo;s not going to be anymore. It&rsquo;s no longer going to inherit from <a href="http://api.rubyonrails.org/classes/ActiveSupport/HashWithIndifferentAccess.html">HashWithIndiferentAccess</a>, as a fundamental class in Rails that allows us to access a hash, by providing either symbols or strings as the keys of the hash. Instead, our params are now going to be inheriting from a standalone parameters class.</p>
+<p>Ruby on Rails 5 has made a few improvements to the strong parameters code that we use in our controllers, you&rsquo;re going to want to beware of any code which treats the parameters as if it was a simple hash, because it&rsquo;s not going to be anymore. It&rsquo;s no longer going to inherit from <a href="http://api.rubyonrails.org/classes/ActiveSupport/HashWithIndifferentAccess.html" target="_blank">HashWithIndiferentAccess</a>, as a fundamental class in Rails that allows us to access a hash, by providing either symbols or strings as the keys of the hash. Instead, our params are now going to be inheriting from a standalone parameters class.</p>
 
 <p>It&rsquo;s still going to have indifferent access, we can still access the values by using either symbols or strings, and also using the square bracket notation that you&rsquo;re used to.</p>
 
@@ -1384,11 +1384,11 @@ users.without(current_user)
 
 </code></pre>
 
-<p>For more information about <code>Enumerable#without</code> see the Ruby Enumerable#without <a href="http://api.rubyonrails.org/classes/Enumerable.html#method-i-without">documentation</a>.</p>
+<p>For more information about <code>Enumerable#without</code> see the Ruby Enumerable#without <a href="http://api.rubyonrails.org/classes/Enumerable.html#method-i-without" target="_blank">documentation</a>.</p>
 
 <h3 id="enumerable-pluck">Enumerable#pluck</h3>
 
-<p>The new method on enumerable called pluck is similar to an existing <a href="http://api.rubyonrails.org/classes/ActiveRecord/Calculations.html#method-i-pluck">method</a> on ActiveRecord called pluck.</p>
+<p>The new method on enumerable called pluck is similar to an existing <a href="http://api.rubyonrails.org/classes/ActiveRecord/Calculations.html#method-i-pluck" target="_blank">method</a> on ActiveRecord called pluck.</p>
 
 <p>The way that works, is if we have a model, like user, we can ask it to pluck ID and the username and it will fire a new SQL query and pull back just those values, just the ID and the username and that&rsquo;s true, even if we&rsquo;ve already previously loaded this scope, it goes directly to the database in order to ask for those values. Now often, we want to write methods which operate either on arrays or scopes.</p>
 
@@ -1459,7 +1459,7 @@ User.pluck(:username)
 
 <p>It still returns back the values that we&rsquo;re looking for.</p>
 
-<p>For more information about <code>Enumerable#pluck</code> see the Ruby Enumerable#pluck <a href="http://api.rubyonrails.org/classes/Enumerable.html#method-i-pluck">documentation</a>.</p>
+<p>For more information about <code>Enumerable#pluck</code> see the Ruby Enumerable#pluck <a href="http://api.rubyonrails.org/classes/Enumerable.html#method-i-pluck" target="_blank">documentation</a>.</p>
 
 <h3 id="arrayinquirer">ArrayInquirer</h3>
 
@@ -1497,7 +1497,7 @@ status = ActiveSupport::StringInquirer.new('active')
 puts Rails.env          # =&gt; 'production'
 </code></pre>
 
-<p>So now let&rsquo;s look at <a href="http://api.rubyonrails.org/classes/ActiveSupport/ArrayInquirer.html">ArrayInquirer</a>.
+<p>So now let&rsquo;s look at <a href="http://api.rubyonrails.org/classes/ActiveSupport/ArrayInquirer.html" target="_blank">ArrayInquirer</a>.
 Let&rsquo;s say that I just have a basic array and in that array I have three values: producer, director and actor.</p>
 
 <pre><code class="language-ruby"># ArrayInquirer example
@@ -1555,7 +1555,7 @@ roles.any('director', 'writer') # =&gt; true
 
 <p>You&rsquo;re not going to want to do this to every single one of your arrays, but there are certain cases when it is gonna be convenient to be able to have a way to easily inquire about the contents of an array and in those cases this is gonna be a great tool to have.</p>
 
-<p>For more information about ArrayInquirer see the Ruby <code>ArrayInquirer</code><a href="http://api.rubyonrails.org/classes/ActiveSupport/ArrayInquirer.html">documentation</a>.</p>
+<p>For more information about ArrayInquirer see the Ruby <code>ArrayInquirer</code><a href="http://api.rubyonrails.org/classes/ActiveSupport/ArrayInquirer.html" target="_blank">documentation</a>.</p>
 
 <h3 id="per-form-csrf-tokens">Per-Form CSRF tokens</h3>
 
@@ -1659,7 +1659,7 @@ end
 
 <p>They do the same thing, but the second one makes it clear what&rsquo;s happening. For this reason, using <code>render(:nothing =&gt; true)</code> in Rails 5 will still work, but you&rsquo;ll also get a deprecation warning in your logs or in the console and if you are using the Rails 5.1 version this won&rsquo;t work anymore.</p>
 
-<h3 id="moved-recordtaghelper-to-gem-https-github-com-rails-record-tag-helper">Moved RecordTagHelper to <a href="https://github.com/rails/record_tag_helper">Gem</a></h3>
+<h3 id="moved-recordtaghelper-to-gem-https-github-com-rails-record-tag-helper">Moved RecordTagHelper to <a href="https://github.com/rails/record_tag_helper" target="_blank">Gem</a></h3>
 
 <p>The RecordTagHelper class has been moved to RubyGem. RecordTagHelper is made up, really of just two methods, those are <code>div_for</code> and <code>content_tag_for</code>.</p>
 
@@ -1676,14 +1676,14 @@ content_tag_for(:tr, @person) {...}
 
 <p>I do want to make a footnote here, which is that the <code>content_tag</code> method is still available, that&rsquo;s different than <code>content_tag_for</code>. <code>content_tag_for</code> was specifically about working with the attributes of an active record object and <code>content_tag</code> just helps you generate a basic content tag and it&rsquo;s still on the Rails core.</p>
 
-<h3 id="moved-xml-serialization-to-gem-https-github-com-rails-activemodel-serializers-xml">Moved XML serialization to <a href="https://github.com/rails/activemodel-serializers-xml">Gem</a></h3>
+<h3 id="moved-xml-serialization-to-gem-https-github-com-rails-activemodel-serializers-xml">Moved XML serialization to <a href="https://github.com/rails/activemodel-serializers-xml" target="_blank">Gem</a></h3>
 
 <p>XML Serialization has been moved to a RubyGem.
 We&rsquo;re really talking about two main classes that have been moved: <code>ActiveModel::Serializers::Xml</code> and <code>ActiveRecord::Serialization::XmlSerializer</code> and there&rsquo;s also one method inside ActiveRecord Serialization which doesn&rsquo;t exist anymore, which is <code>ActiveRecord::Serialization#to_xml</code>. and that&rsquo;s the main way that you&rsquo;ve probably been using Serialization before.</p>
 
 <p>This code simply just isn&rsquo;t needed as part of the Rails core anymore and it&rsquo;s better to let folks who need it load it, and keep the core Rails lean for everyone else.</p>
 
-<p>And in truth, JSON has become a more popular way to perform serialization than XML, if you still need XML Serialization, then you just need to load the <a href="https://github.com/rails/activemodel-serializers-xml">RubyGem</a> into your gem file.</p>
+<p>And in truth, JSON has become a more popular way to perform serialization than XML, if you still need XML Serialization, then you just need to load the <a href="https://github.com/rails/activemodel-serializers-xml" target="_blank">RubyGem</a> into your gem file.</p>
 
 <p>You can do that by adding <code>activemodel-serializers.xml</code> and running <code>bundle install</code> and then you&rsquo;ll have that gem and all that functionality available to you.</p>
 
@@ -1711,7 +1711,7 @@ person.to_xml
 
 <p>The responders were previously deprecated, so this is a change that we should&rsquo;ve anticipated, but now they&rsquo;ve been completely removed and you&rsquo;ll want to be careful if you were using <code>ActionController#respond_with</code> or the class level version of <code>ActionController.respond_to</code> in your controllers.</p>
 
-<p>Those have now been removed from the Rails core, if you still want to use them, you can add them back in by loading a third-party <a href="https://github.com/plataformatec/responders">gem</a>. This is not an official Rails gem, but it is being maintained by a close and reliable source.To use it, just put responders into your gem file and run <code>bundle install</code>.</p>
+<p>Those have now been removed from the Rails core, if you still want to use them, you can add them back in by loading a third-party <a href="https://github.com/plataformatec/responders" target="_blank">gem</a>. This is not an official Rails gem, but it is being maintained by a close and reliable source.To use it, just put responders into your gem file and run <code>bundle install</code>.</p>
 
 <p>Now if you aren&rsquo;t completely clear on what the responders did, let me give you a quick refresher:</p>
 
@@ -1779,7 +1779,7 @@ There are also many smaller changes that will apply to fewer developers, but whi
 
 <p>Both of these do nothing now and can be safely removed from <code>Application.rb</code>, if you have it there.</p>
 
-<p>Rails 5 also removed support for Debugger, that&rsquo;s in part because Ruby 2.2 no longer has support for Debugger. Instead, it uses <a href="https://github.com/deivid-rodriguez/byebug">Byebug</a> instead. So, if you&rsquo;ve been using the Debugger in the past, you&rsquo;ll wanna learn about the differences with Byebug.</p>
+<p>Rails 5 also removed support for Debugger, that&rsquo;s in part because Ruby 2.2 no longer has support for Debugger. Instead, it uses <a href="https://github.com/deivid-rodriguez/byebug" target="_blank">Byebug</a> instead. So, if you&rsquo;ve been using the Debugger in the past, you&rsquo;ll wanna learn about the differences with Byebug.</p>
 
 <p>A few Rake tasks related to documentation has been removed: <code>rake doc:app</code>, <code>doc:rails</code> and <code>doc:guides</code> have all been removed.</p>
 
@@ -1798,7 +1798,7 @@ Now, they&rsquo;re going to generate it as a <code>.raw</code> type, which means
 
 <p>In ActionMailer, the <code>#deliver</code> and <code>#deliver!</code> methods are now gone, as well as the <code>ActionMailer</code> <code>*_path</code> helpers that used to be there.</p>
 
-<p>If you write tests for your applications, then you wanna pay particular attention to some changes to the controller tests, because the <code>assigns</code> and <code>assert_template</code> methods have been moved off into a gem. They&rsquo;re not deprecated they&rsquo;re removed completely and they&rsquo;re moved into a gem. If you need them again, then you&rsquo;ll need to load the Rails-controller-testing <a href="https://github.com/rails/rails-controller-testing">gem</a> in order to get that functionality back.</p>
+<p>If you write tests for your applications, then you wanna pay particular attention to some changes to the controller tests, because the <code>assigns</code> and <code>assert_template</code> methods have been moved off into a gem. They&rsquo;re not deprecated they&rsquo;re removed completely and they&rsquo;re moved into a gem. If you need them again, then you&rsquo;ll need to load the Rails-controller-testing <a href="https://github.com/rails/rails-controller-testing" target="_blank">gem</a> in order to get that functionality back.</p>
 
 <p>It&rsquo;s likely to be a controversial change, because some people were using assigns to test that instance variables were being assigned in their controllers. But it was decided by the core team that that&rsquo;s not a best practice for how you test your controllers and therefore it&rsquo;s been moved to a gem.</p>
 
@@ -1809,9 +1809,9 @@ You can look up more information on how process works to see how to make that ch
 
 <hr />
 
-<p>The source code of this article is available on the link: <a href="https://github.com/coderade/rails-5-new-features">https://github.com/coderade/rails-5-new-features</a>.</p>
+<p>The source code of this article is available on the link: <a href="https://github.com/coderade/rails-5-new-features" target="_blank">https://github.com/coderade/rails-5-new-features</a>.</p>
 
-<p>For more information about the changes on the Rails 5.0 release, look the Ruby on Rails 5.0 Release Notes <a href="http://guides.rubyonrails.org/5_0_release_notes.html">link</a>.</p>
+<p>For more information about the changes on the Rails 5.0 release, look the Ruby on Rails 5.0 Release Notes <a href="http://guides.rubyonrails.org/5_0_release_notes.html" target="_blank">link</a>.</p>
 
             <ul class="share-buttons">
     <li>Share this article:</li>
@@ -1898,7 +1898,7 @@ You can look up more information on how process works to see how to make that ch
 <footer class="main-footer">
   <div class="container clearfix">
         <a class="icon-rss" href="https://coderade.github.io/post/index.xml" title="RSS"></a>
-        <p>&copy; 2017 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
+        <p>&copy; 2017 &middot; Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>.</p>
   </div>
 </footer>
 
