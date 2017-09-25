@@ -13,6 +13,17 @@
     
     
     <item>
+      <title>Converting graphic files to WebP format on Android Studio 2.3</title>
+      <link>https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/</link>
+      <pubDate>Fri, 22 Sep 2017 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/</guid>
+      <description>For all who do not know the webP format android has supported this image format for many years.
+As I said on my previous article the WebP files are smaller than JPGs or PNGs and like PNGs, they support transparency. But creating them files has always been a bit of a chore.
+Now, with Android Studio 2.3, you can convert your existing graphical files into WebP files very easily.</description>
+    </item>
+    
+    <item>
       <title>Inspect APK files with the APK Analyzer on Android Studio</title>
       <link>https://coderade.github.io/post/android/inspecting-apk-files-after-packaging/</link>
       <pubDate>Fri, 22 Sep 2017 13:47:08 +0200</pubDate>

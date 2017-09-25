@@ -1,0 +1,423 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Converting graphic files to WebP format on Android Studio 2.3 - Coderade blog</title>
+        <meta name="author" content="Valdeci Gomes <valdeci@outlook.com>">
+        <meta name="description" content="Using WebP graphic files instead of JPG or PNG files can help you dramatically shrink the size of your Android package application.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/">
+        <meta property="og:title" content="Converting graphic files to WebP format on Android Studio 2.3">
+        <meta property="og:site_name" content="coderade.github.com">
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="Using WebP graphic files instead of JPG or PNG files can help you dramatically shrink the size of your Android package application.">
+        <meta property="og:image" content="https://coderade.github.io/images/posts/android/converting-graphic-files-to-webp-format/webp-png-comparison.png">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="800">
+        <meta property="og:image:height" content="600">
+
+        <meta name="generator" content="Hugo 0.27.1" />
+        <link href="https://coderade.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
+        <link href="https://coderade.github.io/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://coderade.github.io/css/styles.css">
+        <link rel="icon" href="https://coderade.github.io/favicon.ico">
+        <link rel="apple-touch-icon" href="https://coderade.github.io/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://coderade.github.io/css/highlightjs/monokai.css">
+        <script src="https://coderade.github.io/js/vendor/modernizr-2.8.0.min.js"></script>
+        
+        <link rel="stylesheet" href="https://coderade.github.io/css/theme.css">
+        
+        <style>
+        .site-header h2 .logo {
+        background: url(https://coderade.github.io/img/puralsight-bg.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(https://coderade.github.io/img/puralsight-bg.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(https://coderade.github.io/img/puralsight-bg.jpg) no-repeat center center;
+         z-index: -1;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2>Coding, Life Hacks and tips in general</h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn home" href="https://coderade.github.io/" title="Back to home">&laquo; Back to home</a>
+            
+<h1><a href="https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/" title="Converting graphic files to WebP format on Android Studio 2.3">Converting graphic files to WebP format on Android Studio 2.3</a></h1>
+
+<footer class="post-info">Posted on <span class="post-meta"><time datetime="2017.09.22">2017.09.22</time>
+
+    &middot; Tagged in
+        
+        <a href="https://coderade.github.io/tags/android">android</a>, 
+        
+        <a href="https://coderade.github.io/tags/mobile">mobile</a>
+        
+    
+
+</span>
+</footer>
+
+            
+
+<p>For all who do not know the webP format android has supported this image format
+for many years.</p>
+
+<p>As I said on my <a href="/post/android/inspecting-apk-files-after-packaging">previous</a>
+article the WebP files are smaller than JPGs or PNGs and like PNGs, they support transparency.
+But creating them files has always been a bit of a chore.</p>
+
+<p>Now, with Android Studio 2.3, you can convert your existing graphical files into
+WebP files very easily.</p>
+
+<p>On this article, I&rsquo;ll show how to convert your created image files to the WebP format
+on the new version of the <a href="https://developer.android.com/studio/index.html" target="_blank">Android Studio</a>.
+So if you haven&rsquo;t already switched for the new version, I think that it&rsquo;s
+definitely time to do so now, since that this new version added
+several quality improvements across the IDE
+<a href="https://android-developers.googleblog.com/2017/03/android-studio-2-3.html" target="_blank">comparing</a>
+with older versions.</p>
+
+<p>For this article I&rsquo;ll work in a version of my project called
+<a href="https://github.com/coderade/CoffeeMenuSample" target="_blank">CoffeeMenuSample</a>. This is the
+same project that I used on my previous article and also is available on my GitHub.</p>
+
+<p>It displays a list of data in a recycler view and each data item is associated
+with an image file.
+And, as my <a href="/post/android/inspecting-apk-files-after-packaging">previous</a>
+article, when I demonstrated the APK Analyzer tool, I found that my largest space
+usage in the APK was from those image files.</p>
+
+<h2 id="converting-a-single-image-file-to-webp">Converting a single image file to WebP</h2>
+
+<p>I&rsquo;ll show you first how to convert a single image file to WebP.</p>
+
+<p>And I&rsquo;ll do that with the JPG file that&rsquo;s in the drawable resource directory on
+my project.</p>
+
+<p>So, with the Android Studio running (of course 😅), I&rsquo;m going to right
+click on that JPG file and choose Find Usages (CTRL + F7 on Linux/Windows,
+  CMD + F7 on Mac) and I find a reference to the JPG file
+  here in the <code>activity_detail.xml</code> file.</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-activity_xml-context.png" alt="" /></p>
+
+<p>On the Design tab for this file, I&rsquo;ll resize that to fit the screen and then
+shrink down that window so it gets a little bit bigger so we can see what the
+image looks like:</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/design-tab-activity-detail-xml.png" alt="" /></p>
+
+<p>Now, I&rsquo;ll go back to the project window and I&rsquo;ll right click on the file and
+down at the bottom of the menu I&rsquo;ll choose Convert to WebP.</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/as-convert-to-webp.png" alt="" /></p>
+
+<p>A window will be opened with many options available:</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/convert-webp-options.png" alt="" /></p>
+
+<p><strong>Lossy encoding</strong> means that you can shrink down the image quite a bit. You can
+also choose <strong>lossless encoding</strong> and that will retain the image&rsquo;s resolution but
+the file size won&rsquo;t shrink as much and more importantly, your app will now have
+a minimum SDK of API 18.</p>
+
+<p>This will work for the sample app, which has a minimum SDK of API 18, but for
+this article I&rsquo;ll go back to lossy encoding.</p>
+
+<p>You also have control on this screen of the encoding quality.</p>
+
+<p>A good ideia is leave the <strong>Preview/inspect each converted image before saving</strong>
+option selected so I can preview the image before I save the change.</p>
+
+<p>There&rsquo;s some other options down here, but I&rsquo;ll leave those at their default selections
+and click OK.</p>
+
+<p>This will takes me to the preview screen and we see the original file on the left
+and the new file that&rsquo;s going to be created on the right:</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-preview-ajust-window.png" alt="" /></p>
+
+<p>And to my eye they look pretty much the same. I can move this slider to the left
+to reduce the image quality and the difference between the images will be shown
+in the center.</p>
+
+<p>I&rsquo;ll move it back to the default of 75% and then I&rsquo;ll click finish.</p>
+
+<p>Then, there&rsquo;s the result. My Android Studio Event log logged the message:</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-log.png" alt="" /></p>
+
+<p>showing that the image size has been reduced to a very considerable size. (In this
+case I saved 507.8 KB 😮)</p>
+
+<p>My WebP file has been created and if I look in my design environment and again,
+it looks pretty much the same:</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-image-converted.png" alt="" /></p>
+
+<p>Now that we learned how to convert the images to a webP format and the result has
+been approved (and At least on my side), we can do now a mass conversion.</p>
+
+<h2 id="doing-a-mass-conversion-of-image-files-to-webp">Doing a mass conversion of image files to WebP</h2>
+
+<p>In my assets directory I&rsquo;ll click and select all of my files.
+I will click on the first, held down the shift key and click on the last.</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/selecting-all-assets-files.png" alt="" /></p>
+
+<p>Then, once again, I&rsquo;ll right click and choose Convert to WebP and I&rsquo;ll accept
+all the default settings and click OK.</p>
+
+<p>And now because I&rsquo;m converting multiple files, I can click Next and Previous to
+move through the files and see what they&rsquo;ll look like.
+Once I liked my settings, I&rsquo;ll click <strong>Accept All</strong> and all of my files have been
+converted to WebP.</p>
+
+<p>The Android Studio will show a notification saying that we saved 3.3 MB after the
+files conversion.</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/files-converted-webp.png" alt="" /></p>
+
+<p>This is really insane, if you think that we&rsquo;re talking about a mobile app.</p>
+
+<p>Before you test this on a device, I need to make a change in one of the Java files,
+because we changed the format of all the dummy images.</p>
+
+<p>I&rsquo;ll go to my Java directory, to my base package, to the sample sub package and
+I&rsquo;ll open the <a href="https://github.com/coderade/CoffeeMenuSample/blob/master/app/src/main/java/com/coderade/android/coffeemenusample/sample/SampleDataProvider.java" target="_blank">SampleDataProvider.java</a> file.</p>
+
+<p>We can notice that where I created the sample data to the project, there are
+references to those old JPG files scattered throughout this file.</p>
+
+<pre><code class="language-java">static {
+        dataItemList = new ArrayList&lt;&gt;();
+        dataItemMap = new HashMap&lt;&gt;();
+
+        addItem(new DataItem(null, &quot;Hamburger&quot;, &quot;Entrees&quot;,
+                &quot;The best burger in the world&quot;,
+                4, 5, &quot;hamburger.jpg&quot;));
+        //...//        
+    }
+</code></pre>
+
+<p>We can press Ctrl + R on Windows or Cmd + R on Mac to replace all
+the .jpg references it with .webp and then click on the <code>Replace All</code> button.</p>
+
+<p>The result will be:</p>
+
+<pre><code class="language-java">static {
+        dataItemList = new ArrayList&lt;&gt;();
+        dataItemMap = new HashMap&lt;&gt;();
+
+        addItem(new DataItem(null, &quot;Hamburger&quot;, &quot;Entrees&quot;,
+                &quot;The best burger in the world&quot;,
+                4, 5, &quot;hamburger.webp&quot;));
+        //...//        
+    }
+</code></pre>
+
+<p>Before I deploy the application, I&rsquo;ll go back to the device and I&rsquo;ll uninstall
+the application.</p>
+
+<p>In this way we are making sure I&rsquo;m starting with a fresh data set.
+In this example application the data that&rsquo;s provided by that Java class is cached
+in a database and I want to start over without anything on the device.</p>
+
+<p>And I&rsquo;ll run the app again and the result is that it looks exactly the same as it
+did before.</p>
+
+<p>If you are testing the app, you can move around and see all of the data and the
+associated images.</p>
+
+<p>But what I got with these changes? And about the resulting size of the application?
+Well, to validate this just like I did in my <a href="/post/android/inspecting-apk-files-after-packaging">previous</a>
+article, I&rsquo;ll going to build an APK file to compare it with a old apk file which
+I created before the graphical file conversion.</p>
+
+<h2 id="analyzing-the-apk-file-to-compare-the-assets-size">Analyzing the APK file to compare the assets size</h2>
+
+<p>To understand how to build a APK file and how to use the APK Analyzer on the
+Android Studio, please check my previous article:
+<a href="/post/android/inspecting-apk-files-after-packaging">Inspect APK files with the APK Analyzer on Android Studio</a>.</p>
+
+<p>To do this analysis, I&rsquo;ll choose Build and then Build APK on the Android Studio
+menu.</p>
+
+<p>Then, once again, I&rsquo;ll choose Build, Analyze APK, and I&rsquo;ll choose my old APK
+which I had created in my previous article, before the jpgs file conversion to webP files.</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/old-apk-file.png" alt="" /></p>
+
+<p>We can see that this APK file has a RAW File Size of <strong>5.5 MB</strong> and a Download
+Size of <strong>4.9MB</strong>.</p>
+
+<p>Then, I&rsquo;ll click the <code>Compare With</code> button and I&rsquo;ll navigate back to choose the
+new APK file that I just build.</p>
+
+<p><strong>Here&rsquo;s my comparison:</strong></p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/old-app.apk-vs-new-app-apk.png" alt="" /></p>
+
+<p>We can see that my <code>assets</code> directory has shrunk down from 2.5 Megabytes all the
+way to 635.1KB and the <code>res</code> directory has shrunk down from 879.5 Kilobytes to
+370.6KB.</p>
+
+<p>This application isn&rsquo;t a huge application, but you can see that with a simple files
+conversion we can make a significant difference.</p>
+
+<h2 id="converting-the-webp-files-back-to-a-png-format">Converting the webP files back to a PNG format</h2>
+
+<p>Finally, you need to understand how you can return to a more conventional graphic
+format if you want to do that.</p>
+
+<p>I&rsquo;ll go back to Android Studio and I&rsquo;ll choose the WebP file in my resources
+directory.</p>
+
+<p>I&rsquo;ll right click on it and now the menu choice says Convert to PNG.</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/convert-webp-to-png.png" alt="" /></p>
+
+<p>I&rsquo;ll select that and when I&rsquo;m prompted, I&rsquo;ll say No, I want to keep both versions
+of the file.</p>
+
+<p>So now I can compare the PNG and a WebP file:</p>
+
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-png-comparison.png" alt="" /></p>
+
+<p>We can look on the on the png file and it shows that it is now 1.19M and if we check
+the WebP file it shows that it&rsquo;s less than 60K. So that&rsquo;s a massive difference.</p>
+
+<p>So, as we can see on this article, using WebP graphic files instead of JPG or PNG
+files can help you dramatically shrink the size of your Android package application.</p>
+
+<p>Many thanks for your reading and please take a look at the other blog posts when you
+have a time.</p>
+
+            <ul class="share-buttons">
+    <li>Share this article:</li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcoderade.github.io%2fpost%2fandroid%2fconverting-graphic-files-to-webp-format%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook"></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Converting%20graphic%20files%20to%20WebP%20format%20on%20Android%20Studio%202.3&amp;url=https%3a%2f%2fcoderade.github.io%2fpost%2fandroid%2fconverting-graphic-files-to-webp-format%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Tweet this article"></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fcoderade.github.io%2fpost%2fandroid%2fconverting-graphic-files-to-webp-format%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google&#43;"></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fcoderade.github.io%2fpost%2fandroid%2fconverting-graphic-files-to-webp-format%2f&title=Converting%20graphic%20files%20to%20WebP%20format%20on%20Android%20Studio%202.3" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title="Share on Linkedin"></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3>Comments</h3>
+            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coderade" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="https://coderade.github.io/img/profile-image.jpg" alt="Valdeci Gomes" />
+  <p class="name">by 
+  <strong>Valdeci Gomes</strong></p>
+  <p class="address">Curitiba, PR, Brazil</p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/valdessai" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+<li><a href="//facebook.com/valdessai" class="icon-facebook-squared" target="_blank" title="Facebook"></a></li>
+
+
+
+<li><a href="//br.linkedin.com/in/valdeci/en" class="icon-linkedin" target="_blank" title="Linkedin"></a></li>
+
+
+
+
+
+
+
+<li><a href="//instagram.com/valdessai" class="icon-instagram" target="_blank" title="Instagram"></a></li>
+
+
+
+<li><a href="//github.com/coderade" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="https://coderade.github.io/post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="https://coderade.github.io/post/index.xml" title="RSS"></a>
+        <p>&copy; 2017 &middot; Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="https:\/\/coderade.github.io\/js\/vendor\/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="https://coderade.github.io/js/plugins.js"></script>
+
+
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-106618202-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/</loc>
+    <lastmod>2017-09-22T13:47:08+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://coderade.github.io/post/android/inspecting-apk-files-after-packaging/</loc>
     <lastmod>2017-09-22T13:47:08+02:00</lastmod>
   </url>
