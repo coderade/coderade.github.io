@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web on Coderade blog</title>
-    <link>https://coderade.github.io/tags/web/</link>
-    <description>Recent content in Web on Coderade blog</description>
+    <title>Es6 on Coderade blog</title>
+    <link>https://coderade.github.io/categories/es6/</link>
+    <description>Recent content in Es6 on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 17 Sep 2017 21:44:08 +0200</lastBuildDate>
     
-	<atom:link href="https://coderade.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://coderade.github.io/categories/es6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -60,17 +60,6 @@ When choosing which JavaScript variable to use, there are a number of factors we
       <guid>https://coderade.github.io/post/es6/js-es6/</guid>
       <description>JS, Why we love you? One of my biggest loves on the coding word is the JS (JavaScript) language.
 I don&amp;rsquo;t know why, but since I started to make simple code with JQuery and to research about the language under your hood and I got what is JS, the first thing that I did was thanked how the coding world can be really beautiful and simple with a programming language like that.</description>
-    </item>
-    
-    <item>
-      <title>Rails 5 new features</title>
-      <link>https://coderade.github.io/post/rails-5-new-features/</link>
-      <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
-      
-      <guid>https://coderade.github.io/post/rails-5-new-features/</guid>
-      <description>On this article I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.
-I will try to show how to use the most important features of Rails 5, including Action Cable, Action Controller Renderer, Turbolinks, the Active records, Attributes API and how to use Rails exclusively as a JSON API.
-Besides that I will discuss the many other smaller changes in improvements such as the Rails command Router, new Date and Time methods, Secure Tokens and changes to parameters.</description>
     </item>
     
   </channel>

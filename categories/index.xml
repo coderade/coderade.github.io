@@ -20,5 +20,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Es6</title>
+      <link>https://coderade.github.io/categories/es6/</link>
+      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/categories/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rails</title>
+      <link>https://coderade.github.io/categories/rails/</link>
+      <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/categories/rails/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

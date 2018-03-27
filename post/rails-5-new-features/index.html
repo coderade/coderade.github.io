@@ -273,7 +273,7 @@ The problem with this is that that GC sweep through memory takes some time, it c
 <pre><code class="language-ruby"># config/routes.rb
 Rails.application.routes.draw do
     # ...
-    
+
     mount ActionCable.server =&gt; &quot;/cable&quot;
 
 end    
@@ -283,7 +283,7 @@ end
 
 <pre><code class="language-ruby"># app/channels/chat_room_channel.rb
 class ChatRoomChannel &lt; ApplicationCable::Channel
-    
+
     def subscribed
         stream_from('chat_room_channel')
     end
@@ -306,10 +306,10 @@ end
 //= require action_cable
 //= require_self
 //= require_tree ./channels
- 
+
 (function() {
   this.App || (this.App = {});
- 
+
   App.cable = ActionCable.createConsumer();
 }).call(this);
 </code></pre>
@@ -439,7 +439,7 @@ App.room.speak('Hello ActionCable');
 <p>You can see that in the first blank I have an instance variable for version and a local variable then in the second blank for adjective, so I&rsquo;m using assigns to set the instance variable, I&rsquo;m using locals to set the local variable.</p>
 
 <pre><code class="language-ruby">(
-    
+
     :inline =&gt; &quot;I think Ruby on Rails version &lt;% @version %&gt; is &lt;% adjective %&gt;!&quot;,
 
     :assigns =&gt; { :adjective =&gt; 'sweet' }
@@ -506,7 +506,7 @@ end
 class ApplicationController &lt; ActionController::API
 
 end    
-  
+
 </code></pre>
 
 <p>Normally it would inherit from <code>ActionController::Base</code>,this change leaves out code like cookies and sessions, which we don&rsquo;t need, but still gives us other parts of the controllers that we do want, such as before actions, security methods, page caching.</p>
@@ -515,21 +515,21 @@ end
 
 <pre><code class="language-ruby"># app/controllers/notes_controller.rb
 class NotesController &lt; ApplicationController
-    
+
     def index
         @notes = Note.all
         render(:json =&gt; @notes)
     end
 
     def show
-        @note = Note.find(params[:id]) 
+        @note = Note.find(params[:id])
         render(:json =&gt; @note)
     end
 
     # also: create, update, destroy
     # without: new, edit
 end    
-  
+
 </code></pre>
 
 <p>So our controllers are going to work the same way and the generated content of our controllers will also be different.
@@ -541,7 +541,7 @@ Notice in the above example that these controllers rendered JSON resources by de
 Rails.application.routes.draw do
 
     resources :todos
-    
+
 end    
 </code></pre>
 
@@ -583,7 +583,7 @@ end
 
 <p>You don&rsquo;t have to use Turbolinks all the time, you can have some links that opt out of it.</p>
 
-<pre><code class="language-html">&lt;a href=&quot;/some_url&quot; data-turbolinks=&quot;false&quot;&gt; 
+<pre><code class="language-html">&lt;a href=&quot;/some_url&quot; data-turbolinks=&quot;false&quot;&gt;
     This link will not use Turbolinks
 &lt;/a&gt;
 </code></pre>
@@ -640,7 +640,7 @@ window.onload = function(){
     &lt;div id=&quot;flash&quot; data-turbolinks-temporary&gt;
         &lt;!-- update with every request unless told to 'keep' --&gt;
     &lt;/div&gt;
-    
+
     &lt;div id=&quot;comments&quot;&gt;
         &lt;!-- changes on each page load or when targeted --&gt;
     &lt;/div&gt;
@@ -723,11 +723,11 @@ end
 
 <pre><code class="language-ruby">fabric = Fabric.new(:quantity =&gt; 3.9)
 
-fabric.quantity.integer? 
+fabric.quantity.integer?
 # =&gt; true
 
-fabric.quantity 
-# =&gt; 3 
+fabric.quantity
+# =&gt; 3
 </code></pre>
 
 <p>I provided a float but instead <code>fabric.quantity</code> is now going to be cast as an integer, and when I ask it for its value, the value is three. Not 3.9, because it converted it from a float into an integer.</p>
@@ -764,7 +764,7 @@ class BackwardsType &lt; ActiveRecord::Type::String
     def cast(value)
         new_value = value.reverse
         super(new_value)
-    end 
+    end
 end
 
 ActiveRecord::Type.register(:backwards, BackwardsType)
@@ -811,7 +811,7 @@ user.backwards_name
 
 <pre><code class="language-sql">SELECT * FROM posts WHERE (status = 'published') AND (published_on = '2017-08-29')
 
--- Select all from posts where status equals published and published on equals the date that I've given it. 
+-- Select all from posts where status equals published and published on equals the date that I've given it.
 </code></pre>
 
 <p>Now daisy-chaining these kind of scopes together is common in Ruby on Rails, and it works well. But what about the case in which we don&rsquo;t want to scope them further by using and, but we want to broaden our scope by using <strong>or</strong>. In other words, where one thing is true or something else is true. This has always been a problem in Ruby on Rails. And up until the Rails 4, you either had to write the SQL yourself or used a third-party library to help you.</p>
@@ -828,8 +828,8 @@ user.backwards_name
 <p>The resulting SQL looks like this:</p>
 
 <pre><code class="language-sql">SELECT * FROM posts WHERE (status = 'published') OR (status = 'pending')
- 
--- Select all from posts where status equals published or status equal pending. 
+
+-- Select all from posts where status equals published or status equal pending.
 </code></pre>
 
 <p>The <strong>or</strong> method expects an active relation as an argument. Any active relation will do, so you can use scopes as well, and you can keep chaining them together as long as you always provide an active relation as the argument. Now this isn&rsquo;t going to work for complex queries, but it is going to be a big help in simple cases.</p>
@@ -895,13 +895,13 @@ end
 
 <pre><code class="language-ruby"># app/jobs/application_job.rb
 class ApplicationJob &lt; ActiveJob::Base
-    
+
 end
 </code></pre>
 
 <pre><code class="language-ruby"># app/jobs/remove_old_carts_job.rb
 class RemoveOldCartsJob &lt; ApplicationJob
-    
+
 end
 </code></pre>
 
@@ -1351,7 +1351,7 @@ if(params == obj) { ... }
 
 <p>If we have a hash which has keys for a, b, c and d and then various numbers corresponding to those.</p>
 
-<pre><code class="language-ruby">hash = {:a =&gt; 27, :b =&gt; 34, :c =&gt; 56, :d =&gt; 4} 
+<pre><code class="language-ruby">hash = {:a =&gt; 27, :b =&gt; 34, :c =&gt; 56, :d =&gt; 4}
 </code></pre>
 
 <p>then if we call a hash without b and c, we would get back a hash that contains the key value pairs for a and d.</p>
@@ -1626,7 +1626,7 @@ end
 <p>Another change in Ruby on Rails five is that render nothing has been deprecated.</p>
 
 <pre><code class="language-ruby">class ProductsController &lt; ApllicationController
-  
+
     def index
         if authorized_user
             @products = Product.all
@@ -1645,7 +1645,7 @@ end
 <p>That&rsquo;s the effect that we probably want, but it isn&rsquo;t entirely clear from what you see in the code that that&rsquo;s what&rsquo;s happening and therefore, it&rsquo;s been decided that it&rsquo;s much better to use the head method, which returns an HTML header with whatever status code or options that you set, but which has an empty body.</p>
 
 <pre><code class="language-ruby">class ProductsController &lt; ApllicationController
-  
+
     def index
         if authorized_user
             @products = Product.all
@@ -1904,6 +1904,14 @@ You can look up more information on how process works to see how to make that ch
          
          <span class="label-size label-size-4">
            <a href="/categories/android">Android</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/es6">Es6</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/rails">Rails</a>
          </span>
          
       </div>
