@@ -6,10 +6,20 @@
     <description>Recent content on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Sep 2017 13:47:08 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 25 May 2018 13:47:08 +0200</lastBuildDate>
     
 	<atom:link href="https://coderade.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Launching EC2 instances using the Nodejs AWS SDK</title>
+      <link>https://coderade.github.io/post/aws/launching-ec2-instances-nodejs-aws-sdk/</link>
+      <pubDate>Fri, 25 May 2018 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/aws/launching-ec2-instances-nodejs-aws-sdk/</guid>
+      <description>The EC2 service is one of the most fundamental services offered by AWS. It underpins many of the other services in AWS, so it&amp;rsquo;s always a good idea understand how to use and the best way to use it. In this post I&amp;rsquo;ll show how to create EC2 instances directly in the code using the AWS SDK for JavaScript in Node.js.
+In order to run your application in AWS, we need to have one or more EC2 instances to execute that code.</description>
+    </item>
     
     <item>
       <title>Converting graphic files to WebP format on Android Studio 2.3</title>
@@ -100,10 +110,10 @@ When I started to code with the Eclipse, Netbeans, ADT tool (For android develop
     
     <item>
       <title>Rails 5 new features</title>
-      <link>https://coderade.github.io/post/rails-5-new-features/</link>
+      <link>https://coderade.github.io/post/rails/rails-5-new-features/</link>
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/rails-5-new-features/</guid>
+      <guid>https://coderade.github.io/post/rails/rails-5-new-features/</guid>
       <description>On this article I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.
 I will try to show how to use the most important features of Rails 5, including Action Cable, Action Controller Renderer, Turbolinks, the Active records, Attributes API and how to use Rails exclusively as a JSON API.
 Besides that I will discuss the many other smaller changes in improvements such as the Rails command Router, new Date and Time methods, Secure Tokens and changes to parameters.</description>

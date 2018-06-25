@@ -1,0 +1,1027 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Launching EC2 instances using the Nodejs AWS SDK - Coderade blog</title>
+        <meta name="author" content="Valdeci Gomes <valdeci@outlook.com>">
+        <meta name="description" content="Advanced methods for creating Elastic Cloud Compute instances using the NodeJs AWS SDK.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://coderade.github.io/post/aws/launching-ec2-instances-nodejs-aws-sdk/">
+        <meta property="og:title" content="Launching EC2 instances using the Nodejs AWS SDK">
+        <meta property="og:site_name" content="coderade.github.com">
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="Advanced methods for creating Elastic Cloud Compute instances using the NodeJs AWS SDK.">
+        <meta property="og:image" content="https://coderade.github.io/images/posts/aws/created-ec2-instance.png">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="800">
+        <meta property="og:image:height" content="600">
+
+        <meta name="generator" content="Hugo 0.40.3" />
+        <link href="https://coderade.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
+        <link href="https://coderade.github.io/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://coderade.github.io/css/styles.css">
+        <link rel="icon" href="https://coderade.github.io/favicon.ico">
+        <link rel="apple-touch-icon" href="https://coderade.github.io/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://coderade.github.io/css/highlightjs/monokai.css">
+        <script src="https://coderade.github.io/js/vendor/modernizr-2.8.0.min.js"></script>
+        
+        <link rel="stylesheet" href="https://coderade.github.io/css/theme.css">
+        
+        <style>
+        .site-header h2 .logo {
+        background: url(https://coderade.github.io/img/puralsight-bg.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(https://coderade.github.io/img/puralsight-bg.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(https://coderade.github.io/img/puralsight-bg.jpg) no-repeat center center;
+         z-index: -1;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2>&lt;Coding, DevOps and Software Development tips/&gt;</h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn home" href="https://coderade.github.io/" title="Back to home">&laquo; Back to home</a>
+            
+<h1><a href="https://coderade.github.io/post/aws/launching-ec2-instances-nodejs-aws-sdk/" title="Launching EC2 instances using the Nodejs AWS SDK">Launching EC2 instances using the Nodejs AWS SDK</a></h1>
+
+<footer class="post-info">Posted on <span class="post-meta"><time datetime="2018.05.25">2018.05.25</time>
+
+    &middot; Tagged in
+        
+        <a href="https://coderade.github.io/tags/aws">aws</a>, 
+        
+        <a href="https://coderade.github.io/tags/nodejs">nodejs</a>, 
+        
+        <a href="https://coderade.github.io/tags/js">js</a>
+        
+    
+
+</span>
+</footer>
+
+            
+
+<p>The EC2 service is one of the most fundamental services offered by AWS.
+It underpins many of the other services in AWS, so it&rsquo;s always a good idea
+understand how to use and the best way to use it. In this post I&rsquo;ll show how to
+create EC2 instances directly in the code using the
+<a href="https://aws.amazon.com/sdk-for-node-js" target="_blank">AWS SDK for JavaScript in Node.js</a>.</p>
+
+<p>In order to run your application in AWS, we need to have one or more EC2 instances
+to execute that code. So the first step is to create an EC2 instance.
+There are many different ways to do this.</p>
+
+<p>One of theses ways is use the AWS Console to create instances. I think that is
+the easy way, because the <a href="https://aws.amazon.com/console/" target="_blank">AWS Console</a> is very
+interactive and the AWS documentation is very good and easy to understand.
+To check how to create instance using the AWS console use the official
+<a href="https://docs.aws.amazon.com/efs/latest/ug/gs-step-one-create-ec2-resources.html" target="_blank">Step to step documentation</a>.</p>
+
+<p>Another method is to use the <a href="https://aws.amazon.com/cli/" target="_blank">AWS CLI</a>, that is a
+little more complicated, but that have a good documentation too. This  way
+can be useful with DevOps automation.</p>
+
+<p>For this post I&rsquo;ll show how to use the SDK to create an instance with code.</p>
+
+<p>But before we can create the instance, we need to create a few other resources.</p>
+
+<p>The first thing that we need to do is create a security group for the instance.
+So let&rsquo;s to do this.</p>
+
+<h2 id="creating-an-ec2-security-group">Creating an EC2 Security Group</h2>
+
+<p>With a <a href="https://nodejs.org/en/docs/guides/getting-started-guide/" target="_blank">Node.js project</a>
+created the first thing that we need to do is download the AWS SDK module from
+the NPM repository. To do
+this, use the following command on the root of your project:</p>
+
+<pre><code class="language-ruby">npm i aws-sdk
+</code></pre>
+
+<p>Then, we will need to create our script file (this will be where we will the
+start file for this example) in my example I called it as <code>create-ec2-instance.js</code>,
+but you can use the name you want.</p>
+
+<p>After that we need to do is to import the AWS SDK into a local variable in this
+file. We will create a const declaration with an identifier of AWS all in caps.
+Assign to it a require function call will be needed, passing in the string
+<code>'aws-sdk'</code>.</p>
+
+<pre><code class="language-javascript">const AWS = require('aws-sdk');
+</code></pre>
+
+<p>The AWS SDK requires you to configure the region each time it&rsquo;s imported. I&rsquo;ll
+admit this gets a little annoying. There are some abstractions you can do to
+mitigate this, like set the region in the AWS config file on your local system or
+export as environment variable before running. To understand how to do this use
+the AWS Docs link of how to
+<a href="https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html" target="_blank">Set up AWS Credentials and Region for Development</a></p>
+
+<p>For this example, I will call the update function on the <code>AWS.config</code> property.
+Into this function, pass an object with one property called region, you also could
+add other properties to this object to change other configuration options on the
+<code>AWS.config</code> object, such as the max number of retries for a given request or a
+global logger object.
+Here just enter a string as the value to the <code>region</code> key property with the region
+you are using. I&rsquo;ll enter <code>us-east-1</code> here for mine.</p>
+
+<pre><code class="language-javascript">AWS.config.update({region: 'us-east-1'});
+</code></pre>
+
+<p>In my situation, I use more than a region and profile in my computer (for personal
+and working coding) so I also need to set my profile using the
+<code>AWS.config.credentials</code> property. This configuration will get my AWS credentials
+data in a shared file used by SDKs and the command line interface on my computer.
+To understand better how to set on this way  use the AWS Docs link of how to
+<a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html" target="_blank">Loading Credentials in Node.js from the Shared Credentials File</a></p>
+
+<p>In this example I will load my personal profile using the
+<code>AWS.SharedIniFileCredentials</code> function and load to the <code>AWS.config.credentials</code>
+property.</p>
+
+<pre><code class="language-javascript">let credentials = new AWS.SharedIniFileCredentials({profile: 'personal'});
+AWS.config.credentials = credentials;
+</code></pre>
+
+<p>Nice! now we have the Aws settings setted! But, and now?</p>
+
+<p>Now we need an EC2 object created from the AWS object, On this object we&rsquo;ll call
+the EC2 operations on.</p>
+
+<p>So, to use it, declare a new <code>const</code> variable called <code>ec2</code>, all lowercase.
+To the right side of an assignment operator, use the new keyword, and call the
+<a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html" target="_blank">AWS.EC2</a> class
+with no arguments.</p>
+
+<p>There are many other arguments that can be passed on the class constructor like
+the <code>api-version</code>, <code>accessKeyId</code> and <code>secretAccessKey</code>, and a <code>region</code>, the last
+one can be useful if you are using other regions in your code.</p>
+
+<p>To check all the params available to be used on the EC2 constructor, you can<br />
+read the docs for the <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html" target="_blank">AWS.EC2</a>
+class.</p>
+
+<p>But for this example a empty EC2 object is all that&rsquo;s needed to create this object.</p>
+
+<pre><code class="language-javascript">const ec2 = new AWS.EC2();
+</code></pre>
+
+<p>Now we can start to create the <code>createSecurityGroup</code> function.
+Most of the AWS SDK operations have a similar pattern. First, we need to declare
+the parameters object to be passed to the SDK function. Then call the function,
+passing in a callback to handle the result.</p>
+
+<p>For this function we need to create a const named <code>params</code> and assign to it an
+empty object. We&rsquo;ll going to be using the <code>createSecurityGroup</code> function here and
+two of the params arguments that it wants is a description and a group name.</p>
+
+<p>This function willl be taking an argument called <code>sgName</code> to the name and the
+<code>sgDescription</code> to the description of the Security Group. Personally I find
+that the description isn&rsquo;t too useful until you have a massive number of
+security groups, even then, it seems that tags are used more for management in
+those situations than descriptions.</p>
+
+<pre><code class="language-javascript">function createSecurityGroup(sgName, sgDescription) {
+    const params = {
+      GroupName: sgName,
+      Description: sgDescription
+    };
+}
+</code></pre>
+
+<p>With the params defined, you can continue to the meat of the function. For these
+type of functions I personally like to use promises instead of callbacks. IMHO I
+think nowadays we must use the most of the advantages of ES6 brings to us and
+this approach a little easier to understand and read.</p>
+
+<p>So return a new Promise. It will take a function with the resolve and reject
+arguments.
+Now inside this promise argument function body, we&rsquo;ll call our first SDK function
+<a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createSecurityGroup-property" target="_blank">ec2.createSecurityGroup()</a>.</p>
+
+<p>The first argument will be the params object we created, then a callback function
+with the <code>err</code> and <code>data</code> arguments. Unfortunately, the SDK doesn&rsquo;t support
+promises firsthand, so we&rsquo;ll need to use callbacks here.</p>
+
+<p>Basically, this function is creating a security group with the name and description
+that we pass it. It will not create any security group rules. Inside the function body,
+call <code>reject()</code> with the <code>err</code> object if there is one.
+In the else, create a block. This is where our code will execute if the security
+group creation was successful.</p>
+
+<pre><code class="language-javascript">return new Promise((resolve, reject) =&gt; {
+    ec2.createSecurityGroup(params, (err, data) =&gt; {
+        if (err)
+            reject(err);
+        else {
+        }
+    })
+})
+</code></pre>
+
+<p>Because our security group is essentially empty, we want to add a rule here.
+We&rsquo;ll want to enable port 22 so that we can SSH into the instance once it&rsquo;s
+been created and port 3000 so if want to run a endpoint example like
+<a href="https://expressjs.com/" target="_blank">Express</a>
+on the instance. So start by creating a new <code>let</code> called <code>params</code> again
+and assigning an empty object to it.</p>
+
+<p>There are a few properties required to create this security group rule, which
+should sound familiar to you if you&rsquo;ve set one up with the console before.</p>
+
+<p>The first is the <code>GroupId</code> to apply the rule to. We can get that from the data
+argument supplied by the creation callback. For the value here, enter <code>data.GroupId</code>.
+The next property is <code>IpPermissions</code>, which is an array. This array enables us
+to configure multiple rules in one request.</p>
+
+<pre><code class="language-javascript">let params = {
+    GroupId: data.GroupId,
+    IpPermissions: []
+};
+</code></pre>
+
+<p>Then, we need to create an object in this array and add the property <code>IpProtocol</code>.</p>
+
+<p>The possible values for this are protocols like <code>tcp</code> or <code>udp</code>, for some examples.
+We will use the tcp here, all lowercase. The next two properties <code>FromPort</code>and
+<code>ToPort</code> define the port range that you&rsquo;re enabling the rule for.</p>
+
+<p>In the first case, we&rsquo;ll enter the number <code>22</code> in both <code>FromPort</code> and <code>ToPort</code>
+since I want to allow SSH on this example.</p>
+
+<pre><code class="language-javascript">let params = {
+    GroupId: data.GroupId,
+    IpPermissions: [
+        {
+            IpProtocol: 'tcp',
+            FromPort: 22,
+            ToPort: 22,
+        }
+    ]
+}      
+</code></pre>
+
+<p>Finally, add the property <code>IpRanges</code>
+with a value as an empty array. Here&rsquo;s where we can define who this rule applies to.</p>
+
+<p>Add an empty object with the property <code>CidrIp</code>. We&rsquo;ll enable access to anyone,
+so give this property the value of <code>0.0.0.0/0</code>.</p>
+
+<pre><code class="language-javascript">IpRanges: [
+    {
+        CidrIp: '0.0.0.0/0'
+    }
+]    
+</code></pre>
+
+<p>Now, we need to also add the rule for port 3000, so copy thes rule object created:</p>
+
+<pre><code class="language-javascript">{
+    IpProtocol: 'tcp',
+    FromPort: 22,
+    ToPort: 22,
+    IpRanges: [
+        {
+            CidrIp: '0.0.0.0/0'
+        }
+    ]
+}
+</code></pre>
+
+<p>add a comma after it, and then paste. The only different property will be the
+<code>FromPort</code> and <code>ToPort</code>, and you can set both to <code>3000</code>.</p>
+
+<p>Awesome! Now we&rsquo;re ready to use this big params object in an SDK call:</p>
+
+<pre><code class="language-javascript">let params = {
+    GroupId: data.GroupId,
+    IpPermissions: [
+        {
+            IpProtocol: 'tcp',
+            FromPort: 22,
+            ToPort: 22,
+            IpRanges: [
+                {
+                    CidrIp: '0.0.0.0/0'
+                }
+            ]
+        },
+        {
+            IpProtocol: 'tcp',
+            FromPort: 3000,
+            ToPort: 3000,
+            IpRanges: [
+                {
+                    CidrIp: '0.0.0.0/0'
+                }
+            ]
+        }
+    ]
+};
+</code></pre>
+
+<p>On the EC2 object, we&rsquo;ll be calling the <code>ec2.authorizeSecurityGroupIngress()</code>
+function. The ingress part of that function call refers to these rules being
+inbound rules. There is also a function called <code>authorizeSecurityGroupEgress()</code>,
+which is for outgoing rules, but is not needed on this example.</p>
+
+<p>Call the function and pass the params object as the first argument.
+The second will again be a callback function with the argument <code>err</code>.</p>
+
+<p>Even though this function does return a second argument, we&rsquo;ll just ignore it.
+Inside the callback, call <code>reject()</code> again if there&rsquo;s an <code>err</code> object.</p>
+
+<p>In the else, just call <code>resolve()</code>, and with that code complete, we&rsquo;ve successfully
+created and assigned rules to a security group.</p>
+
+<p>This is now your <code>createSecurityGroup</code> function:</p>
+
+<pre><code class="language-javascript">function createSecurityGroup(sgName, sgDescription) {
+    const params = {
+        Description: sgName,
+        GroupName: sgDescription,
+    };
+
+    return new Promise((resolve, reject) =&gt; {
+        ec2.createSecurityGroup(params, (err, data) =&gt; {
+            if (err)
+                reject(err);
+            else {
+                let params = {
+                    GroupId: data.GroupId,
+                    IpPermissions: [
+                        {
+                            IpProtocol: 'tcp',
+                            FromPort: 22,
+                            ToPort: 22,
+                            IpRanges: [
+                                {
+                                    CidrIp: '0.0.0.0/0'
+                                }
+                            ]
+                        },
+                        {
+                            IpProtocol: 'tcp',
+                            FromPort: 3000,
+                            ToPort: 3000,
+                            IpRanges: [
+                                {
+                                    CidrIp: '0.0.0.0/0'
+                                }
+                            ]
+                        }
+                    ]
+                };
+                ec2.authorizeSecurityGroupIngress(params, (err) =&gt; {
+                    if (err)
+                        reject(err);
+                    else
+                        resolve();
+                });
+            }
+        })
+    })
+}
+</code></pre>
+
+<h2 id="creating-a-key-pair">Creating a key pair</h2>
+
+<p>To log in the instance, we must create a key pair. According the Amazon
+<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html" target="_blank">docs</a>
+the use for the Key pair is:</p>
+
+<blockquote>
+<p>Amazon EC2 uses public–key cryptography to encrypt and decrypt login information.
+Public–key cryptography uses a public key to encrypt a piece of data, such as a password,
+then the recipient uses the private key to decrypt the data.
+The public and private keys are known as a key pair.</p>
+</blockquote>
+
+<p>In this way we will need to create a Key Pair to connect to our EC2 instance.</p>
+
+<p>So we need a <code>createKeyPair</code> function, this function will take a <code>keyName</code> argument.</p>
+
+<pre><code class="language-javascript">function createKeyPair(keyName) {}
+</code></pre>
+
+<p>This function will be a wrapper for the aws-sdk
+<a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createKeyPair-property" target="_blank">ec2.createKeyPair</a>
+function.</p>
+
+<p>This function has the &lsquo;KeyName&rsquo; and the &lsquo;DryRun&rsquo; arguments, but for this example only
+the &lsquo;KeyName&rsquo; argument is needed. The value of this argument will passed in our
+function <code>createKeyPair</code> function.</p>
+
+<pre><code class="language-javascript">let params = {
+  KeyName: keyName, /* required */
+};
+</code></pre>
+
+<p>After declaring the params object, let&rsquo;s return a new Promise with a callback
+function with arguments resolve and reject as the argument.</p>
+
+<p>Inside the callback function, we can call the EC2 function createKeyPair,
+passing the <code>params</code> object as the first argument. The second argument will be a
+callback function with the err and data objects.</p>
+
+<p>If there&rsquo;s an error, then call reject with the err object. In the else, call resolve
+with the data object.</p>
+
+<pre><code class="language-javascript">return new Promise((resolve, reject) =&gt; {
+       ec2.createKeyPair(params, (err, data) =&gt; {
+           if (err)
+               reject(err);
+           else
+               resolve(data)
+       })
+   })
+</code></pre>
+
+<p>This will be our <code>createKeyPair</code> function:</p>
+
+<pre><code class="language-javascript">function createKeyPair(keyName) {
+    const params = {KeyName: keyName};
+
+    return new Promise((resolve, reject) =&gt; {
+        ec2.createKeyPair(params, (err, data) =&gt; {
+            if (err)
+                reject(err);
+            else
+                resolve(data)
+        })
+    })
+}
+</code></pre>
+
+<p>This data object is important because when the key pair is created in AWS,
+the function returns the contents of that key pair&rsquo;s private key.</p>
+
+<p>If you don&rsquo;t resolve the data argument on the <code>ec2.createKeyPair()</code> function,
+it basically throws away the created key pair and if we don&rsquo;t
+save this locally, the key pair is essentially useless.</p>
+
+<p>For this way I created a KeyPair helper function that will actually take
+this key pair data and save it locally as a file, this function I saved on
+the helpers directory with the name <code>keyPairHelper.js</code>. This file will contains
+the below code:</p>
+
+<pre><code class="language-javascript">const fs = require('fs');
+const path = require('path');
+const os = require('os');
+
+function persistKeyPair (keyData) {
+    return new Promise((resolve, reject) =&gt; {
+        const keyPath = path.join(os.homedir(), '.ssh', keyData.KeyName);
+        const options = {
+            encoding: 'utf8',
+            mode: 0o600
+        };
+
+        fs.writeFile(keyPath, keyData.KeyMaterial, options, (err) =&gt; {
+            if (err) reject(err);
+            else {
+                console.log('Key written to', keyPath);
+                resolve(keyData.KeyName)
+            }
+        })
+    })
+}
+
+module.exports = {
+    persistKeyPair: persistKeyPair
+};
+</code></pre>
+
+<p>This function <code>persistKeyPair()</code> will be called after the <code>createKeyPair()</code> function
+which consequently will be called as the return function for our <code>createSecurityGroup()</code>
+function at the begin of your <code>create-ec2-instance</code> file.</p>
+
+<pre><code class="language-javascript">createSecurityGroup(sgName, sgDescription)
+    .then(() =&gt; {
+        return createKeyPair(keyName);
+    })
+    .then(keyPairHelper.persistKeyPair)
+</code></pre>
+
+<p>With these methods our key pair will be created.</p>
+
+<p>Now that we have the methods to create the security group and key pair, we can
+finally create an EC2 instance using both.</p>
+
+<h2 id="creating-the-ec2-instance">Creating the EC2 Instance</h2>
+
+<p>The only one unimplemented function in our example is the <code>createInstance()</code>
+function.</p>
+
+<p>This function takes in the <code>sgName</code> (security group name) and the <code>keyName</code>
+(key pair name) as arguments, the same arguments that were used to create the
+other resources.</p>
+
+<pre><code class="language-javascript">function createInstance(sgName, keyName) {}
+</code></pre>
+
+<p>Inside the function, we&rsquo;ll start by defining a <code>params</code> object.</p>
+
+<p>This <code>params</code> object will have many more arguments than the other function ones
+we&rsquo;ve made.</p>
+
+<p>The first we&rsquo;ll need to add is <code>ImageId</code>. This is the AMI ID that will be used
+to create the instance.</p>
+
+<h3 id="selecting-a-amazon-machine-image-ami">Selecting a Amazon Machine Image (AMI)</h3>
+
+<p>There is an EC2 SDK function called
+<a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeImages-property" target="_blank">describeImages</a>
+that can be used to search for AMIs that we can create. The problem is the search
+takes a long time and it&rsquo;s really just easier to go to the console directly if
+you know what you&rsquo;re looking for.</p>
+
+<p>As we only need the ImageId for our AMI, the easiest way is suitable.</p>
+
+<p>So, to select the AMI, we need to go to the <a href="https://console.aws.amazon.com" target="_blank">AWS Console</a>
+and then to the <a href="https://console.aws.amazon.com/ec2/v2/home?region=us-east-1" target="_blank">EC2 Dashboard</a>.</p>
+
+<p>Then, we can click on the <em>Launch Instance</em> button and we&rsquo;ll be presented with
+the AMI selection screen.</p>
+
+<p><img src="/images/posts/aws/ami-selection-screen.png" alt="" /></p>
+
+<p>At the top, there is the Amazon Linux AMI. At the end of that title is the ID.
+Yours may or may not be the same as the above image based on when you&rsquo;re reading
+this  post and which region you&rsquo;re using.</p>
+
+<p>Either way, for this example, if you don&rsquo;t need a especific one, you can copy
+whatever AMI ID is in your AWS Console.</p>
+
+<p>Now we can switch back to your code and paste that in a string as the value to the
+<code>ImageId</code> property.</p>
+
+<pre><code class="language-javascript">ImageId: 'ami-14c5486b', //AMI ID that will be used to create the instance
+</code></pre>
+
+<p>The next property is <code>InstanceType</code>. This is the type of instance such as <code>t2.small</code>
+or <code>m4.xlarge</code> and defines the properties of the instance. Like the AMI, if you
+don&rsquo;t need a specific one you can use one of the smallest here, <strong>t2.micro</strong>.</p>
+
+<pre><code class="language-javascript">InstanceType: 't2.micro',
+</code></pre>
+
+<p>Next, we need to define the key pair name with the property <code>KeyName</code> and <code>Name</code>,
+that we can be entering the value of keyName from the function arguments for both.</p>
+
+<pre><code class="language-javascript">KeyName: keyName,
+Name: keyName,
+</code></pre>
+
+<p>Next, is the <code>MaxCount</code> and <code>MinCount</code> property, which tells AWS how many instances to create.
+We can enter 1 for both.</p>
+
+<pre><code class="language-javascript">MaxCount: 1,
+MinCount: 1,
+</code></pre>
+
+<p>For more information about the default limits, and how to request an increase,
+see <a href="https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2" target="_blank">How many instances can I run in Amazon EC2</a>
+in the Amazon EC2 FAQ.</p>
+
+<p>Now we need to add the property <code>SecurityGroups</code>, and give it an array as the value.
+This is where we add any security groups to the instance.
+So, we enter the <code>sgName</code> argument into the array.</p>
+
+<pre><code class="language-javascript">SecurityGroups: [
+            sgName
+        ],
+</code></pre>
+
+<p>We can add more than one security group here if you want to.
+There&rsquo;s also a <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#runInstances-property" target="_blank"><code>SecurityGroupIds</code></a>
+property that we could use instead and reference the security groups by their IDs
+rather than by their names. I find it a little easier to do it by name for this code.</p>
+
+<p>The last property in our params object is <code>UserData</code>.</p>
+
+<p><code>UserData</code> has a couple of different uses with EC2 instances, but we will use it to
+run shell commands once the instance starts. To understand more of it read the
+AWS documentation of how to
+<a href="Run Commands on Your Linux Instance at Launch" target="_blank">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html</a>.</p>
+
+<p>For this example, I will use the following commands on my <code>UserData</code> value:</p>
+
+<pre><code class="language-javascript">let commandsString = `#!/bin/bash
+curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install -y nodejs
+sudo yum install -y git
+git clone https://github.com/user/repo
+cd repo
+npm i
+npm run start`;
+</code></pre>
+
+<p>Essentially, these commands are just installing Node and Git, cloning the
+example project from my <a href="https://github.com/coderade" target="_blank">GitHub</a>, installing
+dependencies and then running it.</p>
+
+<p>You can&rsquo;t just put these shell scripts directly into the <code>UserData</code> value,
+however we have to Base64 encode it.</p>
+
+<p>To do this, with Node.js we can create a <a href="https://nodejs.org/api/buffer.html#buffer_buffer" target="_blank">Buffer</a>
+of this variable and then convert it to string with the base64 encoding type.</p>
+
+<pre><code class="language-javascript">UserData: new Buffer(commandsString).toString('base64');
+</code></pre>
+
+<p>Now, this will be our final params variable that will send to the EC2
+<a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#runInstances-property" target="_blank">runInstances</a>
+method. This is the function that actually does the EC2 instance creation.</p>
+
+<pre><code class="language-javascript">const params = {
+    ImageId: 'ami-14c5486b', //AMI ID that will be used to create the instance
+    InstanceType: 't2.micro',
+    KeyName: keyName,
+    Name: keyName,
+    MaxCount: 1,
+    MinCount: 1,
+    SecurityGroups: [
+        sgName
+    ],
+    UserData: new Buffer(commandsString).toString('base64')
+};
+</code></pre>
+
+<p>Now, we&rsquo;ll return a new Promise with the callback function with resolve and reject
+arguments.</p>
+
+<p>Inside that function, we&rsquo;ll call the <code>ec2.runInstances</code>. So we will pass <code>params</code>
+object as the first argument and the second will be a callback function
+with <code>err</code> and <code>data</code> arguments.</p>
+
+<pre><code class="language-javascript">return new Promise((resolve, reject) =&gt; {
+        ec2.runInstances(params, (err, data) =&gt; {
+            if (err)
+                reject(err);
+            else
+                resolve(data)
+        })
+    })
+}
+</code></pre>
+
+<p>Then, we will call <code>reject</code> with the <code>err</code> argument if it exists, otherwise, we
+will call <code>resolve</code> with the <code>data</code> argument.</p>
+
+<p>We also need to create a method to create our instance tag (that is used as the
+name of the instance to help the instances management).</p>
+
+<p>In this way, let&rsquo;s create the <code>createInstanceTag()</code> method which receive the
+<code>instanceData</code> that will be the data resolved by the promise of the <code>createInstance()</code>
+method and the <code>instanceTagName</code> that will be also passed by that promise
+resolution.</p>
+
+<p>On this method, we to create a object called <code>params</code> that will contains the
+<code>Resources</code> and the <code>Tags</code> properties.</p>
+
+<p>The <code>Resources</code> property will be an array that will contains the IDs of one
+or more instances resources to be tagged. In our example, we will use the ID of
+the instance who we just created:</p>
+
+<pre><code class="language-javascript">  Resources: [instanceData.Instances[0].InstanceId]
+</code></pre>
+
+<p>The <code>Tags</code> property will be an array of that contains one or more tags. For
+this, I will create only one tag with the key <em>Name</em>.</p>
+
+<p>The tags object contains two String properties. The <code>Key</code> that is actually the
+key of the tag and the <code>Value</code> that as the name says is the value the of the tag.</p>
+
+<p>So, to create our <code>Name</code> tag, we will set value <code>'Name'</code> for the <code>Key</code> and the
+<code>instanceTagName</code> for the <code>Value</code> property.</p>
+
+<pre><code class="language-javascript">Tags: [
+    {
+        Key: 'Name',
+        Value: instanceTagName
+    }
+]
+</code></pre>
+
+<p>Inside the function, like the another functions we&rsquo;ll call a EC2 method the
+<a href="http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createTags-property" target="_blank"><code>ec2.createTags</code></a>.
+Then, we will pass <code>params</code> object as the first argument and the second will
+be a callback function with <code>err</code> and <code>data</code> arguments.</p>
+
+<pre><code class="language-javascript">return new Promise((resolve, reject) =&gt; {
+        ec2.createTags(params, (err, data) =&gt; {
+            if (err)
+                reject(err);
+            else
+                resolve(data)
+        })
+    })
+}
+</code></pre>
+
+<p>In this way, this will be our <code>createInstanceTag()</code> method:</p>
+
+<pre><code class="language-javascript">function createInstanceTag(instanceData, instanceTagName) {
+    const params = {
+        Resources: [instanceData.Instances[0].InstanceId],
+        Tags: [
+            {
+                Key: 'Name',
+                Value: instanceTagName
+            }
+        ]
+    };
+
+    return new Promise((resolve, reject) =&gt; {
+        ec2.createTags(params, (err, data) =&gt; {
+            if (err)
+                reject(err);
+            else
+                resolve(data)
+        })
+    })
+}
+</code></pre>
+
+<p>The functions are done! wow! And now?</p>
+
+<p>Now we need to call all these functions and create and pass the needed arguments.</p>
+
+<p>First, on the begin of our file (after all the needed aws settings and imports),
+we will create some consts variables, the <strong><code>sgName</code></strong>
+(the security group name), <strong><code>sgDescription</code></strong> (the security group description),
+<strong><code>keyName</code></strong> (the key name for the KeyPair and the <strong><code>instanceTagName</code></strong> (the
+name to be used on the Instance tag):</p>
+
+<pre><code class="language-javascript">const sgName = 'ec2_examples_security_group'; //The security group name
+const sgDescription = 'ec2_examples Security Group description'; //the security group description
+const keyName = 'ec2_examples_instance_key'; //The key for the KeyPair key
+const instanceTagName = 'EC2 Examples'; //The name to be used on the Instance tag
+</code></pre>
+
+<p>And then, call the created functions passing the need arguments:</p>
+
+<pre><code class="language-javascript">createSecurityGroup(sgName, sgDescription)
+    .then(() =&gt; {
+        return createKeyPair(keyName);
+    })
+    .then(keyPairHelper.persistKeyPair)
+    .then(() =&gt; {
+        return createInstance(sgName, keyName, instanceTagName)
+    })
+    .then(createInstanceTag)
+    .catch((err) =&gt; {
+        console.error('Failed to create instance with:', err)
+    });
+</code></pre>
+
+<p>So, in this way I will call first the <code>createSecurityGroup</code> function to create
+the Security Group for our instance, then if everything works properly I will
+call the <code>createKeyPair</code> function to create the needed KeyPair to log in the
+instance, persisting in our local machine with our Helper function <code>persistKeyPair</code>,
+to finish finally calling the <code>createInstance</code> function to create the instance
+and then <code>createInstanceTag</code> to create the tag for this instance.</p>
+
+<p>After create the calling of the functions, the script to create instances with the
+NodeJs AWS-SDK is done.</p>
+
+<h1 id="running-the-script">Running the script</h1>
+
+<p>To run the example, type the following at the command line.
+Now, we can run this post example to create our instance.</p>
+
+<p>To run the example, type command <code>node create-ec2-instance.js</code> at the command line.</p>
+
+<p>After a few seconds, it should print out the location of the key that was written
+locally and the details of the instance that was just created.</p>
+
+<p><img src="/images/posts/aws/created-ec2-instance.png" alt="" /></p>
+
+<p>And shazam! The EC2 instance has been created only with JavaScript code!</p>
+
+<p>The actual boot up of the instance can take a few minutes, but you already can
+go to the <a href="https://console.aws.amazon.com/ec2" target="_blank">EC2 Console</a> and look in the the
+region specified on the begin of this example the instance that was created.</p>
+
+<p><img src="/images/posts/aws/ec2-instances.png" alt="" /></p>
+
+<p>The source of this example is available on my Github project <a href="https://github.com/coderade/aws-ec2-examples/blob/master/create-ec2-instance.js" target="_blank">https://github.com/coderade/aws-ec2-examples/create-ec2-instance.js</a>.
+Take a look on it if you need a further information.</p>
+
+<p>And that is all!</p>
+
+<p>Thanks for your reading and please take a look at the other blog posts when you
+have a time.</p>
+
+<hr />
+
+            <ul class="share-buttons">
+    <li>Share this article:</li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcoderade.github.io%2fpost%2faws%2flaunching-ec2-instances-nodejs-aws-sdk%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook"></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Launching%20EC2%20instances%20using%20the%20Nodejs%20AWS%20SDK&amp;url=https%3a%2f%2fcoderade.github.io%2fpost%2faws%2flaunching-ec2-instances-nodejs-aws-sdk%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Tweet this article"></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fcoderade.github.io%2fpost%2faws%2flaunching-ec2-instances-nodejs-aws-sdk%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google&#43;"></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fcoderade.github.io%2fpost%2faws%2flaunching-ec2-instances-nodejs-aws-sdk%2f&title=Launching%20EC2%20instances%20using%20the%20Nodejs%20AWS%20SDK" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title="Share on Linkedin"></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3>Comments</h3>
+            <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coderade" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+   <img class="profile-image" src="https://coderade.github.io/img/profile-image.jpg" alt="Valdeci Gomes" />
+   <p class="name">by
+      <strong>Valdeci Gomes</strong>
+   </p>
+   <p class="address">Curitiba, PR, Brazil</p>
+   <p class="link"></p>
+   <ul class="social">
+      
+
+
+
+
+<li><a href="//br.linkedin.com/in/valdeci/en" class="icon-linkedin" target="_blank" title="Linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/coderade" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/4157589" class="icon-stackoverflow" target="_blank" title="StackOverflow"></a></li>
+
+
+
+<li><a href="//stackexchange.com/users/5196485?tab=accounts" class="icon-stackexchange" target="_blank" title="stackExchange"></a></li>
+
+
+
+
+
+
+<li><a href="https://coderade.github.io/post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+   </ul>
+   <br><br>
+</aside>
+<aside class="author">
+   <div class="tags">
+      <h2><span>Categories</span></h2>
+      <div class="widget-content cloud-label-widget-content">
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/android">Android</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/aws">Aws</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/es6">Es6</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/nodejs">Nodejs</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/rails">Rails</a>
+         </span>
+         
+      </div>
+   </div>
+</aside>
+<aside class="author">
+   <div class="tags">
+      <h2><span>Tags</span></h2>
+      <div class="widget-content cloud-label-widget-content">
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/android">Android</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/aws">Aws</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/es6">Es6</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/idea">Idea</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/js">Js</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/mobile">Mobile</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/nodejs">Nodejs</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/rails">Rails</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/ruby">Ruby</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/web">Web</a>
+         </span>
+         
+      </div>
+   </div>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="https://coderade.github.io/post/index.xml" title="RSS"></a>
+        <p>&copy; 2018 &middot; Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="https:\/\/coderade.github.io\/js\/vendor\/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="https://coderade.github.io/js/plugins.js"></script>
+
+
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-106618202-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
