@@ -82,49 +82,53 @@
 
 <p>The EC2 service is one of the most fundamental services offered by AWS.
 It underpins many of the other services in AWS, so it&rsquo;s always a good idea
-understand how to use and the best way to use it. In this post I&rsquo;ll show how to
-create EC2 instances directly in the code using the
+understand how to use and the best way to use it.</p>
+
+<p>In this post I&rsquo;ll show how to create EC2 instances directly in the code using the
 <a href="https://aws.amazon.com/sdk-for-node-js" target="_blank">AWS SDK for JavaScript in Node.js</a>.</p>
 
 <p>In order to run your application in AWS, we need to have one or more EC2 instances
-to execute that code. So the first step is to create an EC2 instance.
-There are many different ways to do this.</p>
+to execute that code. So, the first step is to create an EC2 instance, there are
+many different ways to do this.</p>
 
-<p>One of theses ways is use the AWS Console to create instances. I think that is
+<p>One of these ways is use the AWS Console to create instances. I think that is
 the easy way, because the <a href="https://aws.amazon.com/console/" target="_blank">AWS Console</a> is very
 interactive and the AWS documentation is very good and easy to understand.
 To check how to create instance using the AWS console use the official
 <a href="https://docs.aws.amazon.com/efs/latest/ug/gs-step-one-create-ec2-resources.html" target="_blank">Step to step documentation</a>.</p>
 
 <p>Another method is to use the <a href="https://aws.amazon.com/cli/" target="_blank">AWS CLI</a>, that is a
-little more complicated, but that have a good documentation too. This  way
+little more complicated, but that have a good documentation too. This way
 can be useful with DevOps automation.</p>
 
 <p>For this post I&rsquo;ll show how to use the SDK to create an instance with code.</p>
 
 <p>But before we can create the instance, we need to create a few other resources.</p>
 
-<p>The first thing that we need to do is create a security group for the instance.
-So let&rsquo;s to do this.</p>
+<p>On this post, I will show how created the needed resources to use a EC2 instance.</p>
+
+<p>The first thing that we need to do is create a security group for the instance.</p>
+
+<p>So let&rsquo;s to do this.</p>
 
 <h2 id="creating-an-ec2-security-group">Creating an EC2 Security Group</h2>
 
 <p>With a <a href="https://nodejs.org/en/docs/guides/getting-started-guide/" target="_blank">Node.js project</a>
-created the first thing that we need to do is download the AWS SDK module from
-the NPM repository. To do
-this, use the following command on the root of your project:</p>
+created, the first thing that we need to do is download the AWS SDK module from
+the <a href="https://www.npmjs.com/" target="_blank">NPM</a> repository.</p>
+
+<p>To do this, use the following command on the root of your project:</p>
 
 <pre><code class="language-ruby">npm i aws-sdk
 </code></pre>
 
 <p>Then, we will need to create our script file (this will be where we will the
-start file for this example) in my example I called it as <code>create-ec2-instance.js</code>,
+start file for this example), In this example I called it as <code>create-ec2-instance.js</code>,
 but you can use the name you want.</p>
 
-<p>After that we need to do is to import the AWS SDK into a local variable in this
-file. We will create a const declaration with an identifier of AWS all in caps.
-Assign to it a require function call will be needed, passing in the string
-<code>'aws-sdk'</code>.</p>
+<p>After that we need to import the AWS SDK into a local variable in this
+file. We will create a const declaration with an identifier of AWS all in caps and
+assign the module namev<code>'aws-sdk'</code> to it using the require function.</p>
 
 <pre><code class="language-javascript">const AWS = require('aws-sdk');
 </code></pre>
@@ -132,26 +136,28 @@ Assign to it a require function call will be needed, passing in the string
 <p>The AWS SDK requires you to configure the region each time it&rsquo;s imported. I&rsquo;ll
 admit this gets a little annoying. There are some abstractions you can do to
 mitigate this, like set the region in the AWS config file on your local system or
-export as environment variable before running. To understand how to do this use
-the AWS Docs link of how to
+export as environment variable before running.</p>
+
+<p>To understand how to do this use the AWS Docs link of how to
 <a href="https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html" target="_blank">Set up AWS Credentials and Region for Development</a></p>
 
 <p>For this example, I will call the update function on the <code>AWS.config</code> property.
-Into this function, pass an object with one property called region, you also could
+Into this function pass an object with one property called region, you also could
 add other properties to this object to change other configuration options on the
 <code>AWS.config</code> object, such as the max number of retries for a given request or a
-global logger object.
-Here just enter a string as the value to the <code>region</code> key property with the region
+global logger object.</p>
+
+<p>Here just enter a string as the value to the <code>region</code> key property with the region
 you are using. I&rsquo;ll enter <code>us-east-1</code> here for mine.</p>
 
 <pre><code class="language-javascript">AWS.config.update({region: 'us-east-1'});
 </code></pre>
 
 <p>In my situation, I use more than a region and profile in my computer (for personal
-and working coding) so I also need to set my profile using the
-<code>AWS.config.credentials</code> property. This configuration will get my AWS credentials
-data in a shared file used by SDKs and the command line interface on my computer.
-To understand better how to set on this way  use the AWS Docs link of how to
+and working coding) so I also need to set my profile using the <code>AWS.config.credentials</code>
+property. This configuration will get my AWS credentials data in a shared file used by
+SDKs and the command line interface on my computer.
+To understand better how to set on this way, use the AWS Docs link of how to
 <a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html" target="_blank">Loading Credentials in Node.js from the Shared Credentials File</a></p>
 
 <p>In this example I will load my personal profile using the
@@ -162,18 +168,18 @@ property.</p>
 AWS.config.credentials = credentials;
 </code></pre>
 
-<p>Nice! now we have the Aws settings setted! But, and now?</p>
+<p>Nice! now we have the Aws settings setted! But and now?</p>
 
-<p>Now we need an EC2 object created from the AWS object, On this object we&rsquo;ll call
+<p>Now we need an EC2 object created from the AWS object, on this object we&rsquo;ll call
 the EC2 operations on.</p>
 
-<p>So, to use it, declare a new <code>const</code> variable called <code>ec2</code>, all lowercase.
-To the right side of an assignment operator, use the new keyword, and call the
+<p>So, to use it, declare a new <code>const</code> variable called <code>ec2</code>.
+To the right side of an assignment operator, use the new keyword and call the
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html" target="_blank">AWS.EC2</a> class
 with no arguments.</p>
 
 <p>There are many other arguments that can be passed on the class constructor like
-the <code>api-version</code>, <code>accessKeyId</code> and <code>secretAccessKey</code>, and a <code>region</code>, the last
+the <code>api-version</code>, <code>accessKeyId</code> and <code>secretAccessKey</code> and a <code>region</code>. The last
 one can be useful if you are using other regions in your code.</p>
 
 <p>To check all the params available to be used on the EC2 constructor, you can<br />
@@ -195,10 +201,11 @@ empty object. We&rsquo;ll going to be using the <code>createSecurityGroup</code>
 two of the params arguments that it wants is a description and a group name.</p>
 
 <p>This function willl be taking an argument called <code>sgName</code> to the name and the
-<code>sgDescription</code> to the description of the Security Group. Personally I find
-that the description isn&rsquo;t too useful until you have a massive number of
-security groups, even then, it seems that tags are used more for management in
-those situations than descriptions.</p>
+<code>sgDescription</code> to the description of the Security Group.</p>
+
+<p>Personally I find that the description isn&rsquo;t too useful until you have a massive
+number of security groups, even then, it seems that tags are used more for management
+in those situations than descriptions.</p>
 
 <pre><code class="language-javascript">function createSecurityGroup(sgName, sgDescription) {
     const params = {
@@ -208,17 +215,17 @@ those situations than descriptions.</p>
 }
 </code></pre>
 
-<p>With the params defined, you can continue to the meat of the function. For these
+<p>With the <code>params</code> defined, we can continue to the creation of the function. For these
 type of functions I personally like to use promises instead of callbacks. IMHO I
 think nowadays we must use the most of the advantages of ES6 brings to us and
 this approach a little easier to understand and read.</p>
 
-<p>So return a new Promise. It will take a function with the resolve and reject
-arguments.
+<p>In this way, we will return a new Promise. It will take a function with the
+resolve and reject callbacks.
 Now inside this promise argument function body, we&rsquo;ll call our first SDK function
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createSecurityGroup-property" target="_blank">ec2.createSecurityGroup()</a>.</p>
 
-<p>The first argument will be the params object we created, then a callback function
+<p>The first argument will be the params object which we created, then a callback function
 with the <code>err</code> and <code>data</code> arguments. Unfortunately, the SDK doesn&rsquo;t support
 promises firsthand, so we&rsquo;ll need to use callbacks here.</p>
 
@@ -238,8 +245,9 @@ group creation was successful.</p>
 })
 </code></pre>
 
-<p>Because our security group is essentially empty, we want to add a rule here.
-We&rsquo;ll want to enable port 22 so that we can SSH into the instance once it&rsquo;s
+<p>Because our security group is essentially empty, we want to add a rule here.</p>
+
+<p>We&rsquo;ll want to enable port 22 so that we can SSH into the instance once it&rsquo;s
 been created and port 3000 so if want to run a endpoint example like
 <a href="https://expressjs.com/" target="_blank">Express</a>
 on the instance. So start by creating a new <code>let</code> called <code>params</code> again
@@ -262,7 +270,7 @@ to configure multiple rules in one request.</p>
 <p>Then, we need to create an object in this array and add the property <code>IpProtocol</code>.</p>
 
 <p>The possible values for this are protocols like <code>tcp</code> or <code>udp</code>, for some examples.
-We will use the tcp here, all lowercase. The next two properties <code>FromPort</code>and
+We will use the value <code>'tcp'</code> here, all lowercase. The next two properties <code>FromPort</code>and
 <code>ToPort</code> define the port range that you&rsquo;re enabling the rule for.</p>
 
 <p>In the first case, we&rsquo;ll enter the number <code>22</code> in both <code>FromPort</code> and <code>ToPort</code>
@@ -293,7 +301,7 @@ so give this property the value of <code>0.0.0.0/0</code>.</p>
 ]    
 </code></pre>
 
-<p>Now, we need to also add the rule for port 3000, so copy thes rule object created:</p>
+<p>Now, we need to also add the rule for port 3000, so we can copy thes rule object created:</p>
 
 <pre><code class="language-javascript">{
     IpProtocol: 'tcp',
@@ -307,8 +315,8 @@ so give this property the value of <code>0.0.0.0/0</code>.</p>
 }
 </code></pre>
 
-<p>add a comma after it, and then paste. The only different property will be the
-<code>FromPort</code> and <code>ToPort</code>, and you can set both to <code>3000</code>.</p>
+<p>add a comma after it and then paste. The only different property will be the
+<code>FromPort</code> and <code>ToPort</code> and you can set both to <code>3000</code>.</p>
 
 <p>Awesome! Now we&rsquo;re ready to use this big params object in an SDK call:</p>
 
@@ -350,7 +358,7 @@ The second will again be a callback function with the argument <code>err</code>.
 <p>Even though this function does return a second argument, we&rsquo;ll just ignore it.
 Inside the callback, call <code>reject()</code> again if there&rsquo;s an <code>err</code> object.</p>
 
-<p>In the else, just call <code>resolve()</code>, and with that code complete, we&rsquo;ve successfully
+<p>In the else, just call <code>resolve()</code> and with that code complete, we&rsquo;ve successfully
 created and assigned rules to a security group.</p>
 
 <p>This is now your <code>createSecurityGroup</code> function:</p>
@@ -547,6 +555,8 @@ we&rsquo;ve made.</p>
 <p>The first we&rsquo;ll need to add is <code>ImageId</code>. This is the AMI ID that will be used
 to create the instance.</p>
 
+<p>To get a <code>ImageId</code> we need to select a AMI, so let&rsquo;s get one.</p>
+
 <h3 id="selecting-a-amazon-machine-image-ami">Selecting a Amazon Machine Image (AMI)</h3>
 
 <p>There is an EC2 SDK function called
@@ -565,8 +575,9 @@ the AMI selection screen.</p>
 
 <p><img src="/images/posts/aws/ami-selection-screen.png" alt="" /></p>
 
-<p>At the top, there is the Amazon Linux AMI. At the end of that title is the ID.
-Yours may or may not be the same as the above image based on when you&rsquo;re reading
+<p>At the top, there is the Amazon Linux AMI. At the end of that title is the ID.</p>
+
+<p>Yours may or may not be the same as the above image based on when you&rsquo;re reading
 this  post and which region you&rsquo;re using.</p>
 
 <p>Either way, for this example, if you don&rsquo;t need a especific one, you can copy
@@ -580,7 +591,7 @@ whatever AMI ID is in your AWS Console.</p>
 
 <p>The next property is <code>InstanceType</code>. This is the type of instance such as <code>t2.small</code>
 or <code>m4.xlarge</code> and defines the properties of the instance. Like the AMI, if you
-don&rsquo;t need a specific one you can use one of the smallest here, <strong>t2.micro</strong>.</p>
+don&rsquo;t need a specific one you can use one of the smallest here: <strong>t2.micro</strong>.</p>
 
 <pre><code class="language-javascript">InstanceType: 't2.micro',
 </code></pre>
@@ -599,11 +610,11 @@ We can enter 1 for both.</p>
 MinCount: 1,
 </code></pre>
 
-<p>For more information about the default limits, and how to request an increase,
+<p>For more information about the default limits and how to request an increase,
 see <a href="https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2" target="_blank">How many instances can I run in Amazon EC2</a>
 in the Amazon EC2 FAQ.</p>
 
-<p>Now we need to add the property <code>SecurityGroups</code>, and give it an array as the value.
+<p>Now we need to add the property <code>SecurityGroups</code> and give it an array as the value.
 This is where we add any security groups to the instance.
 So, we enter the <code>sgName</code> argument into the array.</p>
 
@@ -619,29 +630,29 @@ rather than by their names. I find it a little easier to do it by name for this 
 
 <p>The last property in our params object is <code>UserData</code>.</p>
 
-<p><code>UserData</code> has a couple of different uses with EC2 instances, but we will use it to
-run shell commands once the instance starts. To understand more of it read the
+<p>The <code>UserData</code> has a couple of different uses with EC2 instances, but we will use it to
+run shell commands once the instance starts. To understand more of it, please read the
 AWS documentation of how to
-<a href="Run Commands on Your Linux Instance at Launch" target="_blank">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html</a>.</p>
+<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html" target="_blank">run Commands on Your Linux Instance at Launch</a>.</p>
 
 <p>For this example, I will use the following commands on my <code>UserData</code> value:</p>
 
 <pre><code class="language-javascript">let commandsString = `#!/bin/bash
-curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
-sudo yum install -y nodejs
-sudo yum install -y git
-git clone https://github.com/user/repo
-cd repo
-npm i
-npm run start`;
+  curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+  sudo yum install -y nodejs
+  sudo yum install -y git
+  git clone https://github.com/coderade/aws-ec2-examples
+  cd repo
+  npm i
+  npm run start`;
 </code></pre>
 
 <p>Essentially, these commands are just installing Node and Git, cloning the
-example project from my <a href="https://github.com/coderade" target="_blank">GitHub</a>, installing
-dependencies and then running it.</p>
+example project from my <a href="https://github.com/coderade" target="_blank">GitHub</a>, installing the
+project dependencies and then running it.</p>
 
-<p>You can&rsquo;t just put these shell scripts directly into the <code>UserData</code> value,
-however we have to Base64 encode it.</p>
+<p>You can&rsquo;t just put these shell scripts directly into the <code>UserData</code> value, first
+we have to Base64 encode it.</p>
 
 <p>To do this, with Node.js we can create a <a href="https://nodejs.org/api/buffer.html#buffer_buffer" target="_blank">Buffer</a>
 of this variable and then convert it to string with the base64 encoding type.</p>
@@ -651,7 +662,7 @@ of this variable and then convert it to string with the base64 encoding type.</p
 
 <p>Now, this will be our final params variable that will send to the EC2
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#runInstances-property" target="_blank">runInstances</a>
-method. This is the function that actually does the EC2 instance creation.</p>
+method:</p>
 
 <pre><code class="language-javascript">const params = {
     ImageId: 'ami-14c5486b', //AMI ID that will be used to create the instance
@@ -667,10 +678,12 @@ method. This is the function that actually does the EC2 instance creation.</p>
 };
 </code></pre>
 
+<p>This is the function that actually does the EC2 instance creation.</p>
+
 <p>Now, we&rsquo;ll return a new Promise with the callback function with resolve and reject
 arguments.</p>
 
-<p>Inside that function, we&rsquo;ll call the <code>ec2.runInstances</code>. So we will pass <code>params</code>
+<p>Inside that function, we&rsquo;ll call the <code>ec2.runInstances</code>, so we will pass <code>params</code>
 object as the first argument and the second will be a callback function
 with <code>err</code> and <code>data</code> arguments.</p>
 
@@ -712,7 +725,7 @@ this, I will create only one tag with the key <em>Name</em>.</p>
 <p>The tags object contains two String properties. The <code>Key</code> that is actually the
 key of the tag and the <code>Value</code> that as the name says is the value the of the tag.</p>
 
-<p>So, to create our <code>Name</code> tag, we will set value <code>'Name'</code> for the <code>Key</code> and the
+<p>So, to create our <code>Name</code> tag we will set value <code>'Name'</code> for the <code>Key</code> and the
 <code>instanceTagName</code> for the <code>Value</code> property.</p>
 
 <pre><code class="language-javascript">Tags: [
@@ -805,12 +818,11 @@ and then <code>createInstanceTag</code> to create the tag for this instance.</p>
 <p>After create the calling of the functions, the script to create instances with the
 NodeJs AWS-SDK is done.</p>
 
+<p>Now, we can run this post example to create our instance.</p>
+
 <h1 id="running-the-script">Running the script</h1>
 
-<p>To run the example, type the following at the command line.
-Now, we can run this post example to create our instance.</p>
-
-<p>To run the example, type command <code>node create-ec2-instance.js</code> at the command line.</p>
+<p>To run the example, type the command <code>node create-ec2-instance.js</code> at the command line.</p>
 
 <p>After a few seconds, it should print out the location of the key that was written
 locally and the details of the instance that was just created.</p>
@@ -825,8 +837,12 @@ region specified on the begin of this example the instance that was created.</p>
 
 <p><img src="/images/posts/aws/ec2-instances.png" alt="" /></p>
 
-<p>The source of this example is available on my Github project <a href="https://github.com/coderade/aws-ec2-examples/blob/master/create-ec2-instance.js" target="_blank">https://github.com/coderade/aws-ec2-examples/create-ec2-instance.js</a>.
-Take a look on it if you need a further information.</p>
+<p>We can look on the Security Group and Key Pairs options to see that they are
+already created too.</p>
+
+<p>The source of this example is available on my Github project <a href="https://github.com/coderade/aws-ec2-examples/blob/master/create-ec2-instance.js" target="_blank">https://github.com/coderade/aws-ec2-examples/create-ec2-instance.js</a>.</p>
+
+<p>Take a look on it if you need a further information.</p>
 
 <p>And that is all!</p>
 
