@@ -58,25 +58,25 @@
   </url>
   
   <url>
-    <loc>https://coderade.github.io/categories/android/</loc>
-    <lastmod>2017-09-24T13:47:08+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://coderade.github.io/tags/android/</loc>
     <lastmod>2017-09-24T13:47:08+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://coderade.github.io/categories/aws/</loc>
-    <lastmod>2018-06-24T13:47:08+02:00</lastmod>
+    <loc>https://coderade.github.io/categories/android/</loc>
+    <lastmod>2017-09-24T13:47:08+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://coderade.github.io/tags/aws/</loc>
+    <lastmod>2018-06-24T13:47:08+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://coderade.github.io/categories/aws/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -100,13 +100,13 @@
   </url>
   
   <url>
-    <loc>https://coderade.github.io/categories/es6/</loc>
+    <loc>https://coderade.github.io/tags/es6/</loc>
     <lastmod>2017-09-17T21:44:08+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://coderade.github.io/tags/es6/</loc>
+    <loc>https://coderade.github.io/categories/es6/</loc>
     <lastmod>2017-09-17T21:44:08+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -130,13 +130,13 @@
   </url>
   
   <url>
-    <loc>https://coderade.github.io/categories/nodejs/</loc>
+    <loc>https://coderade.github.io/tags/nodejs/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://coderade.github.io/tags/nodejs/</loc>
+    <loc>https://coderade.github.io/categories/nodejs/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -148,13 +148,13 @@
   </url>
   
   <url>
-    <loc>https://coderade.github.io/categories/rails/</loc>
+    <loc>https://coderade.github.io/tags/rails/</loc>
     <lastmod>2016-08-29T13:47:08+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://coderade.github.io/tags/rails/</loc>
+    <loc>https://coderade.github.io/categories/rails/</loc>
     <lastmod>2016-08-29T13:47:08+02:00</lastmod>
     <priority>0</priority>
   </url>
