@@ -121,6 +121,29 @@ Besides that I will discuss the many other smaller changes in improvements such 
     </item>
     
     <item>
+      <title>About me</title>
+      <link>https://coderade.github.io/about/</link>
+      <pubDate>Sun, 28 Aug 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/about/</guid>
+      <description>Hi there.
+After a few attempts with the coderade .in and .io blogs, I returned to write in a blog again.
+But now with no expensive domain and freedom in customization excuses, heheh. I&amp;rsquo;m hosting this blog on the GitHub Pages that is totally free and is very easy to use.
+On this blog I will write about coding, DevOps and Software Engineering, life hacks and I&amp;rsquo;ll try to share my experiences in this vast life (yeah, with 24 years old).</description>
+    </item>
+    
+    <item>
+      <title>Ansible playbooks</title>
+      <link>https://coderade.github.io/post/devops/ansible-playbooks/</link>
+      <pubDate>Sun, 28 Aug 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/devops/ansible-playbooks/</guid>
+      <description>Ansible is a task execution engine. It exists to provide a method for operators, engineers, developers or whomever, to easily define one or more actions to be performed on one or more computers.
+This capability represents a step beyond simply just logging into each computer in question, and manually typing out the command.
+These tasks can target the local system Ansible is running from, as well as other systems Ansible can reach over the network.</description>
+    </item>
+    
+    <item>
       <title>Hi there!</title>
       <link>https://coderade.github.io/post/first/</link>
       <pubDate>Sun, 28 Aug 2016 13:47:08 +0200</pubDate>
