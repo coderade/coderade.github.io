@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Jun 2018 13:47:08 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate>
     
 	<atom:link href="https://coderade.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Why love Open Source?</title>
+      <link>https://coderade.github.io/post/imho/why-love-open-source/</link>
+      <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/imho/why-love-open-source/</guid>
+      <description>Since I started to code in 2012, I learned to love the open source life, I learned to love how the community is open to share and help other people, sharing the coding who they worked hard and making it possible to run in a couple of minutes for anybody in the world, sharing your knowledge with questions and answers on the StackOverflow and all of the StackExchange sites, creating docs and tutorials in blogs and sites like Medium and GitHub.</description>
+    </item>
     
     <item>
       <title>Launching EC2 instances using the Node.js AWS SDK</title>

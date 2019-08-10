@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Coding on Coderade blog</title>
+    <link>https://coderade.github.io/categories/coding/</link>
+    <description>Recent content in Coding on Coderade blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate>
+    
+	<atom:link href="https://coderade.github.io/categories/coding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why love Open Source?</title>
+      <link>https://coderade.github.io/post/imho/why-love-open-source/</link>
+      <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
+      
+      <guid>https://coderade.github.io/post/imho/why-love-open-source/</guid>
+      <description>Since I started to code in 2012, I learned to love the open source life, I learned to love how the community is open to share and help other people, sharing the coding who they worked hard and making it possible to run in a couple of minutes for anybody in the world, sharing your knowledge with questions and answers on the StackOverflow and all of the StackExchange sites, creating docs and tutorials in blogs and sites like Medium and GitHub.</description>
+    </item>
+    
+  </channel>
+</rss>
