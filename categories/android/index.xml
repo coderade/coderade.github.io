@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Coderade blog</title>
-    <link>https://coderade.github.io/categories/android/</link>
+    <link>https://valde.ci/categories/android/</link>
     <description>Recent content in Android on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Sep 2017 13:47:08 +0200</lastBuildDate>
     
-	<atom:link href="https://coderade.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://valde.ci/categories/android/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Converting graphic files to WebP format on Android Studio 2.3</title>
-      <link>https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/</link>
+      <link>https://valde.ci/post/android/converting-graphic-files-to-webp-format/</link>
       <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/</guid>
+      <guid>https://valde.ci/post/android/converting-graphic-files-to-webp-format/</guid>
       <description>For all who don&amp;rsquo;t know the webP format, Android has supported this image format for many years.
 As I said on my previous article: the WebP files are smaller than JPGs or PNGs and like PNGs, they support transparency. But creating them files has always been a bit of a chore.
 Now, with Android Studio 2.3, you can convert your existing graphical files into WebP files very easily.
@@ -25,10 +25,10 @@ On this article, I&amp;rsquo;ll show how to convert your created image files to 
     
     <item>
       <title>Inspect APK files with the APK Analyzer on Android Studio</title>
-      <link>https://coderade.github.io/post/android/inspecting-apk-files-after-packaging/</link>
+      <link>https://valde.ci/post/android/inspecting-apk-files-after-packaging/</link>
       <pubDate>Fri, 22 Sep 2017 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/android/inspecting-apk-files-after-packaging/</guid>
+      <guid>https://valde.ci/post/android/inspecting-apk-files-after-packaging/</guid>
       <description>The Android Studio 2.2 added a new tool called the APK Analyzer.
 It lets you look at packaged apps, those APK files that are in zip archive format that you use to deploy an application.
 Using the APK Analyzer, you can see inside the APK file and see what files and directories are largest so you can decide how you can shrink down that APK.
@@ -37,10 +37,10 @@ The example application I&amp;rsquo;ll show you how to use the Apk Analyzer tool
     
     <item>
       <title>Android Studio and IntelliJ IDEA</title>
-      <link>https://coderade.github.io/post/android/android-studio-idea/</link>
+      <link>https://valde.ci/post/android/android-studio-idea/</link>
       <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/android/android-studio-idea/</guid>
+      <guid>https://valde.ci/post/android/android-studio-idea/</guid>
       <description>I personally love the JetBrains tools.
 When I started to code with the Eclipse, Netbeans, ADT tool (For android development on Eclipse), Text editors and others tools, I thought to myself:
  &amp;ldquo;The development with these tools is pretty cool, but the tolls are very far from being awesome, can they be better?&amp;rdquo;

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coderade blog</title>
-    <link>https://coderade.github.io/</link>
+    <link>https://valde.ci/</link>
     <description>Recent content on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate>
     
-	<atom:link href="https://coderade.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://valde.ci/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Why I love Open Source?</title>
-      <link>https://coderade.github.io/post/imho/why-love-open-source/</link>
+      <link>https://valde.ci/post/imho/why-love-open-source/</link>
       <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/imho/why-love-open-source/</guid>
+      <guid>https://valde.ci/post/imho/why-love-open-source/</guid>
       <description>Since I started to code in 2012, I learned to love the open source life, I learned to love how the community is open to share and help other people, sharing the coding who they worked hard and making it possible to run in a couple of minutes for anybody in the world, sharing your knowledge with questions and answers on the StackOverflow and all of the StackExchange sites, creating docs and tutorials in blogs and sites like Medium and GitHub.</description>
     </item>
     
     <item>
       <title>Launching EC2 instances using the Node.js AWS SDK</title>
-      <link>https://coderade.github.io/post/aws/launching-ec2-instances-nodejs-aws-sdk/</link>
+      <link>https://valde.ci/post/aws/launching-ec2-instances-nodejs-aws-sdk/</link>
       <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/aws/launching-ec2-instances-nodejs-aws-sdk/</guid>
+      <guid>https://valde.ci/post/aws/launching-ec2-instances-nodejs-aws-sdk/</guid>
       <description>The EC2 service is one of the most fundamental services offered by AWS. It underpins many of the other services in AWS, so it&amp;rsquo;s always a good idea understand how to use and the best way to use it.
 In this post I&amp;rsquo;ll show how to create EC2 instances directly in the code using the AWS SDK for JavaScript in Node.js.
 In order to run your application in AWS, we need to have one or more EC2 instances to execute that code.</description>
@@ -33,10 +33,10 @@ In order to run your application in AWS, we need to have one or more EC2 instanc
     
     <item>
       <title>Converting graphic files to WebP format on Android Studio 2.3</title>
-      <link>https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/</link>
+      <link>https://valde.ci/post/android/converting-graphic-files-to-webp-format/</link>
       <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/android/converting-graphic-files-to-webp-format/</guid>
+      <guid>https://valde.ci/post/android/converting-graphic-files-to-webp-format/</guid>
       <description>For all who don&amp;rsquo;t know the webP format, Android has supported this image format for many years.
 As I said on my previous article: the WebP files are smaller than JPGs or PNGs and like PNGs, they support transparency. But creating them files has always been a bit of a chore.
 Now, with Android Studio 2.3, you can convert your existing graphical files into WebP files very easily.
@@ -45,10 +45,10 @@ On this article, I&amp;rsquo;ll show how to convert your created image files to 
     
     <item>
       <title>Inspect APK files with the APK Analyzer on Android Studio</title>
-      <link>https://coderade.github.io/post/android/inspecting-apk-files-after-packaging/</link>
+      <link>https://valde.ci/post/android/inspecting-apk-files-after-packaging/</link>
       <pubDate>Fri, 22 Sep 2017 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/android/inspecting-apk-files-after-packaging/</guid>
+      <guid>https://valde.ci/post/android/inspecting-apk-files-after-packaging/</guid>
       <description>The Android Studio 2.2 added a new tool called the APK Analyzer.
 It lets you look at packaged apps, those APK files that are in zip archive format that you use to deploy an application.
 Using the APK Analyzer, you can see inside the APK file and see what files and directories are largest so you can decide how you can shrink down that APK.
@@ -57,10 +57,10 @@ The example application I&amp;rsquo;ll show you how to use the Apk Analyzer tool
     
     <item>
       <title>ES6 Destructuring assignments</title>
-      <link>https://coderade.github.io/post/es6/destructuring-assignments/</link>
+      <link>https://valde.ci/post/es6/destructuring-assignments/</link>
       <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/es6/destructuring-assignments/</guid>
+      <guid>https://valde.ci/post/es6/destructuring-assignments/</guid>
       <description>In this article I&amp;rsquo;m going to talk about the Destructuring assignments in ES6.
 The Destructuring Assignments don&amp;rsquo;t really offer us any new features, but rather they enable us to write more readable and less repetitive code.
 So, have you ever had a function that was dealing with these enormous deeply nested objects and it felt like your code was kind of sprawling out of control, it was getting hard to read?</description>
@@ -68,50 +68,50 @@ So, have you ever had a function that was dealing with these enormous deeply nes
     
     <item>
       <title>ES6 Arrow Functions</title>
-      <link>https://coderade.github.io/post/es6/arrow-functions/</link>
+      <link>https://valde.ci/post/es6/arrow-functions/</link>
       <pubDate>Thu, 14 Sep 2017 21:44:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/es6/arrow-functions/</guid>
+      <guid>https://valde.ci/post/es6/arrow-functions/</guid>
       <description>Arrow functions are another notable addition that came with ES5 and are available here in ES2016. They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and the second thing is that they allow us to preserve the context of the wrapping function.
 As I write before, the arrow function, one of its main features is that it&amp;rsquo;s more succinct, it reduces boilerplate.</description>
     </item>
     
     <item>
       <title>ES6 - Limitations of using const and let</title>
-      <link>https://coderade.github.io/post/es6/const-and-let-limitations/</link>
+      <link>https://valde.ci/post/es6/const-and-let-limitations/</link>
       <pubDate>Sun, 10 Sep 2017 21:44:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/es6/const-and-let-limitations/</guid>
+      <guid>https://valde.ci/post/es6/const-and-let-limitations/</guid>
       <description>As I mentioned at my previous article, one of the main things that we need to understand about const and let: is that const, is a constant, so, it&amp;rsquo;s not going to change and let is something that might change, it could change.
 Let&amp;rsquo;s explore a little bit what that means because this is actually a gotcha in some cases. So, be careful, const isn&amp;rsquo;t actually an immutable variable, it can be changed.</description>
     </item>
     
     <item>
       <title>var, const and let in ES6, when I use? They can be hoisted?</title>
-      <link>https://coderade.github.io/post/es6/const-and-let/</link>
+      <link>https://valde.ci/post/es6/const-and-let/</link>
       <pubDate>Mon, 04 Sep 2017 21:44:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/es6/const-and-let/</guid>
+      <guid>https://valde.ci/post/es6/const-and-let/</guid>
       <description>Perhaps the most recognizable addition to the JavaScript language was that of const and let. Two new key words that allow us to declare variables, which behave differently than var.
 When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables?</description>
     </item>
     
     <item>
       <title>ES5, ES6, ES7 and ES2015 and ES2016. Isn&#39;t it just all JS?</title>
-      <link>https://coderade.github.io/post/es6/js-es6/</link>
+      <link>https://valde.ci/post/es6/js-es6/</link>
       <pubDate>Tue, 29 Aug 2017 21:44:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/es6/js-es6/</guid>
+      <guid>https://valde.ci/post/es6/js-es6/</guid>
       <description>JS, Why we love you? One of my biggest loves on the coding word is the JS (JavaScript) language.
 I don&amp;rsquo;t know why, but since I started to make simple code with JQuery and to research about the language under your hood and I got what is JS, the first thing that I did was thanked how the coding world can be really beautiful and simple with a programming language like that.</description>
     </item>
     
     <item>
       <title>Android Studio and IntelliJ IDEA</title>
-      <link>https://coderade.github.io/post/android/android-studio-idea/</link>
+      <link>https://valde.ci/post/android/android-studio-idea/</link>
       <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/android/android-studio-idea/</guid>
+      <guid>https://valde.ci/post/android/android-studio-idea/</guid>
       <description>I personally love the JetBrains tools.
 When I started to code with the Eclipse, Netbeans, ADT tool (For android development on Eclipse), Text editors and others tools, I thought to myself:
  &amp;ldquo;The development with these tools is pretty cool, but the tolls are very far from being awesome, can they be better?&amp;rdquo;
@@ -120,10 +120,10 @@ When I started to code with the Eclipse, Netbeans, ADT tool (For android develop
     
     <item>
       <title>Rails 5 new features</title>
-      <link>https://coderade.github.io/post/rails/rails-5-new-features/</link>
+      <link>https://valde.ci/post/rails/rails-5-new-features/</link>
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/rails/rails-5-new-features/</guid>
+      <guid>https://valde.ci/post/rails/rails-5-new-features/</guid>
       <description>On this article I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.
 I will try to show how to use the most important features of Rails 5, including Action Cable, Action Controller Renderer, Turbolinks, the Active records, Attributes API and how to use Rails exclusively as a JSON API.
 Besides that I will discuss the many other smaller changes in improvements such as the Rails command Router, new Date and Time methods, Secure Tokens and changes to parameters.</description>
@@ -131,10 +131,10 @@ Besides that I will discuss the many other smaller changes in improvements such 
     
     <item>
       <title>About me</title>
-      <link>https://coderade.github.io/about/</link>
+      <link>https://valde.ci/about/</link>
       <pubDate>Sun, 28 Aug 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/about/</guid>
+      <guid>https://valde.ci/about/</guid>
       <description>Hi there.
 After a few attempts with the coderade .in and .io blogs, I returned to write in a blog again.
 But now with no expensive domain and freedom in customization excuses, heheh. I&amp;rsquo;m hosting this blog on the GitHub Pages that is totally free and is very easy to use.
@@ -143,10 +143,10 @@ On this blog I will write about coding, DevOps and Software Engineering, life ha
     
     <item>
       <title>Hi there!</title>
-      <link>https://coderade.github.io/post/first/</link>
+      <link>https://valde.ci/post/first/</link>
       <pubDate>Sun, 28 Aug 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://coderade.github.io/post/first/</guid>
+      <guid>https://valde.ci/post/first/</guid>
       <description>Hi there.
 After a few attempts with the coderade .in and .io blogs, I returned to write in a blog again.
 But now with no expensive domain and freedom in customization excuses, heheh. I&amp;rsquo;m hosting this blog on the GitHub Pages that is totally free and is very easy to use.
