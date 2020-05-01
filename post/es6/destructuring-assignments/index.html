@@ -19,7 +19,7 @@
         <meta property="og:image:width" content="800">
         <meta property="og:image:height" content="600">
 
-        <meta name="generator" content="Hugo 0.47.1" />
+        <meta name="generator" content="Hugo 0.69.1" />
         <link href="https://valde.ci/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
         <link href="https://valde.ci/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -83,122 +83,78 @@
     
 
 </span>
-</footer>
 
-            
 
-<p>In this article I&rsquo;m going to talk about the Destructuring assignments in ES6.</p>
 
+            <p>In this article I&rsquo;m going to talk about the Destructuring assignments in ES6.</p>
 <p>The Destructuring Assignments don&rsquo;t really offer us any new features, but rather they enable us to write more readable
 and less repetitive code.</p>
-
 <p>So, have you ever had a function that was dealing with these enormous deeply nested objects and it felt like your
 code was kind of sprawling out of control, it was getting hard to read? Yes? I think that almost all of us deal with this
 on a daily coding .</p>
-
 <p>Well that&rsquo;s what destructuring assignments help us deal with.</p>
-
-<p>Let&rsquo;s take a look in some <a href="https://github.com/coderade/es6-examples/blob/master/src/examples/destructuring.js" target="_blank">examples</a>
+<p>Let&rsquo;s take a look in some <a href="https://github.com/coderade/es6-examples/blob/master/src/examples/destructuring.js">examples</a>
 to understand better how we can improve our code with ES6 feature.</p>
-
-<pre><code class="language-javascript">const event = {    //the object we will destructure
-        name: 'Rock in Rio',
-        stage: 'Trident Stage',
-        artist: &quot;Guns n Roses&quot;,
-        songs: {
-            firstSong: 'Sweet Child on mine',
-            lastSong: 'Paradise City'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">event</span> <span style="color:#f92672">=</span> {    <span style="color:#75715e">//the object we will destructure
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Rock in Rio&#39;</span>,
+        <span style="color:#a6e22e">stage</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Trident Stage&#39;</span>,
+        <span style="color:#a6e22e">artist</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Guns n Roses&#34;</span>,
+        <span style="color:#a6e22e">songs</span><span style="color:#f92672">:</span> {
+            <span style="color:#a6e22e">firstSong</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Sweet Child on mine&#39;</span>,
+            <span style="color:#a6e22e">lastSong</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Paradise City&#39;</span>
         }
     }
-</code></pre>
-
-<p>On the above code snippet, I&rsquo;ve got a object that I&rsquo;ve declared called &ldquo;event&rdquo; and we&rsquo;re going to try destructure it.</p>
-
+</code></pre></div><p>On the above code snippet, I&rsquo;ve got a object that I&rsquo;ve declared called &ldquo;event&rdquo; and we&rsquo;re going to try destructure it.</p>
 <p>Take a look on the following example:</p>
-
-<pre><code class="language-javascript">let {    
-  name,
-  artist
-} = event;
-</code></pre>
-
-<p>To destructure an object we need to declare a new variable and then choose any number of keys to create into stand alone
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> {    
+  <span style="color:#a6e22e">name</span>,
+  <span style="color:#a6e22e">artist</span>
+} <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>;
+</code></pre></div><p>To destructure an object we need to declare a new variable and then choose any number of keys to create into stand alone
 variables. We also need to specify the object that we&rsquo;re destructuring.</p>
-
 <p>You can try to console log the value of the created variables:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;name = &#39;</span>, <span style="color:#a6e22e">name</span>);
 
-<pre><code class="language-javascript">console.log('name = ', name);
-
-console.log('artist = ', artist)
-</code></pre>
-
-<p>And now let&rsquo;s go to our browser and see what happens.</p>
-
-<p><img src="/images/posts/es6/destructuring-assignments/destructuring.png" alt="" /></p>
-
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;artist = &#39;</span>, <span style="color:#a6e22e">artist</span>)
+</code></pre></div><p>And now let&rsquo;s go to our browser and see what happens.</p>
+<p><img src="/images/posts/es6/destructuring-assignments/destructuring.png" alt=""></p>
 <p>So, on the console you can see that I was able to access those two variables as their own variable instead of a
 <code>blank.blank</code> syntax key value pair of that larger object.</p>
-
 <p>Okay so that&rsquo;s the most basic way that we can access those variables using destructuring assignment, but we can also do
 some even cooler stuff.</p>
-
 <h2 id="destructuring-nested-variables">Destructuring nested variables</h2>
-
 <p>Let&rsquo;s say we want to get a deeply nested variable, well we can actually go to that by using the colon (,) so we can say
 <code>let stage, songs</code> and then we can find the <code>lastSong</code> within songs.</p>
-
 <p>If we look on the first example, we can see that <code>firstSong</code> is nested within songs, and that&rsquo;ll let us declare <code>firstSong</code>
 as it&rsquo;s own variable, and we can also rename the variables that we&rsquo;re destructuring.</p>
-
-<pre><code class="language-javascript">let {stage, songs: {firstSong}} = event;
-let {lastSong} = event.songs;
-</code></pre>
-
-<p>Then, let&rsquo;s say we want to get <code>artist</code> out of event but we already have a <code>artist</code> variable somewhere in our code,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> {<span style="color:#a6e22e">stage</span>, <span style="color:#a6e22e">songs</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">firstSong</span>}} <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>;
+<span style="color:#66d9ef">let</span> {<span style="color:#a6e22e">lastSong</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">songs</span>;
+</code></pre></div><p>Then, let&rsquo;s say we want to get <code>artist</code> out of event but we already have a <code>artist</code> variable somewhere in our code,
 so we can rename it by using this colon, so we can say okay from now on: let artist be known as a favorite:</p>
-
-<pre><code class="language-javascript">let {artist: favorite} = event;
-</code></pre>
-
-<p>I encourage you to mess around with these objects and run them in your browser and see how destructuring works so you
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> {<span style="color:#a6e22e">artist</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">favorite</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>;
+</code></pre></div><p>I encourage you to mess around with these objects and run them in your browser and see how destructuring works so you
 really get your hands on the idea.</p>
-
-<pre><code class="language-javascript">console.log('stage: ', stage);           //&quot;Trident Stage&quot;
-console.log('first Song: ', firstSong);  //&quot;Sweet Child on mine&quot;
-console.log('last Song: ',  lastSong);   //&quot;Paradise City&quot;
-console.log('favorite: ', favorite);     //&quot;Guns n Roses&quot;
-</code></pre>
-
-<h2 id="destructuring-arrays">Destructuring arrays</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;stage: &#39;</span>, <span style="color:#a6e22e">stage</span>);           <span style="color:#75715e">//&#34;Trident Stage&#34;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;first Song: &#39;</span>, <span style="color:#a6e22e">firstSong</span>);  <span style="color:#75715e">//&#34;Sweet Child on mine&#34;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;last Song: &#39;</span>,  <span style="color:#a6e22e">lastSong</span>);   <span style="color:#75715e">//&#34;Paradise City&#34;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;favorite: &#39;</span>, <span style="color:#a6e22e">favorite</span>);     <span style="color:#75715e">//&#34;Guns n Roses&#34;
+</span></code></pre></div><h2 id="destructuring-arrays">Destructuring arrays</h2>
 <p>You also should know that you can use destructuring with arrays.</p>
-
 <p>If I have an array called <code>festivals</code> and in it
 I&rsquo;ve named all these mega festivals and I wanted to structure that, you can use almost the same syntax as object
 destructuring but with an array.</p>
-
-<pre><code class="language-javascript">const festivals = ['Coachella', 'Rock in Rio', 'Tomorrowland', 'Ultra Music Festival'];
-</code></pre>
-
-<p>Then, I can create a new variable that holds the index of these objects and I can skip over ones that I don&rsquo;t want to access,
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">festivals</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Coachella&#39;</span>, <span style="color:#e6db74">&#39;Rock in Rio&#39;</span>, <span style="color:#e6db74">&#39;Tomorrowland&#39;</span>, <span style="color:#e6db74">&#39;Ultra Music Festival&#39;</span>];
+</code></pre></div><p>Then, I can create a new variable that holds the index of these objects and I can skip over ones that I don&rsquo;t want to access,
 and then later on in my code.
 ​</p>
-
-<pre><code class="language-javascript">let [eventIdx0, , , eventIdx3] = festivals;
-</code></pre>
-
-<p>So, I can access those variables as these variable names, Rather than use: <code>festivals[0]</code> as we normally do with arrays:</p>
-
-<pre><code class="language-javascript">console.log(eventIdx0);    //&quot;Coachella&quot;
-console.log(eventIdx3);    //&quot;Ultra Music Festival&quot;
-</code></pre>
-
-<p>On the above example instead of having to do <code>festivals[3]</code> I can just say <code>eventIdx3</code> to get the <code>&quot;Ultra Music Festival&quot;</code>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> [<span style="color:#a6e22e">eventIdx0</span>, , , <span style="color:#a6e22e">eventIdx3</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">festivals</span>;
+</code></pre></div><p>So, I can access those variables as these variable names, Rather than use: <code>festivals[0]</code> as we normally do with arrays:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">eventIdx0</span>);    <span style="color:#75715e">//&#34;Coachella&#34;
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">eventIdx3</span>);    <span style="color:#75715e">//&#34;Ultra Music Festival&#34;
+</span></code></pre></div><p>On the above example instead of having to do <code>festivals[3]</code> I can just say <code>eventIdx3</code> to get the <code>&quot;Ultra Music Festival&quot;</code>
 with the variable I&rsquo;ve assigned it to.</p>
-
-<hr />
-
-<p>The examples of this article and project that I used to run them and other examples are available on my GitHub <a href="https://github.com/coderade/es6-examples" target="_blank">repository</a>.</p>
+<hr>
+<p>The examples of this article and project that I used to run them and other examples are available on my GitHub <a href="https://github.com/coderade/es6-examples">repository</a>.</p>
 
             <ul class="share-buttons">
     <li>Share this article:</li>
@@ -386,7 +342,7 @@ with the variable I&rsquo;ve assigned it to.</p>
 <footer class="main-footer">
   <div class="container clearfix">
         <a class="icon-rss" href="https://valde.ci/post/index.xml" title="RSS"></a>
-        <p>&copy; 2019 &middot; Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>.</p>
+        <p>&copy; 2020 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
   </div>
 </footer>
 

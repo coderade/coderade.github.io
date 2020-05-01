@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Coderade blog</title>
@@ -6,31 +6,13 @@
     <description>Recent content in Tags on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Sep 2017 13:47:08 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate>
     
 	<atom:link href="https://valde.ci/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Android</title>
-      <link>https://valde.ci/tags/android/</link>
-      <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
-      
-      <guid>https://valde.ci/tags/android/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Aws</title>
-      <link>https://valde.ci/tags/aws/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
-      <guid>https://valde.ci/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Coding</title>
+      <title>coding</title>
       <link>https://valde.ci/tags/coding/</link>
       <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
       
@@ -39,34 +21,7 @@
     </item>
     
     <item>
-      <title>Ec2</title>
-      <link>https://valde.ci/tags/ec2/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
-      <guid>https://valde.ci/tags/ec2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Es6</title>
-      <link>https://valde.ci/tags/es6/</link>
-      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
-      
-      <guid>https://valde.ci/tags/es6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Idea</title>
-      <link>https://valde.ci/tags/idea/</link>
-      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
-      
-      <guid>https://valde.ci/tags/idea/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Imho</title>
+      <title>imho</title>
       <link>https://valde.ci/tags/imho/</link>
       <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
       
@@ -75,7 +30,25 @@
     </item>
     
     <item>
-      <title>Js</title>
+      <title>aws</title>
+      <link>https://valde.ci/tags/aws/</link>
+      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ec2</title>
+      <link>https://valde.ci/tags/ec2/</link>
+      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/ec2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>js</title>
       <link>https://valde.ci/tags/js/</link>
       <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
       
@@ -84,16 +57,7 @@
     </item>
     
     <item>
-      <title>Mobile</title>
-      <link>https://valde.ci/tags/mobile/</link>
-      <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
-      
-      <guid>https://valde.ci/tags/mobile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Nodejs</title>
+      <title>nodejs</title>
       <link>https://valde.ci/tags/nodejs/</link>
       <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
       
@@ -102,7 +66,52 @@
     </item>
     
     <item>
-      <title>Rails</title>
+      <title>android</title>
+      <link>https://valde.ci/tags/android/</link>
+      <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mobile</title>
+      <link>https://valde.ci/tags/mobile/</link>
+      <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>es6</title>
+      <link>https://valde.ci/tags/es6/</link>
+      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/es6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web</title>
+      <link>https://valde.ci/tags/web/</link>
+      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>idea</title>
+      <link>https://valde.ci/tags/idea/</link>
+      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/idea/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rails</title>
       <link>https://valde.ci/tags/rails/</link>
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
       
@@ -111,20 +120,11 @@
     </item>
     
     <item>
-      <title>Ruby</title>
+      <title>ruby</title>
       <link>https://valde.ci/tags/ruby/</link>
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
       
       <guid>https://valde.ci/tags/ruby/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web</title>
-      <link>https://valde.ci/tags/web/</link>
-      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
-      
-      <guid>https://valde.ci/tags/web/</guid>
       <description></description>
     </item>
     

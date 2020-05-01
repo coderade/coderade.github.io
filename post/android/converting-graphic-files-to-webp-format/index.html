@@ -19,7 +19,7 @@
         <meta property="og:image:width" content="800">
         <meta property="og:image:height" content="600">
 
-        <meta name="generator" content="Hugo 0.47.1" />
+        <meta name="generator" content="Hugo 0.69.1" />
         <link href="https://valde.ci/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
         <link href="https://valde.ci/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -81,246 +81,168 @@
     
 
 </span>
-</footer>
 
-            
 
-<p>For all who don&rsquo;t know the webP format, Android has supported this image format
+
+            <p>For all who don&rsquo;t know the webP format, Android has supported this image format
 for many years.</p>
-
 <p>As I said on my <a href="/post/android/inspecting-apk-files-after-packaging">previous</a>
 article: the WebP files are smaller than JPGs or PNGs and like PNGs, they support transparency.
 But creating them files has always been a bit of a chore.</p>
-
 <p>Now, with Android Studio 2.3, you can convert your existing graphical files into
 WebP files very easily.</p>
-
 <p>On this article, I&rsquo;ll show how to convert your created image files to the WebP format
-on the new version of the <a href="https://developer.android.com/studio/index.html" target="_blank">Android Studio</a>.
+on the new version of the <a href="https://developer.android.com/studio/index.html">Android Studio</a>.
 So if you haven&rsquo;t already switched for the new version, I think that it&rsquo;s
 definitely time to do so now, since that this new version added
 several quality improvements across the IDE
-<a href="https://android-developers.googleblog.com/2017/03/android-studio-2-3.html" target="_blank">comparing</a>
+<a href="https://android-developers.googleblog.com/2017/03/android-studio-2-3.html">comparing</a>
 with older versions.</p>
-
 <p>For this article, I&rsquo;ll work in a version of my project called
-<a href="https://github.com/coderade/CoffeeMenuSample" target="_blank">CoffeeMenuSample</a>. This is the
+<a href="https://github.com/coderade/CoffeeMenuSample">CoffeeMenuSample</a>. This is the
 same project that I used on my previous article and also is available on my GitHub.</p>
-
 <p>It displays a list of data in a recycler view and each data item is associated
 with an image file.
 And like my <a href="/post/android/inspecting-apk-files-after-packaging">previous</a>
 article, when I demonstrated the APK Analyzer tool, I found that my largest space
 usage in the APK was from those image files.</p>
-
 <h2 id="converting-a-single-image-file-to-webp">Converting a single image file to WebP</h2>
-
 <p>I&rsquo;ll show you first how to convert a single image file to WebP.</p>
-
 <p>I&rsquo;ll do that with the JPG file that&rsquo;s in the drawable resource directory on
 my project.</p>
-
 <p>So, with the Android Studio running (of course 😅), I&rsquo;m going to right
 click on that JPG file and choose Find Usages (CTRL + F7 on Linux/Windows,
-  CMD + F7 on Mac) and I find a reference to the JPG file that is in the <code>activity_detail.xml</code>
-  file.</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-activity_xml-context.png" alt="" /></p>
-
+CMD + F7 on Mac) and I find a reference to the JPG file that is in the <code>activity_detail.xml</code>
+file.</p>
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-activity_xml-context.png" alt=""></p>
 <p>On the Design tab for this file, I&rsquo;ll resize that to fit the screen and then
 shrink down that window so it gets a little bit bigger so we can see how the
 image looks like:</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/design-tab-activity-detail-xml.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/design-tab-activity-detail-xml.png" alt=""></p>
 <p>Now, I&rsquo;ll go back to the project window and I&rsquo;ll right click on the file and
 down at the bottom of the menu I&rsquo;ll choose Convert to WebP.</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/as-convert-to-webp.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/as-convert-to-webp.png" alt=""></p>
 <p>A window will be opened with many options available:</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/convert-webp-options.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/convert-webp-options.png" alt=""></p>
 <p><strong>Lossy encoding</strong> means that you can shrink down the image quite a bit. You can
 also choose <strong>lossless encoding</strong> and that will retain the image&rsquo;s resolution but
 the file size won&rsquo;t shrink as much and more importantly, your app will now have
 a minimum SDK of API 18.</p>
-
 <p>This will work for the sample app, which has a minimum SDK of API 18, but for
 this article I&rsquo;ll go back to lossy encoding.</p>
-
 <p>You also have control on this screen of the encoding quality.</p>
-
 <p>A good ideia is leave the <strong>Preview/inspect each converted image before saving</strong>
 option selected so I can preview the image before I save the change.</p>
-
 <p>There&rsquo;s some other options down here, but I&rsquo;ll leave those at their default selections
 and click OK.</p>
-
 <p>This will takes me to the preview screen and we see the original file on the left
 and the new file that&rsquo;s going to be created on the right:</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-preview-ajust-window.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-preview-ajust-window.png" alt=""></p>
 <p>And to my eye they look pretty much the same. We can move this slider to the left
 to reduce the image quality and the difference between the images will be shown
 in the center.</p>
-
 <p>For this example I&rsquo;ll keep the default of 75% and then I&rsquo;ll click finish.</p>
-
 <p>Then, there&rsquo;s the result. My Android Studio Event log logged the message:</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-log.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-log.png" alt=""></p>
 <p>showing that the image size has been reduced to a very considerable size. (In this
 case I saved 507.8 KB 😮)</p>
-
 <p>The WebP file has been created and if we look in the design environment again,
 it looks pretty much the same:</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-image-converted.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-image-converted.png" alt=""></p>
 <p>Now that we learned how to convert the images to a webP format and the result has
 been approved (at least on my side), we can do now a mass conversion.</p>
-
 <h2 id="doing-a-mass-conversion-of-image-files-to-webp">Doing a mass conversion of image files to WebP</h2>
-
 <p>In my assets directory I&rsquo;ll click and select all of my files.
 I will click on the first, held down the shift key and click on the last.</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/selecting-all-assets-files.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/selecting-all-assets-files.png" alt=""></p>
 <p>Then, once again, I&rsquo;ll right click and choose Convert to WebP, accept
 all the default settings and click OK.</p>
-
 <p>And now because I&rsquo;m converting multiple files, I can click Next and Previous to
 move through the files and see what they&rsquo;ll look like.
 Once I liked my settings, I&rsquo;ll click <strong>Accept All</strong> and all of my files have been
 converted to WebP.</p>
-
 <p>The Android Studio will show a notification saying that we saved 3.3 MB after the
 files conversion.</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/files-converted-webp.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/files-converted-webp.png" alt=""></p>
 <p>This is really insane, if you think that we&rsquo;re talking about a mobile app.</p>
-
 <p>Before you test this on a device, I need to make a change in one of the Java files,
 because we changed the format of all the dummy images.</p>
-
 <p>I&rsquo;ll go to my Java directory, to my base package, to the sample sub package and
-I&rsquo;ll open the <a href="https://github.com/coderade/CoffeeMenuSample/blob/master/app/src/main/java/com/coderade/android/coffeemenusample/sample/SampleDataProvider.java" target="_blank">SampleDataProvider.java</a> file.</p>
-
+I&rsquo;ll open the <a href="https://github.com/coderade/CoffeeMenuSample/blob/master/app/src/main/java/com/coderade/android/coffeemenusample/sample/SampleDataProvider.java">SampleDataProvider.java</a> file.</p>
 <p>We can notice that where I created the sample data to the project, there are
 references to those old JPG files scattered throughout this file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+        dataItemList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+        dataItemMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
 
-<pre><code class="language-java">static {
-        dataItemList = new ArrayList&lt;&gt;();
-        dataItemMap = new HashMap&lt;&gt;();
-
-        addItem(new DataItem(null, &quot;Hamburger&quot;, &quot;Entrees&quot;,
-                &quot;The best burger in the world&quot;,
-                4, 5, &quot;hamburger.jpg&quot;));
-        //...//        
-    }
-</code></pre>
-
-<p>We can press Ctrl + R on Windows or Cmd + R on Mac to replace all
+        addItem<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DataItem<span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Hamburger&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Entrees&#34;</span><span style="color:#f92672">,</span>
+                <span style="color:#e6db74">&#34;The best burger in the world&#34;</span><span style="color:#f92672">,</span>
+                4<span style="color:#f92672">,</span> 5<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;hamburger.jpg&#34;</span><span style="color:#f92672">));</span>
+        <span style="color:#75715e">//...//        
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+</code></pre></div><p>We can press Ctrl + R on Windows or Cmd + R on Mac to replace all
 the .jpg references it with .webp and then click on the <code>Replace All</code> button.</p>
-
 <p>The result will be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">static</span> <span style="color:#f92672">{</span>
+        dataItemList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;();</span>
+        dataItemMap <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;();</span>
 
-<pre><code class="language-java">static {
-        dataItemList = new ArrayList&lt;&gt;();
-        dataItemMap = new HashMap&lt;&gt;();
-
-        addItem(new DataItem(null, &quot;Hamburger&quot;, &quot;Entrees&quot;,
-                &quot;The best burger in the world&quot;,
-                4, 5, &quot;hamburger.webp&quot;));
-        //...//        
-    }
-</code></pre>
-
-<p>Before I deploy the application, we need to go back to the device and uninstall
+        addItem<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> DataItem<span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Hamburger&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Entrees&#34;</span><span style="color:#f92672">,</span>
+                <span style="color:#e6db74">&#34;The best burger in the world&#34;</span><span style="color:#f92672">,</span>
+                4<span style="color:#f92672">,</span> 5<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;hamburger.webp&#34;</span><span style="color:#f92672">));</span>
+        <span style="color:#75715e">//...//        
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+</code></pre></div><p>Before I deploy the application, we need to go back to the device and uninstall
 the application.</p>
-
 <p>In this way we are making sure I&rsquo;m starting with a fresh data set.
 In this example application the data that&rsquo;s provided by that Java class is cached
 in a database and I want to start over without anything on the device.</p>
-
 <p>And I&rsquo;ll run the app again and the result is that it looks exactly the same as it
 did before.</p>
-
 <p>If you are testing the app, you can move around and see all of the data and the
 associated images.</p>
-
 <p>But what I got with these changes? And about the resulting size of the application?
 Well, to validate this just like I did in my <a href="/post/android/inspecting-apk-files-after-packaging">previous</a>
 article, I&rsquo;ll going to build an APK file to compare it with a old apk file which
 I created before the graphical file conversion.</p>
-
 <h2 id="analyzing-the-apk-file-to-compare-the-assets-size">Analyzing the APK file to compare the assets size</h2>
-
 <p>To understand how to build a APK file and how to use the APK Analyzer on the
 Android Studio, please check my previous article:
 <a href="/post/android/inspecting-apk-files-after-packaging">Inspect APK files with the APK Analyzer on Android Studio</a>.</p>
-
 <p>To do this analysis, I&rsquo;ll choose Build and then Build APK on the Android Studio
 menu. This will create a new APK for the app.</p>
-
 <p>Then, once again, I&rsquo;ll choose Build, Analyze APK, and I&rsquo;ll choose my old APK
 which I had created in my previous article, before the jpgs file conversion to webP files.</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/old-apk-file.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/old-apk-file.png" alt=""></p>
 <p>We can see that this APK file has a RAW File Size of <strong>5.5 MB</strong> and a Download
 Size of <strong>4.9MB</strong>.</p>
-
 <p>Then, I&rsquo;ll click the <code>Compare With</code> button and I&rsquo;ll navigate back to choose the
 new APK file that I just build.</p>
-
 <p><strong>Here&rsquo;s my comparison:</strong></p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/old-app.apk-vs-new-app-apk.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/old-app.apk-vs-new-app-apk.png" alt=""></p>
 <p>We can see that my <code>assets</code> directory has shrunk down from 2.5 Megabytes all the
 way to 635.1KB and the <code>res</code> directory has shrunk down from 879.5 Kilobytes to
 370.6KB.</p>
-
 <p>This application isn&rsquo;t a huge application, but you can see that with a simple files
 conversion we can make a significant difference.</p>
-
 <h2 id="converting-the-webp-files-back-to-a-png-format">Converting the webP files back to a PNG format</h2>
-
 <p>Finally, we need to understand how you can return to a more conventional graphic
 format if we want to do that.</p>
-
 <p>I&rsquo;ll go back to Android Studio and I&rsquo;ll choose the WebP file in my resources
 directory.</p>
-
 <p>I&rsquo;ll right click on it and now the menu choice says: <code>Convert to PNG</code>.</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/convert-webp-to-png.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/convert-webp-to-png.png" alt=""></p>
 <p>I&rsquo;ll select that and when I&rsquo;m prompted:</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/keep-files-AS-png.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/keep-files-AS-png.png" alt=""></p>
 <p>I&rsquo;ll say No, I want to keep both versions of the file.</p>
-
 <p>Now, we can compare the PNG and a WebP files:</p>
-
-<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-png-comparison.png" alt="" /></p>
-
+<p><img src="/images/posts/android/converting-graphic-files-to-webp-format/webp-png-comparison.png" alt=""></p>
 <p>We can look on the on the png file and it shows that it is now 1.19M and if we check
 the WebP file it shows that it&rsquo;s less than 60K. That&rsquo;s a massive difference.</p>
-
 <p>As we can see on this article, using WebP graphic files instead of JPG or PNG
 files can help you dramatically shrink the size of your Android package application.
 So, whenever possible it&rsquo;s a good idea to use this format as the standard graphical
 format for your app.</p>
-
 <p>Thanks for your reading and please take a look at the other blog posts when you
 have a time.</p>
 
@@ -510,7 +432,7 @@ have a time.</p>
 <footer class="main-footer">
   <div class="container clearfix">
         <a class="icon-rss" href="https://valde.ci/post/index.xml" title="RSS"></a>
-        <p>&copy; 2019 &middot; Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>.</p>
+        <p>&copy; 2020 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
   </div>
 </footer>
 

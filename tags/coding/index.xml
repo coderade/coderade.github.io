@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Coding on Coderade blog</title>
+    <title>coding on Coderade blog</title>
     <link>https://valde.ci/tags/coding/</link>
-    <description>Recent content in Coding on Coderade blog</description>
+    <description>Recent content in coding on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate>

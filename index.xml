@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coderade blog</title>
@@ -6,7 +6,7 @@
     <description>Recent content on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 28 Aug 2016 13:47:08 +0200</lastBuildDate>
     
 	<atom:link href="https://valde.ci/index.xml" rel="self" type="application/rss+xml" />
     
@@ -93,7 +93,7 @@ Let&amp;rsquo;s explore a little bit what that means because this is actually a 
       
       <guid>https://valde.ci/post/es6/const-and-let/</guid>
       <description>Perhaps the most recognizable addition to the JavaScript language was that of const and let. Two new key words that allow us to declare variables, which behave differently than var.
-When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables?</description>
+When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables? That means, what can it be called?</description>
     </item>
     
     <item>
@@ -137,8 +137,8 @@ Besides that I will discuss the many other smaller changes in improvements such 
       <guid>https://valde.ci/about/</guid>
       <description>Hi there.
 After a few attempts with the coderade .in and .io blogs, I returned to write in a blog again.
-But now with no expensive domain and freedom in customization excuses, heheh. I&amp;rsquo;m hosting this blog on the GitHub Pages that is totally free and is very easy to use.
-On this blog I will write about coding, DevOps and Software Engineering, life hacks and I&amp;rsquo;ll try to share my experiences in this vast life (yeah, with 24 years old).</description>
+But now with no expensive domain (I bought the valde.ci domain hehe) and freedom in customization excuses. I&amp;rsquo;m hosting this blog on the GitHub Pages that is totally free and is very easy to use.
+On this blog I will write about most of coding, DevOps and Software Engineering (some IT stuff) but I&amp;rsquo;ll try to share my experiences in this vast life too (yeah, with 25 years old).</description>
     </item>
     
     <item>

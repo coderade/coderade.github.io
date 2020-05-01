@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Coderade blog</title>
@@ -93,7 +93,7 @@ Let&amp;rsquo;s explore a little bit what that means because this is actually a 
       
       <guid>https://valde.ci/post/es6/const-and-let/</guid>
       <description>Perhaps the most recognizable addition to the JavaScript language was that of const and let. Two new key words that allow us to declare variables, which behave differently than var.
-When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables?</description>
+When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables? That means, what can it be called?</description>
     </item>
     
     <item>
