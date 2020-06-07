@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://valde.ci/</loc>
+    <lastmod>2019-08-10T21:17:21+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://valde.ci/tags/coding/</loc>
     <lastmod>2019-08-10T21:17:21+02:00</lastmod>
   </url>
@@ -174,11 +179,6 @@
   
   <url>
     <loc>https://valde.ci/about/</loc>
-    <lastmod>2020-05-01T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://valde.ci/</loc>
     <lastmod>2020-05-01T18:14:00+00:00</lastmod>
   </url>
   
