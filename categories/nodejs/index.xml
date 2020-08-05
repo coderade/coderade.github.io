@@ -17,8 +17,8 @@
       <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
       
       <guid>https://valde.ci/post/aws/launching-ec2-instances-nodejs-aws-sdk/</guid>
-      <description>The EC2 service is one of the most fundamental services offered by AWS. It underpins many of the other services in AWS, so it&amp;rsquo;s always a good idea understand how to use and the best way to use it.
-In this post I&amp;rsquo;ll show how to create EC2 instances directly in the code using the AWS SDK for JavaScript in Node.js.
+      <description>The EC2 service is one of the most fundamental services offered by AWS. It underpins many of the other services in AWS, so it’s always a good idea to understand how to use and the best way to use it.
+In this post, I’ll show how to create EC2 instances directly in the code using the AWS SDK for JavaScript in Node.js.
 In order to run your application in AWS, we need to have one or more EC2 instances to execute that code.</description>
     </item>
     

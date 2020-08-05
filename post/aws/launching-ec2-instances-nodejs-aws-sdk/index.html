@@ -88,65 +88,63 @@
 
 
             <p>The EC2 service is one of the most fundamental services offered by AWS.
-It underpins many of the other services in AWS, so it&rsquo;s always a good idea
-understand how to use and the best way to use it.</p>
-<p>In this post I&rsquo;ll show how to create EC2 instances directly in the code using the
+It underpins many of the other services in AWS, so it’s always a good idea
+to understand how to use and the best way to use it.</p>
+<p>In this post, I’ll show how to create EC2 instances directly in the code using the
 <a href="https://aws.amazon.com/sdk-for-node-js">AWS SDK for JavaScript in Node.js</a>.</p>
-<p>In order to run your application in AWS, we need to have one or more EC2 instances
-to execute that code. So, the first step is to create an EC2 instance, there are
-many different ways to do this.</p>
-<p>One of these ways is use the AWS Console to create instances. I think that is
-the easy way, because the <a href="https://aws.amazon.com/console/">AWS Console</a> is very
-interactive and the AWS documentation is very good and easy to understand.
-To check how to create instance using the AWS console use the official
+<p>In order to run your application in AWS, we need to have one or more EC2 instances to execute that code.
+So, the first step is to create an EC2 instance, there are many different ways to do this.</p>
+<p>One of these ways is to use the AWS Console to create instances.
+I think that is the easy way because the <a href="https://aws.amazon.com/console/">AWS Console</a>
+is very interactive and the AWS documentation is very good and easy to understand.
+To check how to create an instance using the AWS console using the official
 <a href="https://docs.aws.amazon.com/efs/latest/ug/gs-step-one-create-ec2-resources.html">Step to step documentation</a>.</p>
-<p>Another method is to use the <a href="https://aws.amazon.com/cli/">AWS CLI</a>, that is a
-little more complicated, but that have a good documentation too. This way
-can be useful with DevOps automation.</p>
-<p>For this post I&rsquo;ll show how to use the SDK to create an instance with code.</p>
-<p>But before we can create the instance, we need to create a few other resources.</p>
-<p>On this post, I will show how created the needed resources to use a EC2 instance.</p>
+<p>Another method is to use the <a href="https://aws.amazon.com/cli/">AWS CLI</a>, which is a little more complicated,
+but that have good documentation too. This way can be useful with DevOps automation.</p>
+<p>For this post, I’ll show how to use the SDK to create an instance with code.</p>
+<p>But before we can create an instance, we need to create a few other resources.</p>
+<p>In this post, I will show how created the needed resources to use an EC2 instance.</p>
 <p>The first thing that we need to do is create a security group for the instance.</p>
-<p>So let&rsquo;s to do this.</p>
+<p>So let’s do this.</p>
 <h2 id="creating-an-ec2-security-group">Creating an EC2 Security Group</h2>
 <p>With a <a href="https://nodejs.org/en/docs/guides/getting-started-guide/">Node.js project</a>
-created, the first thing that we need to do is download the AWS SDK module from
-the <a href="https://www.npmjs.com/">NPM</a> repository.</p>
+created, the first thing that we need to do is download the AWS SDK module from the
+<a href="https://www.npmjs.com/">NPM</a> repository.</p>
 <p>To do this, use the following command on the root of your project:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">npm i aws<span style="color:#f92672">-</span>sdk
 </code></pre></div><p>Then, we will need to create our script file (this will be where we will the
-start file for this example), In this example I called it as <code>create-ec2-instance.js</code>,
+start file for this example), In this example, I called it as <code>create-ec2-instance.js</code>,
 but you can use the name you want.</p>
-<p>After that we need to import the AWS SDK into a local variable in this
+<p>After that, we need to import the AWS SDK into a local variable in this
 file. We will create a const declaration with an identifier of AWS all in caps and
-assign the module namev<code>'aws-sdk'</code> to it using the require function.</p>
+assign the module named <code>'aws-sdk'</code> to it using the require function.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">AWS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;aws-sdk&#39;</span>);
 </code></pre></div><p>The AWS SDK requires you to configure the region each time it&rsquo;s imported. I&rsquo;ll
 admit this gets a little annoying. There are some abstractions you can do to
 mitigate this, like set the region in the AWS config file on your local system or
-export as environment variable before running.</p>
+export as an environment variable before running.</p>
 <p>To understand how to do this use the AWS Docs link of how to
 <a href="https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/setup-credentials.html">Set up AWS Credentials and Region for Development</a></p>
 <p>For this example, I will call the update function on the <code>AWS.config</code> property.
-Into this function pass an object with one property called region, you also could
+Into this function pass an object with one property called <code>region</code>, you also could
 add other properties to this object to change other configuration options on the
 <code>AWS.config</code> object, such as the max number of retries for a given request or a
 global logger object.</p>
 <p>Here just enter a string as the value to the <code>region</code> key property with the region
 you are using. I&rsquo;ll enter <code>us-east-1</code> here for mine.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">update</span>({<span style="color:#a6e22e">region</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;us-east-1&#39;</span>});
-</code></pre></div><p>In my situation, I use more than a region and profile in my computer (for personal
+</code></pre></div><p>In my situation, I use more than a region and profile on my computer (for personal
 and working coding) so I also need to set my profile using the <code>AWS.config.credentials</code>
 property. This configuration will get my AWS credentials data in a shared file used by
 SDKs and the command line interface on my computer.
 To understand better how to set on this way, use the AWS Docs link of how to
 <a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html">Loading Credentials in Node.js from the Shared Credentials File</a></p>
-<p>In this example I will load my personal profile using the
+<p>In this example, I will load my personal profile using the
 <code>AWS.SharedIniFileCredentials</code> function and load to the <code>AWS.config.credentials</code>
 property.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">SharedIniFileCredentials</span>({<span style="color:#a6e22e">profile</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;personal&#39;</span>});
 <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">credentials</span>;
-</code></pre></div><p>Nice! now we have the Aws settings setted! But and now?</p>
+</code></pre></div><p>Nice! now we have the Aws settings set! But and now?</p>
 <p>Now we need an EC2 object created from the AWS object, on this object we&rsquo;ll call
 the EC2 operations on.</p>
 <p>So, to use it, declare a new <code>const</code> variable called <code>ec2</code>.
@@ -159,18 +157,18 @@ one can be useful if you are using other regions in your code.</p>
 <p>To check all the params available to be used on the EC2 constructor, you can<br>
 read the docs for the <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html">AWS.EC2</a>
 class.</p>
-<p>But for this example a empty EC2 object is all that&rsquo;s needed to create this object.</p>
+<p>But for this example, an empty EC2 object is all that&rsquo;s needed to create this object.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ec2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">EC2</span>();
 </code></pre></div><p>Now we can start to create the <code>createSecurityGroup</code> function.
 Most of the AWS SDK operations have a similar pattern. First, we need to declare
 the parameters object to be passed to the SDK function. Then call the function,
 passing in a callback to handle the result.</p>
-<p>For this function we need to create a const named <code>params</code> and assign to it an
-empty object. We&rsquo;ll going to be using the <code>createSecurityGroup</code> function here and
-two of the params arguments that it wants is a description and a group name.</p>
-<p>This function willl be taking an argument called <code>sgName</code> to the name and the
-<code>sgDescription</code> to the description of the Security Group.</p>
-<p>Personally I find that the description isn&rsquo;t too useful until you have a massive
+<p>For this function, we need to create a const named <code>params</code> and assign to it an
+empty object. We&rsquo;ll use the <code>createSecurityGroup</code> function here and
+two of the params arguments that it wants are a description and a group name.</p>
+<p>This function will be taking an argument called <code>sgName</code> for the name and the
+<code>sgDescription</code> for the description of the Security Group.</p>
+<p>Personally, I find that the description isn&rsquo;t too useful until you have a massive
 number of security groups, even then, it seems that tags are used more for management
 in those situations than descriptions.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>) {
@@ -180,8 +178,8 @@ in those situations than descriptions.</p>
     };
 }
 </code></pre></div><p>With the <code>params</code> defined, we can continue to the creation of the function. For these
-type of functions I personally like to use promises instead of callbacks. IMHO I
-think nowadays we must use the most of the advantages of ES6 brings to us and
+types of functions, I personally like to use promises instead of callbacks. IMHO I
+think nowadays we must use most of the advantages that ES6 brings to us and
 this approach a little easier to understand and read.</p>
 <p>In this way, we will return a new Promise. It will take a function with the
 resolve and reject callbacks.
@@ -205,14 +203,14 @@ group creation was successful.</p>
 })
 </code></pre></div><p>Because our security group is essentially empty, we want to add a rule here.</p>
 <p>We&rsquo;ll want to enable port 22 so that we can SSH into the instance once it&rsquo;s
-been created and port 3000 so if want to run a endpoint example like
+been created and port 3000 so if want to run an endpoint example like
 <a href="https://expressjs.com/">Express</a>
 on the instance. So start by creating a new <code>let</code> called <code>params</code> again
 and assigning an empty object to it.</p>
 <p>There are a few properties required to create this security group rule, which
 should sound familiar to you if you&rsquo;ve set one up with the console before.</p>
 <p>The first is the <code>GroupId</code> to apply the rule to. We can get that from the data
-argument supplied by the creation callback. For the value here, enter <code>data.GroupId</code>.
+argument supplied by the creation&rsquo;s callback. For the value here, enter <code>data.GroupId</code>.
 The next property is <code>IpPermissions</code>, which is an array. This array enables us
 to configure multiple rules in one request.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
@@ -220,7 +218,7 @@ to configure multiple rules in one request.</p>
     <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> []
 };
 </code></pre></div><p>Then, we need to create an object in this array and add the property <code>IpProtocol</code>.</p>
-<p>The possible values for this are protocols like <code>tcp</code> or <code>udp</code>, for some examples.
+<p>The possible values for this are protocols like TCP or UDP, for some examples.
 We will use the value <code>'tcp'</code> here, all lowercase. The next two properties <code>FromPort </code>and
 <code>ToPort</code> define the port range that you&rsquo;re enabling the rule for.</p>
 <p>In the first case, we&rsquo;ll enter the number <code>22</code> in both <code>FromPort</code> and <code>ToPort</code>
@@ -235,16 +233,15 @@ since I want to allow SSH on this example.</p>
         }
     ]
 }      
-</code></pre></div><p>Finally, add the property <code>IpRanges</code>
-with a value as an empty array. Here&rsquo;s where we can define who this rule applies to.</p>
+</code></pre></div><p>Finally, add the property <code>IpRanges</code>&rsquo; value as an empty array. Here&rsquo;s where we can define who this rule applies to.</p>
 <p>Add an empty object with the property <code>CidrIp</code>. We&rsquo;ll enable access to anyone,
-so give this property the value of <code>0.0.0.0/0</code>.</p>
+so give this property the value <code>0.0.0.0/0</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
     {
         <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
     }
 ]    
-</code></pre></div><p>Now, we need to also add the rule for port 3000, so we can copy thes rule object created:</p>
+</code></pre></div><p>Now, we need to also add the rule for port 3000, so we can copy the rule object created:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
     <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
     <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
