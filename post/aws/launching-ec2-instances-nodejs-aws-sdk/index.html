@@ -92,7 +92,7 @@ It underpins many of the other services in AWS, so it’s always a good idea
 to understand how to use and the best way to use it.</p>
 <p>In this post, I’ll show how to create EC2 instances directly in the code using the
 <a href="https://aws.amazon.com/sdk-for-node-js">AWS SDK for JavaScript in Node.js</a>.</p>
-<p>In order to run your application in AWS, we need to have one or more EC2 instances to execute that code.
+<p>To run your application in AWS, we need to have one or more EC2 instances to execute that code.
 So, the first step is to create an EC2 instance, there are many different ways to do this.</p>
 <p>One of these ways is to use the AWS Console to create instances.
 I think that is the easy way because the <a href="https://aws.amazon.com/console/">AWS Console</a>
@@ -139,7 +139,7 @@ property. This configuration will get my AWS credentials data in a shared file u
 SDKs and the command line interface on my computer.
 To understand better how to set on this way, use the AWS Docs link of how to
 <a href="https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-shared.html">Loading Credentials in Node.js from the Shared Credentials File</a></p>
-<p>In this example, I will load my personal profile using the
+<p>In this example, I will load my profile using the
 <code>AWS.SharedIniFileCredentials</code> function and load to the <code>AWS.config.credentials</code>
 property.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">SharedIniFileCredentials</span>({<span style="color:#a6e22e">profile</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;personal&#39;</span>});
@@ -151,8 +151,8 @@ the EC2 operations on.</p>
 To the right side of an assignment operator, use the new keyword and call the
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html">AWS.EC2</a> class
 with no arguments.</p>
-<p>There are many other arguments that can be passed on the class constructor like
-the <code>api-version</code>, <code>accessKeyId</code> and <code>secretAccessKey</code> and a <code>region</code>. The last
+<p>Many other arguments can be passed on the class constructor like
+the <code>api-version</code>, <code>accessKeyId</code> and, <code>secretAccessKey</code> and a <code>region</code>. The last
 one can be useful if you are using other regions in your code.</p>
 <p>To check all the params available to be used on the EC2 constructor, you can<br>
 read the docs for the <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html">AWS.EC2</a>
@@ -168,7 +168,7 @@ empty object. We&rsquo;ll use the <code>createSecurityGroup</code> function here
 two of the params arguments that it wants are a description and a group name.</p>
 <p>This function will be taking an argument called <code>sgName</code> for the name and the
 <code>sgDescription</code> for the description of the Security Group.</p>
-<p>Personally, I find that the description isn&rsquo;t too useful until you have a massive
+<p>I find that the description isn&rsquo;t too useful until you have a massive
 number of security groups, even then, it seems that tags are used more for management
 in those situations than descriptions.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>) {
@@ -178,7 +178,7 @@ in those situations than descriptions.</p>
     };
 }
 </code></pre></div><p>With the <code>params</code> defined, we can continue to the creation of the function. For these
-types of functions, I personally like to use promises instead of callbacks. IMHO I
+types of functions, I like to use promises instead of callbacks. IMHO I
 think nowadays we must use most of the advantages that ES6 brings to us and
 this approach a little easier to understand and read.</p>
 <p>In this way, we will return a new Promise. It will take a function with the
@@ -187,8 +187,8 @@ Now inside this promise argument function body, we&rsquo;ll call our first SDK f
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createSecurityGroup-property">ec2.createSecurityGroup()</a>.</p>
 <p>The first argument will be the params object which we created, then a callback function
 with the <code>err</code> and <code>data</code> arguments. Unfortunately, the SDK doesn&rsquo;t support
-promises firsthand, so we&rsquo;ll need to use callbacks here.</p>
-<p>Basically, this function is creating a security group with the name and description
+promises firsthand, so we&rsquo;ll need to use callbacks here.
+This function is creating a security group with the name and description
 that we pass it. It will not create any security group rules. Inside the function body,
 call <code>reject()</code> with the <code>err</code> object if there is one.
 In the else, create a block. This is where our code will execute if the security
@@ -283,7 +283,7 @@ so give this property the value <code>0.0.0.0/0</code>.</p>
 </code></pre></div><p>On the EC2 object, we&rsquo;ll be calling the <code>ec2.authorizeSecurityGroupIngress()</code>
 function. The ingress part of that function call refers to these rules being
 inbound rules. There is also a function called <code>authorizeSecurityGroupEgress()</code>,
-which is for outgoing rules, but is not needed on this example.</p>
+which is for outgoing rules but is not needed on this example.</p>
 <p>Call the function and pass the params object as the first argument.
 The second will again be a callback function with the argument <code>err</code>.</p>
 <p>Even though this function does return a second argument, we&rsquo;ll just ignore it.
@@ -338,7 +338,7 @@ created and assigned rules to a security group.</p>
     })
 }
 </code></pre></div><h2 id="creating-a-key-pair">Creating a key pair</h2>
-<p>To log in the instance, we must create a key pair. According the Amazon
+<p>To log in to the instance, we must create a key pair. According to the Amazon
 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">docs</a>
 the use for the Key pair is:</p>
 <blockquote>
@@ -347,14 +347,14 @@ Public–key cryptography uses a public key to encrypt a piece of data, such as 
 then the recipient uses the private key to decrypt the data.
 The public and private keys are known as a key pair.</p>
 </blockquote>
-<p>In this way we will need to create a Key Pair to connect to our EC2 instance.</p>
+<p>In this way, we will need to create a Key Pair to connect to our EC2 instance.</p>
 <p>So we need a <code>createKeyPair</code> function, this function will take a <code>keyName</code> argument.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>) {}
 </code></pre></div><p>This function will be a wrapper for the aws-sdk
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createKeyPair-property">ec2.createKeyPair</a>
 function.</p>
-<p>This function has the &lsquo;KeyName&rsquo; and the &lsquo;DryRun&rsquo; arguments, but for this example only
-the &lsquo;KeyName&rsquo; argument is needed. The value of this argument will passed in our
+<p>This function has the &lsquo;KeyName&rsquo; and the &lsquo;DryRun&rsquo; arguments, but for this example, only
+the &lsquo;KeyName&rsquo; argument is needed. The value of this argument will be passed in our
 function <code>createKeyPair</code> function.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>, <span style="color:#75715e">/* required */</span>
@@ -390,11 +390,11 @@ with the data object.</p>
 </code></pre></div><p>This data object is important because when the key pair is created in AWS,
 the function returns the contents of that key pair&rsquo;s private key.</p>
 <p>If you don&rsquo;t resolve the data argument on the <code>ec2.createKeyPair()</code> function,
-it basically throws away the created key pair and if we don&rsquo;t
+it throws away the created key pair and if we don&rsquo;t
 save this locally, the key pair is essentially useless.</p>
-<p>For this way I created a KeyPair helper function that will actually take
+<p>For this way, I created a KeyPair helper function that will actually take
 this key pair data and save it locally as a file, this function I saved on
-the helpers directory with the name <code>keyPairHelper.js</code>. This file will contains
+the helpers&rsquo; directory with the name <code>keyPairHelper.js</code>. This file will contain
 the below code:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>);
@@ -429,7 +429,7 @@ function at the begin of your <code>create-ec2-instance</code> file.</p>
         <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>);
     })
     .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">keyPairHelper</span>.<span style="color:#a6e22e">persistKeyPair</span>)
-</code></pre></div><p>With these methods our key pair will be created.</p>
+</code></pre></div><p>With these methods, our key pair will be created.</p>
 <p>Now that we have the methods to create the security group and key pair, we can
 finally create an EC2 instance using both.</p>
 <h2 id="creating-the-ec2-instance">Creating the EC2 Instance</h2>
@@ -444,12 +444,12 @@ other resources.</p>
 we&rsquo;ve made.</p>
 <p>The first we&rsquo;ll need to add is <code>ImageId</code>. This is the AMI ID that will be used
 to create the instance.</p>
-<p>To get a <code>ImageId</code> we need to select a AMI, so let&rsquo;s get one.</p>
-<h3 id="selecting-a-amazon-machine-image-ami">Selecting a Amazon Machine Image (AMI)</h3>
+<p>To get an <code>ImageId</code> we need to select an AMI, so let&rsquo;s get one.</p>
+<h3 id="selecting-an-amazon-machine-image-ami">Selecting an Amazon Machine Image (AMI)</h3>
 <p>There is an EC2 SDK function called
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#describeImages-property">describeImages</a>
 that can be used to search for AMIs that we can create. The problem is the search
-takes a long time and it&rsquo;s really just easier to go to the console directly if
+takes a long time and it&rsquo;s just easier to go to the console directly if
 you know what you&rsquo;re looking for.</p>
 <p>As we only need the ImageId for our AMI, the easiest way is suitable.</p>
 <p>So, to select the AMI, we need to go to the <a href="https://console.aws.amazon.com">AWS Console</a>
@@ -460,7 +460,7 @@ the AMI selection screen.</p>
 <p>At the top, there is the Amazon Linux AMI. At the end of that title is the ID.</p>
 <p>Yours may or may not be the same as the above image based on when you&rsquo;re reading
 this  post and which region you&rsquo;re using.</p>
-<p>Either way, for this example, if you don&rsquo;t need a especific one, you can copy
+<p>Either way, for this example, if you don&rsquo;t need a specific one, you can copy
 whatever AMI ID is in your AWS Console.</p>
 <p>Now we can switch back to your code and paste that in a string as the value to the
 <code>ImageId</code> property.</p>
@@ -469,11 +469,11 @@ whatever AMI ID is in your AWS Console.</p>
 or <code>m4.xlarge</code> and defines the properties of the instance. Like the AMI, if you
 don&rsquo;t need a specific one you can use one of the smallest here: <strong>t2.micro</strong>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">InstanceType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;t2.micro&#39;</span>,
-</code></pre></div><p>Next, we need to define the key pair name with the property <code>KeyName</code> and <code>Name</code>,
+</code></pre></div><p>Then, we need to define the key pair name with the property <code>KeyName</code> and <code>Name</code>,
 that we can be entering the value of keyName from the function arguments for both.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
 <span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
-</code></pre></div><p>Next, is the <code>MaxCount</code> and <code>MinCount</code> property, which tells AWS how many instances to create.
+</code></pre></div><p>Then, is the <code>MaxCount</code> and <code>MinCount</code> property, which tells AWS how many instances to create.
 We can enter 1 for both.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">MaxCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
 <span style="color:#a6e22e">MinCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
@@ -506,8 +506,8 @@ AWS documentation of how to
 </span><span style="color:#e6db74">  npm run start`</span>;
 </code></pre></div><p>Essentially, these commands are just installing Node and Git, cloning the
 example project from my <a href="https://github.com/coderade">GitHub</a>, installing the
-project dependencies and then running it.</p>
-<p>You can&rsquo;t just put these shell scripts directly into the <code>UserData</code> value, first
+project dependencies and, then running it.</p>
+<p>You can&rsquo;t just put these shell scripts directly into the <code>UserData</code> value, first,
 we have to Base64 encode it.</p>
 <p>To do this, with Node.js we can create a <a href="https://nodejs.org/api/buffer.html#buffer_buffer">Buffer</a>
 of this variable and then convert it to string with the base64 encoding type.</p>
@@ -530,7 +530,7 @@ method:</p>
 </code></pre></div><p>This is the function that actually does the EC2 instance creation.</p>
 <p>Now, we&rsquo;ll return a new Promise with the callback function with resolve and reject
 arguments.</p>
-<p>Inside that function, we&rsquo;ll call the <code>ec2.runInstances</code>, so we will pass <code>params</code>
+<p>Inside that function, we&rsquo;ll call the <code>ec2.runInstances</code>, so we will pass the <code>params</code>
 object as the first argument and the second will be a callback function
 with <code>err</code> and <code>data</code> arguments.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
@@ -550,17 +550,17 @@ name of the instance to help the instances management).</p>
 <code>instanceData</code> that will be the data resolved by the promise of the <code>createInstance()</code>
 method and the <code>instanceTagName</code> that will be also passed by that promise
 resolution.</p>
-<p>On this method, we to create a object called <code>params</code> that will contains the
+<p>On this method, we create an object called <code>params</code> that will contain the
 <code>Resources</code> and the <code>Tags</code> properties.</p>
-<p>The <code>Resources</code> property will be an array that will contains the IDs of one
-or more instances resources to be tagged. In our example, we will use the ID of
+<p>The <code>Resources</code> property will be an array that will contain the IDs of one
+or more instances of resources to be tagged. In our example, we will use the ID of
 the instance who we just created:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">Resources</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">instanceData</span>.<span style="color:#a6e22e">Instances</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">InstanceId</span>]
-</code></pre></div><p>The <code>Tags</code> property will be an array of that contains one or more tags. For
+</code></pre></div><p>The <code>Tags</code> property will be an array that contains one or more tags. For
 this, I will create only one tag with the key <em>Name</em>.</p>
-<p>The tags object contains two String properties. The <code>Key</code> that is actually the
-key of the tag and the <code>Value</code> that as the name says is the value the of the tag.</p>
-<p>So, to create our <code>Name</code> tag we will set value <code>'Name'</code> for the <code>Key</code> and the
+<p>The tags object contains two String properties. The <code>Key</code> property that is the
+key of the tag and the <code>Value</code> that as the name says is the value of the tag.</p>
+<p>So, to create our <code>Name</code> tag we will set the value <code>'Name'</code> for the <code>Key</code> and the
 <code>instanceTagName</code> for the <code>Value</code> property.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Tags</span><span style="color:#f92672">:</span> [
     {
@@ -568,9 +568,9 @@ key of the tag and the <code>Value</code> that as the name says is the value the
         <span style="color:#a6e22e">Value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">instanceTagName</span>
     }
 ]
-</code></pre></div><p>Inside the function, like the another functions we&rsquo;ll call a EC2 method the
+</code></pre></div><p>Inside the function, like the other functions, we&rsquo;ll call an EC2 method the
 <a href="http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createTags-property"><code>ec2.createTags</code></a>.
-Then, we will pass <code>params</code> object as the first argument and the second will
+Then, we will pass the <code>params</code> object as the first argument and the second will
 be a callback function with <code>err</code> and <code>data</code> arguments.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
         <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createTags</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
@@ -632,26 +632,25 @@ call the <code>createKeyPair</code> function to create the needed KeyPair to log
 instance, persisting in our local machine with our Helper function <code>persistKeyPair</code>,
 to finish finally calling the <code>createInstance</code> function to create the instance
 and then <code>createInstanceTag</code> to create the tag for this instance.</p>
-<p>After create the calling of the functions, the script to create instances with the
+<p>After creating the calling of the functions, the script to create instances with the
 NodeJs AWS-SDK is done.</p>
 <p>Now, we can run this post example to create our instance.</p>
 <h1 id="running-the-script">Running the script</h1>
 <p>To run the example, type the command <code>node create-ec2-instance.js</code> at the command line.</p>
 <p>After a few seconds, it should print out the location of the key that was written
-locally and the details of the instance that was just created.</p>
+locally and the details of the instance that were just created.</p>
 <p><img src="/images/posts/aws/created-ec2-instance.png" alt=""></p>
 <p>And shazam! The EC2 instance has been created only with JavaScript code!</p>
-<p>The actual boot up of the instance can take a few minutes, but you already can
-go to the <a href="https://console.aws.amazon.com/ec2">EC2 Console</a> and look in the the
-region specified on the begin of this example the instance that was created.</p>
+<p>The actual boot-up of the instance can take a few minutes, but you already can
+go to the <a href="https://console.aws.amazon.com/ec2">EC2 Console</a> and look in the
+region specified at the beginning of this example the instance that was created.</p>
 <p><img src="/images/posts/aws/ec2-instances.png" alt=""></p>
-<p>We can look on the Security Group and Key Pairs options to see that they are
+<p>We can look at the Security Group and Key Pairs options to see that they are
 already created too.</p>
 <p>The source of this example is available on my Github project <a href="https://github.com/coderade/aws-ec2-examples/blob/master/create-ec2-instance.js">https://github.com/coderade/aws-ec2-examples/create-ec2-instance.js</a>.</p>
-<p>Take a look on it if you need a further information.</p>
+<p>Take a look at it if you need further information.</p>
 <p>And that is all!</p>
-<p>Thanks for your reading and please take a look at the other blog posts when you
-have a time.</p>
+<p>Thanks for your reading and please take a look at the other blog posts when you have time.</p>
 <hr>
 
             <ul class="share-buttons">
