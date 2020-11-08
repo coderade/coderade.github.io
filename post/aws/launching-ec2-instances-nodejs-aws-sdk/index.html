@@ -19,7 +19,7 @@
         <meta property="og:image:width" content="800">
         <meta property="og:image:height" content="600">
 
-        <meta name="generator" content="Hugo 0.74.3" />
+        <meta name="generator" content="Hugo 0.77.0" />
         <link href="https://valde.ci/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
         <link href="https://valde.ci/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -234,7 +234,7 @@ since I want to allow SSH on this example.</p>
         }
     ]
 }      
-</code></pre></div><p>Finally, add the property <code>IpRanges</code>&rsquo; value as an empty array. Here&rsquo;s where we can define who this rule applies to.</p>
+</code></pre></div><p>Finally, add the property <code>IpRanges</code>' value as an empty array. Here&rsquo;s where we can define who this rule applies to.</p>
 <p>Add an empty object with the property <code>CidrIp</code>. We&rsquo;ll enable access to anyone,
 so give this property the value <code>0.0.0.0/0</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
@@ -395,7 +395,7 @@ it throws away the created key pair and if we don&rsquo;t
 save this locally, the key pair is essentially useless.</p>
 <p>For this way, I created a KeyPair helper function that will actually take
 this key pair data and save it locally as a file, this function I saved on
-the helpers&rsquo; directory with the name <code>keyPairHelper.js</code>. This file will contain
+the helpers' directory with the name <code>keyPairHelper.js</code>. This file will contain
 the below code:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>);

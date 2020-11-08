@@ -6,11 +6,7 @@
     <description>Recent content in coding on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate>
-    
-	<atom:link href="https://valde.ci/categories/coding/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/categories/coding/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why I love Open Source?</title>
       <link>https://valde.ci/post/imho/why-love-open-source/</link>
