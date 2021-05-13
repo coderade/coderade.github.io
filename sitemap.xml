@@ -1,190 +1,116 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://valde.ci/categories/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/coding/</loc>
     <lastmod>2020-08-01T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/categories/coding/</loc>
     <lastmod>2020-08-01T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/imho/</loc>
     <lastmod>2020-08-01T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/categories/imho/</loc>
     <lastmod>2020-08-01T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/imho/why-love-open-source/</loc>
     <lastmod>2020-08-01T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/aws/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/categories/aws/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/ec2/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/js/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/aws/launching-ec2-instances-nodejs-aws-sdk/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/nodejs/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/categories/nodejs/</loc>
     <lastmod>2018-06-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/android/</loc>
     <lastmod>2017-09-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/categories/android/</loc>
     <lastmod>2017-09-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/android/converting-graphic-files-to-webp-format/</loc>
     <lastmod>2017-09-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/mobile/</loc>
     <lastmod>2017-09-24T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/android/inspecting-apk-files-after-packaging/</loc>
     <lastmod>2017-09-22T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/es6/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/categories/es6/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/es6/destructuring-assignments/</loc>
     <lastmod>2017-09-17T21:44:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/web/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/es6/arrow-functions/</loc>
     <lastmod>2017-09-14T21:44:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/es6/const-and-let-limitations/</loc>
     <lastmod>2017-09-10T21:44:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/es6/const-and-let/</loc>
     <lastmod>2017-09-04T21:44:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/es6/js-es6/</loc>
     <lastmod>2020-11-08T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/android/android-studio-idea/</loc>
     <lastmod>2016-12-12T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/idea/</loc>
     <lastmod>2016-12-12T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/rails/</loc>
     <lastmod>2016-08-29T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/categories/rails/</loc>
     <lastmod>2016-08-29T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/post/rails/rails-5-new-features/</loc>
     <lastmod>2016-08-29T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/tags/ruby/</loc>
     <lastmod>2016-08-29T13:47:08+02:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://valde.ci/about/</loc>
-    <lastmod>2020-05-01T18:14:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-05-13T14:55:00+00:00</lastmod>
+  </url><url>
     <loc>https://valde.ci/post/first/</loc>
     <lastmod>2016-08-28T13:47:08+02:00</lastmod>
   </url>
-  
 </urlset>
