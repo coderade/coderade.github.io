@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>coding on Coderade blog</title>
-    <link>https://valde.ci/tags/coding/</link>
+    <link>https://coderade.github.io/tags/coding/</link>
     <description>Recent content in coding on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate><atom:link href="https://coderade.github.io/tags/coding/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why I love Open Source?</title>
-      <link>https://valde.ci/post/imho/why-love-open-source/</link>
+      <link>https://coderade.github.io/post/imho/why-love-open-source/</link>
       <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
       
-      <guid>https://valde.ci/post/imho/why-love-open-source/</guid>
+      <guid>https://coderade.github.io/post/imho/why-love-open-source/</guid>
       <description>Since I started to code in 2012, I learned to love the open-source life and to love how the community is open to share and help other people, sharing the coding which they worked hard and making it possible to run in a couple of minutes for anybody in the world, sharing your knowledge with questions and answers on the StackOverflow and all of the StackExchange sites, creating docs and tutorials in blogs and sites like Medium and GitHub.</description>
     </item>
     

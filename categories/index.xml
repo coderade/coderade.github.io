@@ -2,71 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Coderade blog</title>
-    <link>https://valde.ci/categories/</link>
+    <link>https://coderade.github.io/categories/</link>
     <description>Recent content in Categories on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate><atom:link href="https://coderade.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>coding</title>
-      <link>https://valde.ci/categories/coding/</link>
+      <link>https://coderade.github.io/categories/coding/</link>
       <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
       
-      <guid>https://valde.ci/categories/coding/</guid>
+      <guid>https://coderade.github.io/categories/coding/</guid>
       <description></description>
     </item>
     
     <item>
       <title>imho</title>
-      <link>https://valde.ci/categories/imho/</link>
+      <link>https://coderade.github.io/categories/imho/</link>
       <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
       
-      <guid>https://valde.ci/categories/imho/</guid>
+      <guid>https://coderade.github.io/categories/imho/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aws</title>
-      <link>https://valde.ci/categories/aws/</link>
+      <link>https://coderade.github.io/categories/aws/</link>
       <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
       
-      <guid>https://valde.ci/categories/aws/</guid>
+      <guid>https://coderade.github.io/categories/aws/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nodejs</title>
-      <link>https://valde.ci/categories/nodejs/</link>
+      <link>https://coderade.github.io/categories/nodejs/</link>
       <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
       
-      <guid>https://valde.ci/categories/nodejs/</guid>
+      <guid>https://coderade.github.io/categories/nodejs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>android</title>
-      <link>https://valde.ci/categories/android/</link>
+      <link>https://coderade.github.io/categories/android/</link>
       <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
       
-      <guid>https://valde.ci/categories/android/</guid>
+      <guid>https://coderade.github.io/categories/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>es6</title>
-      <link>https://valde.ci/categories/es6/</link>
+      <link>https://coderade.github.io/categories/es6/</link>
       <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
       
-      <guid>https://valde.ci/categories/es6/</guid>
+      <guid>https://coderade.github.io/categories/es6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rails</title>
-      <link>https://valde.ci/categories/rails/</link>
+      <link>https://coderade.github.io/categories/rails/</link>
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://valde.ci/categories/rails/</guid>
+      <guid>https://coderade.github.io/categories/rails/</guid>
       <description></description>
     </item>
     

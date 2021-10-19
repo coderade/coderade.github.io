@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>idea on Coderade blog</title>
-    <link>https://valde.ci/tags/idea/</link>
+    <link>https://coderade.github.io/tags/idea/</link>
     <description>Recent content in idea on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Dec 2016 13:47:08 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/idea/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Dec 2016 13:47:08 +0200</lastBuildDate><atom:link href="https://coderade.github.io/tags/idea/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Studio and IntelliJ IDEA</title>
-      <link>https://valde.ci/post/android/android-studio-idea/</link>
+      <link>https://coderade.github.io/post/android/android-studio-idea/</link>
       <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
       
-      <guid>https://valde.ci/post/android/android-studio-idea/</guid>
+      <guid>https://coderade.github.io/post/android/android-studio-idea/</guid>
       <description>I personally love the JetBrains tools.
 When I started to code with the Eclipse, Netbeans, ADT tool (For android development on Eclipse), Text editors and others tools, I thought to myself:
  &amp;ldquo;The development with these tools is pretty cool, but the tolls are very far from being awesome, can they be better?&amp;rdquo;
