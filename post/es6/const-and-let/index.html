@@ -19,7 +19,7 @@
         <meta property="og:image:width" content="800">
         <meta property="og:image:height" content="600">
 
-        <meta name="generator" content="Hugo 0.83.1" />
+        <meta name="generator" content="Hugo 0.98.0" />
         <link href="https://valde.ci/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
         <link href="https://valde.ci/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -111,12 +111,12 @@ let.</p>
 <p>First, let&rsquo;s see how var works.</p>
 <p>On the below example I&rsquo;m saying <code>iceCream = &quot;watermelon&quot;</code> and then I&rsquo;m console logging
 the word hoisted and the value of iceCream:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">iceCream</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;watermelon&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hoisted?&#34;</span>, <span style="color:#a6e22e">iceCream</span>);
-
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">iceCream</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;chocolate&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;declared&#34;</span>, <span style="color:#a6e22e">iceCream</span>);
-</code></pre></div><p>and then below it, I&rsquo;m declaring the <code>var iceCream</code>, and calling it <code>&quot;chocolate&quot;</code>, and then I&rsquo;m console logging declared
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">iceCream</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;watermelon&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hoisted?&#34;</span>, <span style="color:#a6e22e">iceCream</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">iceCream</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;chocolate&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;declared&#34;</span>, <span style="color:#a6e22e">iceCream</span>);
+</span></span></code></pre></div><p>and then below it, I&rsquo;m declaring the <code>var iceCream</code>, and calling it <code>&quot;chocolate&quot;</code>, and then I&rsquo;m console logging declared
 and the iceCream value.</p>
 <p>So, lets see how this behaves.</p>
 <p>When I go to the my browser, I can see that in the terminal it says <code>hoisted?, watermelon</code> and <code>declared chocolate</code>.</p>
@@ -139,24 +139,24 @@ create-react-app&rsquo;s default linter has said:</p>
 ESLint <a href="https://eslint.org/docs/rules/no-use-before-define">link</a>.</p>
 <h3 id="trying-hoisting-using-const"><strong>Trying hoisting using const</strong></h3>
 <p>So, lets see what happens when we try and do the same thing that we did with var, with const.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">gelato</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mango&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hoisted?&#34;</span>, <span style="color:#a6e22e">gelato</span>);
-
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">gelato</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lemon&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;declared&#34;</span>, <span style="color:#a6e22e">gelato</span>);
-</code></pre></div><p>If I try to save my file, right away the React will give me an error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">gelato</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mango&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hoisted?&#34;</span>, <span style="color:#a6e22e">gelato</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">gelato</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lemon&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;declared&#34;</span>, <span style="color:#a6e22e">gelato</span>);
+</span></span></code></pre></div><p>If I try to save my file, right away the React will give me an error:</p>
 <p><img src="/images/posts/es6/const-and-let/const-error.png" alt=""></p>
 <p>This is because <code>const</code> cannot be reassigned before it&rsquo;s declared, it is not hoisted.</p>
 <p>So, we can see rather than just getting a warning, like, that&rsquo;s not a good practice, we&rsquo;re actually getting an error,
 you cannot do that.</p>
 <h3 id="trying-hoisting-using-let"><strong>Trying hoisting using let</strong></h3>
 <p>Lets try it now with let. Here, we&rsquo;ve got a variable called froYo and we&rsquo;re assigning it before declaring it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">froYo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brownie&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hoisted?&#34;</span>, <span style="color:#a6e22e">froYo</span>);
-
-<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">froYo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;cherry&#34;</span>;
-<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;declared&#34;</span>, <span style="color:#a6e22e">froYo</span>);
-</code></pre></div><p>This example is saying <code>froYo = &quot;brownie&quot;</code> and then we&rsquo;re also declaring it below and we&rsquo;re going to say, lets make it cherry.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">froYo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brownie&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;hoisted?&#34;</span>, <span style="color:#a6e22e">froYo</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">froYo</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;cherry&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;declared&#34;</span>, <span style="color:#a6e22e">froYo</span>);
+</span></span></code></pre></div><p>This example is saying <code>froYo = &quot;brownie&quot;</code> and then we&rsquo;re also declaring it below and we&rsquo;re going to say, lets make it cherry.
 So after I saved this file I&rsquo;ll go back to my browser.</p>
 <p>Interestingly, we see that we&rsquo;re not getting an error here but the same warning for the hoisting with var example:</p>
 <p><img src="/images/posts/es6/const-and-let/let-warn.png" alt=""></p>
@@ -213,7 +213,7 @@ unless you have a real reason to use var and you understand the ramifications of
             <h3>Comments</h3>
             <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

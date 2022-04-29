@@ -19,7 +19,7 @@
         <meta property="og:image:width" content="800">
         <meta property="og:image:height" content="600">
 
-        <meta name="generator" content="Hugo 0.83.1" />
+        <meta name="generator" content="Hugo 0.98.0" />
         <link href="https://valde.ci/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
         <link href="https://valde.ci/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -113,15 +113,15 @@ but that have good documentation too. This way can be useful with DevOps automat
 created, the first thing that we need to do is download the AWS SDK module from the
 <a href="https://www.npmjs.com/">NPM</a> repository.</p>
 <p>To do this, use the following command on the root of your project:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">npm i aws<span style="color:#f92672">-</span>sdk
-</code></pre></div><p>Then, we will need to create our script file (this will be where we will the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>npm i aws<span style="color:#f92672">-</span>sdk
+</span></span></code></pre></div><p>Then, we will need to create our script file (this will be where we will the
 start file for this example), In this example, I called it as <code>create-ec2-instance.js</code>,
 but you can use the name you want.</p>
 <p>After that, we need to import the AWS SDK into a local variable in this
 file. We will create a const declaration with an identifier of AWS all in caps and
 assign the module named <code>'aws-sdk'</code> to it using the require function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">AWS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;aws-sdk&#39;</span>);
-</code></pre></div><p>The AWS SDK requires you to configure the region each time it&rsquo;s imported. I&rsquo;ll
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">AWS</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;aws-sdk&#39;</span>);
+</span></span></code></pre></div><p>The AWS SDK requires you to configure the region each time it&rsquo;s imported. I&rsquo;ll
 admit this gets a little annoying. There are some abstractions you can do to
 mitigate this, like set the region in the AWS config file on your local system or
 export as an environment variable before running.</p>
@@ -134,8 +134,8 @@ add other properties to this object to change other configuration options on the
 global logger object.</p>
 <p>Here just enter a string as the value to the <code>region</code> key property with the region
 you are using. I&rsquo;ll enter <code>us-east-1</code> here for mine.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">update</span>({<span style="color:#a6e22e">region</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;us-east-1&#39;</span>});
-</code></pre></div><p>In my situation, I use more than a region and profile on my computer (for personal
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">update</span>({<span style="color:#a6e22e">region</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;us-east-1&#39;</span>});
+</span></span></code></pre></div><p>In my situation, I use more than a region and profile on my computer (for personal
 and working coding) so I also need to set my profile using the <code>AWS.config.credentials</code>
 property. This configuration will get my AWS credentials data in a shared file used by
 SDKs and the command line interface on my computer.
@@ -144,9 +144,9 @@ To understand better how to set on this way, use the AWS Docs link of how to
 <p>In this example, I will load my profile using the
 <code>AWS.SharedIniFileCredentials</code> function and load to the <code>AWS.config.credentials</code>
 property.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">SharedIniFileCredentials</span>({<span style="color:#a6e22e">profile</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;personal&#39;</span>});
-<span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">credentials</span>;
-</code></pre></div><p>Nice! now we have the Aws settings set! But and now?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">SharedIniFileCredentials</span>({<span style="color:#a6e22e">profile</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;personal&#39;</span>});
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">credentials</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">credentials</span>;
+</span></span></code></pre></div><p>Nice! now we have the Aws settings set! But and now?</p>
 <p>Now we need an EC2 object created from the AWS object, on this object we&rsquo;ll call
 the EC2 operations on.</p>
 <p>So, to use it, declare a new <code>const</code> variable called <code>ec2</code>.
@@ -160,8 +160,8 @@ one can be useful if you are using other regions in your code.</p>
 read the docs for the <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html">AWS.EC2</a>
 class.</p>
 <p>But for this example, an empty EC2 object is all that&rsquo;s needed to create this object.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ec2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">EC2</span>();
-</code></pre></div><p>Now we can start to create the <code>createSecurityGroup</code> function.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ec2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">AWS</span>.<span style="color:#a6e22e">EC2</span>();
+</span></span></code></pre></div><p>Now we can start to create the <code>createSecurityGroup</code> function.
 Most of the AWS SDK operations have a similar pattern. First, we need to declare
 the parameters object to be passed to the SDK function. Then call the function,
 passing in a callback to handle the result.</p>
@@ -173,13 +173,13 @@ two of the params arguments that it wants are a description and a group name.</p
 <p>I find that the description isn&rsquo;t too useful until you have a massive
 number of security groups, even then, it seems that tags are used more for management
 in those situations than descriptions.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>) {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-      <span style="color:#a6e22e">GroupName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgName</span>,
-      <span style="color:#a6e22e">Description</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgDescription</span>
-    };
-}
-</code></pre></div><p>With the <code>params</code> defined, we can continue to the creation of the function. For these
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">GroupName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgName</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">Description</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgDescription</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With the <code>params</code> defined, we can continue to the creation of the function. For these
 types of functions, I like to use promises instead of callbacks. IMHO I
 think nowadays we must use most of the advantages that ES6 brings to us and
 this approach a little easier to understand and read.</p>
@@ -195,15 +195,15 @@ that we pass it. It will not create any security group rules. Inside the functio
 call <code>reject()</code> with the <code>err</code> object if there is one.
 In the else, create a block. This is where our code will execute if the security
 group creation was successful.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-    <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
-        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-            <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-        <span style="color:#66d9ef">else</span> {
-        }
-    })
-})
-</code></pre></div><p>Because our security group is essentially empty, we want to add a rule here.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>Because our security group is essentially empty, we want to add a rule here.</p>
 <p>We&rsquo;ll want to enable port 22 so that we can SSH into the instance once it&rsquo;s
 been created and port 3000 so if want to run an endpoint example like
 <a href="https://expressjs.com/">Express</a>
@@ -215,74 +215,74 @@ should sound familiar to you if you&rsquo;ve set one up with the console before.
 argument supplied by the creation&rsquo;s callback. For the value here, enter <code>data.GroupId</code>.
 The next property is <code>IpPermissions</code>, which is an array. This array enables us
 to configure multiple rules in one request.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
-    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> []
-};
-</code></pre></div><p>Then, we need to create an object in this array and add the property <code>IpProtocol</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Then, we need to create an object in this array and add the property <code>IpProtocol</code>.</p>
 <p>The possible values for this are protocols like TCP or UDP, for some examples.
 We will use the value <code>'tcp'</code> here, all lowercase. The next two properties <code>FromPort </code>and
 <code>ToPort</code> define the port range that you&rsquo;re enabling the rule for.</p>
 <p>In the first case, we&rsquo;ll enter the number <code>22</code> in both <code>FromPort</code> and <code>ToPort</code>
 since I want to allow SSH on this example.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
-    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> [
-        {
-            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
-            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-        }
-    ]
-}      
-</code></pre></div><p>Finally, add the property <code>IpRanges</code>' value as an empty array. Here&rsquo;s where we can define who this rule applies to.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}      
+</span></span></code></pre></div><p>Finally, add the property <code>IpRanges</code>&rsquo; value as an empty array. Here&rsquo;s where we can define who this rule applies to.</p>
 <p>Add an empty object with the property <code>CidrIp</code>. We&rsquo;ll enable access to anyone,
 so give this property the value <code>0.0.0.0/0</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
-    {
-        <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
-    }
-]    
-</code></pre></div><p>Now, we need to also add the rule for port 3000, so we can copy the rule object created:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
-    <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
-    <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-    <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-    <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
-        {
-            <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
-        }
-    ]
-}
-</code></pre></div><p>add a comma after it and then paste. The only different property will be the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]    
+</span></span></code></pre></div><p>Now, we need to also add the rule for port 3000, so we can copy the rule object created:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>add a comma after it and then paste. The only different property will be the
 <code>FromPort</code> and <code>ToPort</code> and you can set both to <code>3000</code>.</p>
 <p>Awesome! Now we&rsquo;re ready to use this big params object in an SDK call:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
-    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> [
-        {
-            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
-            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
-                {
-                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
-                }
-            ]
-        },
-        {
-            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
-            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
-            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
-            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
-                {
-                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
-                }
-            ]
-        }
-    ]
-};
-</code></pre></div><p>On the EC2 object, we&rsquo;ll be calling the <code>ec2.authorizeSecurityGroupIngress()</code>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>On the EC2 object, we&rsquo;ll be calling the <code>ec2.authorizeSecurityGroupIngress()</code>
 function. The ingress part of that function call refers to these rules being
 inbound rules. There is also a function called <code>authorizeSecurityGroupEgress()</code>,
 which is for outgoing rules but is not needed on this example.</p>
@@ -293,53 +293,53 @@ Inside the callback, call <code>reject()</code> again if there&rsquo;s an <code>
 <p>In the else, just call <code>resolve()</code> and with that code complete, we&rsquo;ve successfully
 created and assigned rules to a security group.</p>
 <p>This is now your <code>createSecurityGroup</code> function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>) {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-        <span style="color:#a6e22e">Description</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgName</span>,
-        <span style="color:#a6e22e">GroupName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgDescription</span>,
-    };
-
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
-            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-            <span style="color:#66d9ef">else</span> {
-                <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-                    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
-                    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> [
-                        {
-                            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
-                            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-                            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
-                            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
-                                {
-                                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
-                                }
-                            ]
-                        },
-                        {
-                            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
-                            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
-                            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
-                            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
-                                {
-                                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
-                                }
-                            ]
-                        }
-                    ]
-                };
-                <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">authorizeSecurityGroupIngress</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
-                    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-                        <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-                    <span style="color:#66d9ef">else</span>
-                        <span style="color:#a6e22e">resolve</span>();
-                });
-            }
-        })
-    })
-}
-</code></pre></div><h2 id="creating-a-key-pair">Creating a key pair</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Description</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgName</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">GroupName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sgDescription</span>,
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">GroupId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">GroupId</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">IpPermissions</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">22</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                                {
+</span></span><span style="display:flex;"><span>                                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
+</span></span><span style="display:flex;"><span>                                }
+</span></span><span style="display:flex;"><span>                            ]
+</span></span><span style="display:flex;"><span>                        },
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">IpProtocol</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tcp&#39;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">FromPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">ToPort</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span>,
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">IpRanges</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>                                {
+</span></span><span style="display:flex;"><span>                                    <span style="color:#a6e22e">CidrIp</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;0.0.0.0/0&#39;</span>
+</span></span><span style="display:flex;"><span>                                }
+</span></span><span style="display:flex;"><span>                            ]
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    ]
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">authorizeSecurityGroupIngress</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">resolve</span>();
+</span></span><span style="display:flex;"><span>                });
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="creating-a-key-pair">Creating a key pair</h2>
 <p>To log in to the instance, we must create a key pair. According to the Amazon
 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">docs</a>
 the use for the Key pair is:</p>
@@ -351,87 +351,87 @@ The public and private keys are known as a key pair.</p>
 </blockquote>
 <p>In this way, we will need to create a Key Pair to connect to our EC2 instance.</p>
 <p>So we need a <code>createKeyPair</code> function, this function will take a <code>keyName</code> argument.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>) {}
-</code></pre></div><p>This function will be a wrapper for the aws-sdk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>) {}
+</span></span></code></pre></div><p>This function will be a wrapper for the aws-sdk
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createKeyPair-property">ec2.createKeyPair</a>
 function.</p>
 <p>This function has the &lsquo;KeyName&rsquo; and the &lsquo;DryRun&rsquo; arguments, but for this example, only
 the &lsquo;KeyName&rsquo; argument is needed. The value of this argument will be passed in our
 function <code>createKeyPair</code> function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-  <span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>, <span style="color:#75715e">/* required */</span>
-};
-</code></pre></div><p>After declaring the params object, let&rsquo;s return a new Promise with a callback
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>, <span style="color:#75715e">/* required */</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>After declaring the params object, let&rsquo;s return a new Promise with a callback
 function with arguments resolve and reject as the argument.</p>
 <p>Inside the callback function, we can call the EC2 function createKeyPair,
 passing the <code>params</code> object as the first argument. The second argument will be a
 callback function with the err and data objects.</p>
 <p>If there&rsquo;s an error, then call reject with the err object. In the else, call resolve
 with the data object.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-       <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
-           <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-               <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-           <span style="color:#66d9ef">else</span>
-               <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
-       })
-   })
-</code></pre></div><p>This will be our <code>createKeyPair</code> function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>) {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>};
-
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
-            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-            <span style="color:#66d9ef">else</span>
-                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
-        })
-    })
-}
-</code></pre></div><p>This data object is important because when the key pair is created in AWS,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>       })
+</span></span><span style="display:flex;"><span>   })
+</span></span></code></pre></div><p>This will be our <code>createKeyPair</code> function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This data object is important because when the key pair is created in AWS,
 the function returns the contents of that key pair&rsquo;s private key.</p>
 <p>If you don&rsquo;t resolve the data argument on the <code>ec2.createKeyPair()</code> function,
 it throws away the created key pair and if we don&rsquo;t
 save this locally, the key pair is essentially useless.</p>
 <p>For this way, I created a KeyPair helper function that will actually take
 this key pair data and save it locally as a file, this function I saved on
-the helpers' directory with the name <code>keyPairHelper.js</code>. This file will contain
+the helpers&rsquo; directory with the name <code>keyPairHelper.js</code>. This file will contain
 the below code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">os</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;os&#39;</span>);
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">persistKeyPair</span> (<span style="color:#a6e22e">keyData</span>) {
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">keyPath</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">homedir</span>(), <span style="color:#e6db74">&#39;.ssh&#39;</span>, <span style="color:#a6e22e">keyData</span>.<span style="color:#a6e22e">KeyName</span>);
-        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
-            <span style="color:#a6e22e">encoding</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;utf8&#39;</span>,
-            <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0o600</span>
-        };
-
-        <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFile</span>(<span style="color:#a6e22e">keyPath</span>, <span style="color:#a6e22e">keyData</span>.<span style="color:#a6e22e">KeyMaterial</span>, <span style="color:#a6e22e">options</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
-            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-            <span style="color:#66d9ef">else</span> {
-                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Key written to&#39;</span>, <span style="color:#a6e22e">keyPath</span>);
-                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">keyData</span>.<span style="color:#a6e22e">KeyName</span>)
-            }
-        })
-    })
-}
-
-<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">persistKeyPair</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">persistKeyPair</span>
-};
-</code></pre></div><p>This function <code>persistKeyPair()</code> will be called after the <code>createKeyPair()</code> function
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fs&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;path&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">os</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;os&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">persistKeyPair</span> (<span style="color:#a6e22e">keyData</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">keyPath</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">join</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">homedir</span>(), <span style="color:#e6db74">&#39;.ssh&#39;</span>, <span style="color:#a6e22e">keyData</span>.<span style="color:#a6e22e">KeyName</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">encoding</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;utf8&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">mode</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0o600</span>
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFile</span>(<span style="color:#a6e22e">keyPath</span>, <span style="color:#a6e22e">keyData</span>.<span style="color:#a6e22e">KeyMaterial</span>, <span style="color:#a6e22e">options</span>, (<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>) <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Key written to&#39;</span>, <span style="color:#a6e22e">keyPath</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">keyData</span>.<span style="color:#a6e22e">KeyName</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">persistKeyPair</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">persistKeyPair</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>This function <code>persistKeyPair()</code> will be called after the <code>createKeyPair()</code> function
 which consequently will be called as the return function for our <code>createSecurityGroup()</code>
 function at the begin of your <code>create-ec2-instance</code> file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>)
-    .<span style="color:#a6e22e">then</span>(() =&gt; {
-        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>);
-    })
-    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">keyPairHelper</span>.<span style="color:#a6e22e">persistKeyPair</span>)
-</code></pre></div><p>With these methods, our key pair will be created.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>);
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">keyPairHelper</span>.<span style="color:#a6e22e">persistKeyPair</span>)
+</span></span></code></pre></div><p>With these methods, our key pair will be created.</p>
 <p>Now that we have the methods to create the security group and key pair, we can
 finally create an EC2 instance using both.</p>
 <h2 id="creating-the-ec2-instance">Creating the EC2 Instance</h2>
@@ -440,8 +440,8 @@ function.</p>
 <p>This function takes in the <code>sgName</code> (security group name) and the <code>keyName</code>
 (key pair name) as arguments, the same arguments that were used to create the
 other resources.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createInstance</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">keyName</span>) {}
-</code></pre></div><p>Inside the function, we&rsquo;ll start by defining a <code>params</code> object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createInstance</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">keyName</span>) {}
+</span></span></code></pre></div><p>Inside the function, we&rsquo;ll start by defining a <code>params</code> object.</p>
 <p>This <code>params</code> object will have many more arguments than the other function ones
 we&rsquo;ve made.</p>
 <p>The first we&rsquo;ll need to add is <code>ImageId</code>. This is the AMI ID that will be used
@@ -466,29 +466,29 @@ this  post and which region you&rsquo;re using.</p>
 whatever AMI ID is in your AWS Console.</p>
 <p>Now we can switch back to your code and paste that in a string as the value to the
 <code>ImageId</code> property.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">ImageId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ami-14c5486b&#39;</span>, <span style="color:#75715e">//AMI ID that will be used to create the instance
-</span></code></pre></div><p>The next property is <code>InstanceType</code>. This is the type of instance such as <code>t2.small</code>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">ImageId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ami-14c5486b&#39;</span>, <span style="color:#75715e">//AMI ID that will be used to create the instance
+</span></span></span></code></pre></div><p>The next property is <code>InstanceType</code>. This is the type of instance such as <code>t2.small</code>
 or <code>m4.xlarge</code> and defines the properties of the instance. Like the AMI, if you
 don&rsquo;t need a specific one you can use one of the smallest here: <strong>t2.micro</strong>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">InstanceType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;t2.micro&#39;</span>,
-</code></pre></div><p>Then, we need to define the key pair name with the property <code>KeyName</code> and <code>Name</code>,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">InstanceType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;t2.micro&#39;</span>,
+</span></span></code></pre></div><p>Then, we need to define the key pair name with the property <code>KeyName</code> and <code>Name</code>,
 that we can be entering the value of keyName from the function arguments for both.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
-<span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
-</code></pre></div><p>Then, is the <code>MaxCount</code> and <code>MinCount</code> property, which tells AWS how many instances to create.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
+</span></span></code></pre></div><p>Then, is the <code>MaxCount</code> and <code>MinCount</code> property, which tells AWS how many instances to create.
 We can enter 1 for both.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">MaxCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-<span style="color:#a6e22e">MinCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-</code></pre></div><p>For more information about the default limits and how to request an increase,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">MaxCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">MinCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span></code></pre></div><p>For more information about the default limits and how to request an increase,
 see <a href="https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2">How many instances can I run in Amazon EC2</a>
 in the Amazon EC2 FAQ.</p>
 <p>Now we need to add the property <code>SecurityGroups</code> and give it an array as the value.
 This is where we add any security groups to the instance.
 So, we enter the <code>sgName</code> argument into the array.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">SecurityGroups</span><span style="color:#f92672">:</span> [
-            <span style="color:#a6e22e">sgName</span>
-        ],
-</code></pre></div><p>We can add more than one security group here if you want to.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">SecurityGroups</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">sgName</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span></code></pre></div><p>We can add more than one security group here if you want to.
 There&rsquo;s also a <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#runInstances-property"><code>SecurityGroupIds</code></a>
 property that we could use instead and reference the security groups by their IDs
 rather than by their names. I find it a little easier to do it by name for this code.</p>
@@ -498,53 +498,53 @@ run shell commands once the instance starts. To understand more of it, please re
 AWS documentation of how to
 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html">run Commands on Your Linux Instance at Launch</a>.</p>
 <p>For this example, I will use the following commands on my <code>UserData</code> value:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">commandsString</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`#!/bin/bash
-</span><span style="color:#e6db74">  curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
-</span><span style="color:#e6db74">  sudo yum install -y nodejs
-</span><span style="color:#e6db74">  sudo yum install -y git
-</span><span style="color:#e6db74">  git clone https://github.com/coderade/aws-ec2-examples
-</span><span style="color:#e6db74">  cd repo
-</span><span style="color:#e6db74">  npm i
-</span><span style="color:#e6db74">  npm run start`</span>;
-</code></pre></div><p>Essentially, these commands are just installing Node and Git, cloning the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">commandsString</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  sudo yum install -y nodejs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  sudo yum install -y git
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  git clone https://github.com/coderade/aws-ec2-examples
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  cd repo
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  npm i
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  npm run start`</span>;
+</span></span></code></pre></div><p>Essentially, these commands are just installing Node and Git, cloning the
 example project from my <a href="https://github.com/coderade">GitHub</a>, installing the
 project dependencies and, then running it.</p>
 <p>You can&rsquo;t just put these shell scripts directly into the <code>UserData</code> value, first,
 we have to Base64 encode it.</p>
 <p>To do this, with Node.js we can create a <a href="https://nodejs.org/api/buffer.html#buffer_buffer">Buffer</a>
 of this variable and then convert it to string with the base64 encoding type.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">UserData</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Buffer</span>(<span style="color:#a6e22e">commandsString</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#e6db74">&#39;base64&#39;</span>);
-</code></pre></div><p>Now, this will be our final params variable that will send to the EC2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">UserData</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Buffer</span>(<span style="color:#a6e22e">commandsString</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#e6db74">&#39;base64&#39;</span>);
+</span></span></code></pre></div><p>Now, this will be our final params variable that will send to the EC2
 <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#runInstances-property">runInstances</a>
 method:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-    <span style="color:#a6e22e">ImageId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ami-14c5486b&#39;</span>, <span style="color:#75715e">//AMI ID that will be used to create the instance
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">InstanceType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;t2.micro&#39;</span>,
-    <span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
-    <span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
-    <span style="color:#a6e22e">MaxCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-    <span style="color:#a6e22e">MinCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
-    <span style="color:#a6e22e">SecurityGroups</span><span style="color:#f92672">:</span> [
-        <span style="color:#a6e22e">sgName</span>
-    ],
-    <span style="color:#a6e22e">UserData</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Buffer</span>(<span style="color:#a6e22e">commandsString</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#e6db74">&#39;base64&#39;</span>)
-};
-</code></pre></div><p>This is the function that actually does the EC2 instance creation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ImageId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ami-14c5486b&#39;</span>, <span style="color:#75715e">//AMI ID that will be used to create the instance
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">InstanceType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;t2.micro&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">KeyName</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keyName</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">MaxCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">MinCount</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">SecurityGroups</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sgName</span>
+</span></span><span style="display:flex;"><span>    ],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">UserData</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Buffer</span>(<span style="color:#a6e22e">commandsString</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#e6db74">&#39;base64&#39;</span>)
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>This is the function that actually does the EC2 instance creation.</p>
 <p>Now, we&rsquo;ll return a new Promise with the callback function with resolve and reject
 arguments.</p>
 <p>Inside that function, we&rsquo;ll call the <code>ec2.runInstances</code>, so we will pass the <code>params</code>
 object as the first argument and the second will be a callback function
 with <code>err</code> and <code>data</code> arguments.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">runInstances</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
-            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-            <span style="color:#66d9ef">else</span>
-                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
-        })
-    })
-}
-</code></pre></div><p>Then, we will call <code>reject</code> with the <code>err</code> argument if it exists, otherwise, we
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">runInstances</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then, we will call <code>reject</code> with the <code>err</code> argument if it exists, otherwise, we
 will call <code>resolve</code> with the <code>data</code> argument.</p>
 <p>We also need to create a method to create our instance tag (that is used as the
 name of the instance to help the instances management).</p>
@@ -557,78 +557,78 @@ resolution.</p>
 <p>The <code>Resources</code> property will be an array that will contain the IDs of one
 or more instances of resources to be tagged. In our example, we will use the ID of
 the instance who we just created:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">  <span style="color:#a6e22e">Resources</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">instanceData</span>.<span style="color:#a6e22e">Instances</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">InstanceId</span>]
-</code></pre></div><p>The <code>Tags</code> property will be an array that contains one or more tags. For
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>  <span style="color:#a6e22e">Resources</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">instanceData</span>.<span style="color:#a6e22e">Instances</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">InstanceId</span>]
+</span></span></code></pre></div><p>The <code>Tags</code> property will be an array that contains one or more tags. For
 this, I will create only one tag with the key <em>Name</em>.</p>
 <p>The tags object contains two String properties. The <code>Key</code> property that is the
 key of the tag and the <code>Value</code> that as the name says is the value of the tag.</p>
 <p>So, to create our <code>Name</code> tag we will set the value <code>'Name'</code> for the <code>Key</code> and the
 <code>instanceTagName</code> for the <code>Value</code> property.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Tags</span><span style="color:#f92672">:</span> [
-    {
-        <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Name&#39;</span>,
-        <span style="color:#a6e22e">Value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">instanceTagName</span>
-    }
-]
-</code></pre></div><p>Inside the function, like the other functions, we&rsquo;ll call an EC2 method the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">Tags</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Name&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">instanceTagName</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>Inside the function, like the other functions, we&rsquo;ll call an EC2 method the
 <a href="http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/EC2.html#createTags-property"><code>ec2.createTags</code></a>.
 Then, we will pass the <code>params</code> object as the first argument and the second will
 be a callback function with <code>err</code> and <code>data</code> arguments.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createTags</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
-            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-            <span style="color:#66d9ef">else</span>
-                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
-        })
-    })
-}
-</code></pre></div><p>In this way, this will be our <code>createInstanceTag()</code> method:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createInstanceTag</span>(<span style="color:#a6e22e">instanceData</span>, <span style="color:#a6e22e">instanceTagName</span>) {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
-        <span style="color:#a6e22e">Resources</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">instanceData</span>.<span style="color:#a6e22e">Instances</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">InstanceId</span>],
-        <span style="color:#a6e22e">Tags</span><span style="color:#f92672">:</span> [
-            {
-                <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Name&#39;</span>,
-                <span style="color:#a6e22e">Value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">instanceTagName</span>
-            }
-        ]
-    };
-
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createTags</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
-            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
-                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
-            <span style="color:#66d9ef">else</span>
-                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
-        })
-    })
-}
-</code></pre></div><p>The functions are done! wow! And now?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createTags</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this way, this will be our <code>createInstanceTag()</code> method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createInstanceTag</span>(<span style="color:#a6e22e">instanceData</span>, <span style="color:#a6e22e">instanceTagName</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">params</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Resources</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">instanceData</span>.<span style="color:#a6e22e">Instances</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">InstanceId</span>],
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Tags</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Name&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">Value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">instanceTagName</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ec2</span>.<span style="color:#a6e22e">createTags</span>(<span style="color:#a6e22e">params</span>, (<span style="color:#a6e22e">err</span>, <span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">reject</span>(<span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The functions are done! wow! And now?</p>
 <p>Now we need to call all these functions and create and pass the needed arguments.</p>
 <p>First, on the begin of our file (after all the needed aws settings and imports),
 we will create some consts variables, the <strong><code>sgName</code></strong>
 (the security group name), <strong><code>sgDescription</code></strong> (the security group description),
 <strong><code>keyName</code></strong> (the key name for the KeyPair and the <strong><code>instanceTagName</code></strong> (the
 name to be used on the Instance tag):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sgName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ec2_examples_security_group&#39;</span>; <span style="color:#75715e">//The security group name
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sgDescription</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ec2_examples Security Group description&#39;</span>; <span style="color:#75715e">//the security group description
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">keyName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ec2_examples_instance_key&#39;</span>; <span style="color:#75715e">//The key for the KeyPair key
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">instanceTagName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EC2 Examples&#39;</span>; <span style="color:#75715e">//The name to be used on the Instance tag
-</span></code></pre></div><p>And then, call the created functions passing the need arguments:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>)
-    .<span style="color:#a6e22e">then</span>(() =&gt; {
-        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>);
-    })
-    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">keyPairHelper</span>.<span style="color:#a6e22e">persistKeyPair</span>)
-    .<span style="color:#a6e22e">then</span>(() =&gt; {
-        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createInstance</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">keyName</span>, <span style="color:#a6e22e">instanceTagName</span>)
-    })
-    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">createInstanceTag</span>)
-    .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">err</span>) =&gt; {
-        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Failed to create instance with:&#39;</span>, <span style="color:#a6e22e">err</span>)
-    });
-</code></pre></div><p>So, in this way I will call first the <code>createSecurityGroup</code> function to create
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sgName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ec2_examples_security_group&#39;</span>; <span style="color:#75715e">//The security group name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sgDescription</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ec2_examples Security Group description&#39;</span>; <span style="color:#75715e">//the security group description
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">keyName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ec2_examples_instance_key&#39;</span>; <span style="color:#75715e">//The key for the KeyPair key
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">instanceTagName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;EC2 Examples&#39;</span>; <span style="color:#75715e">//The name to be used on the Instance tag
+</span></span></span></code></pre></div><p>And then, call the created functions passing the need arguments:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">createSecurityGroup</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">sgDescription</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createKeyPair</span>(<span style="color:#a6e22e">keyName</span>);
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">keyPairHelper</span>.<span style="color:#a6e22e">persistKeyPair</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">createInstance</span>(<span style="color:#a6e22e">sgName</span>, <span style="color:#a6e22e">keyName</span>, <span style="color:#a6e22e">instanceTagName</span>)
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">createInstanceTag</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">err</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Failed to create instance with:&#39;</span>, <span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>    });
+</span></span></code></pre></div><p>So, in this way I will call first the <code>createSecurityGroup</code> function to create
 the Security Group for our instance, then if everything works properly I will
 call the <code>createKeyPair</code> function to create the needed KeyPair to log in the
 instance, persisting in our local machine with our Helper function <code>persistKeyPair</code>,
@@ -676,7 +676,7 @@ already created too.</p>
             <h3>Comments</h3>
             <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
