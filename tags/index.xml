@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Coderade blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go</title>
+      <link>https://valde.ci/tags/go/</link>
+      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>graphql</title>
+      <link>https://valde.ci/tags/graphql/</link>
+      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/graphql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgres</title>
+      <link>https://valde.ci/tags/postgres/</link>
+      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/postgres/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>projects</title>
+      <link>https://valde.ci/tags/projects/</link>
+      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>react</title>
+      <link>https://valde.ci/tags/react/</link>
+      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
+      
+      <guid>https://valde.ci/tags/react/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>coding</title>
       <link>https://valde.ci/tags/coding/</link>
