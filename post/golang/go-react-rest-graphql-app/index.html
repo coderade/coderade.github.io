@@ -3,18 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>rails - Coderade blog</title>
+        <title>Games Shelf REST/GraphQL App developed with Go and React  - Coderade blog</title>
         <meta name="author" content="Valdeci Gomes <valdeci@outlook.my>">
-        <meta name="description" content="Coderade blog - Homepage">
+        <meta name="description" content="In this post I will try to share my experience creating a Games Shelf REST/GraphQL project using Golang and React functional and class components.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta property="og:locale" content="en_US">
-        <meta property="og:url" content="https://valde.ci/tags/rails/">
-        <meta property="og:title" content="rails">
+        <meta property="og:url" content="https://valde.ci/post/golang/go-react-rest-graphql-app/">
+        <meta property="og:title" content="Games Shelf REST/GraphQL App developed with Go and React ">
         <meta property="og:site_name" content="https://valde.ci/">
         <meta property="og:type" content="article" />
-        <meta property="og:description" content="Coderade blog - Homepage">
-        <meta property="og:image" content="https://valde.ci/img/puralsight-bg.jpg">
+        <meta property="og:description" content="In this post I will try to share my experience creating a Games Shelf REST/GraphQL project using Golang and React functional and class components.">
+        <meta property="og:image" content="https://valde.ci/images/posts/projects/go-react-rest-graphql-app/go-react-api.png">
         <meta property="og:image:type" content="image/jpeg">
         <meta property="og:image:width" content="800">
         <meta property="og:image:height" content="600">
@@ -66,45 +66,106 @@
 
 <div class="container clearfix">
     <main role="main" class="content">
-        <a class="btn home" href="https://valde.ci/" title="Back to home">&laquo; Back to home</a>
-        
-        
-            <article class="post">
-    
-<h1><a href="https://valde.ci/post/rails/rails-5-new-features/" title="Rails 5 new features">Rails 5 new features</a></h1>
+        <article class="post">
+            <a class="btn home" href="https://valde.ci/" title="Back to home">&laquo; Back to home</a>
+            
+<h1><a href="https://valde.ci/post/golang/go-react-rest-graphql-app/" title="Games Shelf REST/GraphQL App developed with Go and React ">Games Shelf REST/GraphQL App developed with Go and React </a></h1>
 
-<footer class="post-info">Posted on <span class="post-meta"><time datetime="2016.08.29">2016.08.29</time>
+<footer class="post-info">Posted on <span class="post-meta"><time datetime="2022.04.28">2022.04.28</time>
 
     &middot; Tagged in
         
-        <a href="https://valde.ci/tags/ruby">ruby</a>, 
+        <a href="https://valde.ci/tags/projects">projects</a>, 
         
-        <a href="https://valde.ci/tags/rails">rails</a>, 
+        <a href="https://valde.ci/tags/go">go</a>, 
         
-        <a href="https://valde.ci/tags/web">web</a>
+        <a href="https://valde.ci/tags/react">react</a>, 
+        
+        <a href="https://valde.ci/tags/graphql">graphql</a>, 
+        
+        <a href="https://valde.ci/tags/postgres">postgres</a>
         
     
 
 </span>
 
 
-
-    <p>On this article I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.
-I will try to show how to use the most important features of Rails 5, including Action Cable, Action Controller Renderer, Turbolinks, the Active records, Attributes API and how to use Rails exclusively as a JSON API.
-Besides that I will discuss the many other smaller changes in improvements such as the Rails command Router, new Date and Time methods, Secure Tokens and changes to parameters.&hellip;</p>
-    <a href="https://valde.ci/post/rails/rails-5-new-features/" title="Rails 5 new features">Read more &raquo;</a>
-</article>
-
-        
-        <div class="pagination">
-<nav>
-
-	<p class="counter">Page 1 of 1</p>
+<footer class="post-info">Last modified on 
+    <span class="post-meta">
+        <time datetime="2022.04.28">2022.04.28
+        </time>
+    </span>
+</footer>
 
 
-</nav>
-</div>
+            <p><img src="/images/posts/projects/go-react-rest-graphql-app/go-react-api.png" alt="Project image"></p>
+<p>Since I started to use Go on a project at my current job, I decided to create some real projects using the language to understand the language more.</p>
+<p>After studying some patterns and understanding how the language works, I decided to create a <strong>Games Shelf Application</strong> with REST communication, and then, I added GraphQL to the game.</p>
+<p>I decided to use <a href="https://www.postgresql.org/">PostgreSQL</a> as my database and <a href="https://reactjs.org/">React.js</a> in the front-end, because, even as I have not used it for a long time, both are my preferred technologies when I think about a database and a front-end framework.</p>
+<p>The most difficult things for me to develop when I was developing this API was mainly that I was not a GoLang expert, and, very different than that, I am a newbie in the language, as I started to learn Go nothing more than one month ago, and I am already using it in my job.</p>
+<p>Even though Golang is one of the most popular programming languages, we do not have a lot of examples of projects on Github when comparing it with languages like Python and Node.js.</p>
+<p>In this way, I had a lot of problems trying to refactor the code to follow a good API structure, mainly trying to share some context variables from the <code>main</code> package.</p>
+<p>Also, at first I did not try to use an ORM module like <a href="https://github.com/go-gorm/gorm">GORM</a>, because I was trying to understand how to work directly with the database, opening connections and that kind of stuff. In this way, I needed to do all the SQL stuff and in the future I will try to use the <code>GORM</code> module to understand its possibilities.</p>
+<p>In the front-end I started to create components in react using classes, but after I changed all for class components, after having a lot of problems and understanding that , less boilertplate code and easy to understand.</p>
+<p>At the front-end, I started creating components for React using classes, but then I changed all the functional components, after having a lot of problems and understanding that <a href="https://hackernoon.com/react-functional-components-are-the-future">The future of React is Functional components</a>, less boilerplate code and easier to understand.</p>
+<p>I learned a lot of Go and I remembered how to use React in a project, so I am happy that I have finally finished it.</p>
+<h3 id="application-possibilities">Application possibilities:</h3>
+<p>Currently we  have the following possibilities on the application:</p>
+<ul>
+<li>Login using JWT tokens (the user and password need to be managed on the backend project)</li>
+<li>CRUD of the games, platforms and genres</li>
+<li>Connect with a PostgreSQL Database</li>
+<li>Use GraphQL to search for games</li>
+<li>Work with data received from RAWG api, the biggest video game database
+<ul>
+<li>Data like the games&rsquo; images and ratings will be got from this API.</li>
+</ul>
+</li>
+</ul>
+<p>I develepod two projects from this application, and both are available on the GitHub and documented how to use and run them.</p>
+<p>The source code for the GO API is available here: <a href="https://github.com/coderade/games-shelf-api-go"><strong>games-shelf-api-go</strong></a></p>
+<p>And the source code for the React client application is here: <a href="https://github.com/coderade/games-shelf-client-react"><strong>games-shelf-client-react</strong></a></p>
 
+            <ul class="share-buttons">
+    <li>Share this article:</li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fgo-react-rest-graphql-app%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook"></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Games%20Shelf%20REST%2fGraphQL%20App%20developed%20with%20Go%20and%20React%20&amp;url=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fgo-react-rest-graphql-app%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Tweet this article"></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fgo-react-rest-graphql-app%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google&#43;"></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fgo-react-rest-graphql-app%2f&title=Games%20Shelf%20REST%2fGraphQL%20App%20developed%20with%20Go%20and%20React%20" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title="Share on Linkedin"></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3>Comments</h3>
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coderade" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
     </main>
     <aside class="author">
     <img class="profile-image" src="https://valde.ci/img/profile-image.jpg" alt="Valdeci Gomes" />
@@ -275,6 +336,7 @@ Besides that I will discuss the many other smaller changes in improvements such 
 </aside>
 
 </div>
+
 <footer class="main-footer">
   <div class="container clearfix">
         <a class="icon-rss" href="https://valde.ci/post/index.xml" title="RSS"></a>
