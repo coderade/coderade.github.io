@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Coderade blog</title>
+    <link>https://valde.ci/categories/go/</link>
+    <description>Recent content in go on Coderade blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 May 2022 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/categories/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Desing Patterns in GO - SOLID (Single Responsibility Principle pattern)</title>
+      <link>https://valde.ci/post/golang/design-patterns/solid/single-responsibility-principle/</link>
+      <pubDate>Fri, 20 May 2022 21:17:21 +0200</pubDate>
+      
+      <guid>https://valde.ci/post/golang/design-patterns/solid/single-responsibility-principle/</guid>
+      <description>This post will be the first that I will talk an share some examples of some Design patterns in Go.
+Design patterns are particularly relevant in Object Oriented languages, in this way we can find some limitations when working with some patterns in Go because it&amp;rsquo;s not strictly Object Oriented as we can see the in this go FAQ answer for the question Is Go an object-oriented language?
+Yes and no.</description>
+    </item>
+    
+  </channel>
+</rss>

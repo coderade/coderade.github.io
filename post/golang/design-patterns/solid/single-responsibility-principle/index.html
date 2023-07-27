@@ -1,0 +1,396 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Desing Patterns in GO - SOLID (Single Responsibility Principle pattern) - Coderade blog</title>
+        <meta name="author" content="Valdeci Gomes <valdeci@outlook.my>">
+        <meta name="description" content="In this post I will try to share my experience creating a Games Shelf REST/GraphQL project using Golang and React functional and class components.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta property="og:locale" content="en_US">
+        <meta property="og:url" content="https://valde.ci/post/golang/design-patterns/solid/single-responsibility-principle/">
+        <meta property="og:title" content="Desing Patterns in GO - SOLID (Single Responsibility Principle pattern)">
+        <meta property="og:site_name" content="https://valde.ci/">
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content="In this post I will try to share my experience creating a Games Shelf REST/GraphQL project using Golang and React functional and class components.">
+        <meta property="og:image" content="https://valde.ci/images/posts/projects/go-react-rest-graphql-app/go-react-api.png">
+        <meta property="og:image:type" content="image/jpeg">
+        <meta property="og:image:width" content="800">
+        <meta property="og:image:height" content="600">
+
+        <meta name="generator" content="Hugo 0.100.2" />
+        <link href="https://valde.ci/post/index.xml" rel="alternate" type="application/rss+xml" title="Coderade blog" />
+        <link href="https://valde.ci/post/index.xml" rel="feed" type="application/rss+xml" title="Coderade blog" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href='  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://valde.ci/css/styles.css">
+        <link rel="icon" href="https://valde.ci/favicon.ico">
+        <link rel="apple-touch-icon" href="https://valde.ci/apple-touch-icon.png" />
+        <link rel="stylesheet" href="https://valde.ci/css/highlightjs/monokai.css">
+        <script src="https://valde.ci/js/vendor/modernizr-2.8.0.min.js"></script>
+        
+        <link rel="stylesheet" href="https://valde.ci/css/theme.css">
+        
+        <style>
+        .site-header h2 .logo {
+        background: url(https://valde.ci/img/puralsight-bg.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(https://valde.ci/img/puralsight-bg.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(https://valde.ci/img/puralsight-bg.jpg) no-repeat center center;
+         z-index: -1;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2>&lt;Coding, DevOps and Software Engineering tips/&gt;</h2>
+          </div>
+        </header>
+        <nav class="nav-center" role="navigation">
+    <div class="nav-wrapper navbar-info container">
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/about">ABOUT ME</a></li>
+            <li><a href="https://github.com/coderade/coderade.io-blog">SOURCE CODE</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn home" href="https://valde.ci/" title="Back to home">&laquo; Back to home</a>
+            
+<h1><a href="https://valde.ci/post/golang/design-patterns/solid/single-responsibility-principle/" title="Desing Patterns in GO - SOLID (Single Responsibility Principle pattern)">Desing Patterns in GO - SOLID (Single Responsibility Principle pattern)</a></h1>
+
+<footer class="post-info">Posted on <span class="post-meta"><time datetime="2022.05.20">2022.05.20</time>
+
+    &middot; Tagged in
+        
+        <a href="https://valde.ci/tags/desing-patterns">desing-patterns</a>, 
+        
+        <a href="https://valde.ci/tags/go">go</a>
+        
+    
+
+</span>
+
+
+<footer class="post-info">Last modified on 
+    <span class="post-meta">
+        <time datetime="2022.05.20">2022.05.20
+        </time>
+    </span>
+</footer>
+
+
+            <p>This post will be the first that I will talk an share some examples of some Design patterns in Go.</p>
+<p>Design patterns are particularly relevant in Object Oriented languages, in this way we can find some limitations when working with some patterns in Go because it&rsquo;s not strictly Object Oriented as we can see the in this go FAQ answer for the question <strong><a href="https://go.dev/doc/faq#Is_Go_an_object-oriented_language">Is Go an object-oriented language?</a></strong></p>
+<blockquote>
+<blockquote>
+<p>Yes and no. Although Go has types and methods and allows an object-oriented style of programming, there is no type hierarchy. The concept of “interface” in Go provides a different approach that we believe is easy to use and in some ways more general.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Also, the lack of a type hierarchy makes “objects” in Go feel much more lightweight than in languages such as C++ or Java.</p>
+</blockquote>
+</blockquote>
+<p>As we can read in the docs In Go we miss things like inheritance, for example, and the idea of encapsulation and go is rather weak, although it exists.</p>
+<p>So you&rsquo;re going to see me kind of trying to adapt, go into an object oriented paradigm, whereas it&rsquo;s</p>
+<p>not really entirely object oriented.</p>
+<p>And sometimes this will blur the lines between different patterns.</p>
+<p>And that&rsquo;s just that&rsquo;s just an expected kind of a side effect of the fact that we&rsquo;re working with go</p>
+<p>as opposed to something which allows, let&rsquo;s say, multiple inheritance like C++.</p>
+<p>So one thing you&rsquo;ll see is you&rsquo;ll see a rather permissive approach from my side with regards to visibility</p>
+<p>and naming.</p>
+<p>So I will try to make things consistent and name some things with the lowercase letter and start some</p>
+<p>things with the uppercase letter.</p>
+<p>But you&rsquo;ll see me sometimes ignore these rules just for the sake of being able to demonstrate a particular</p>
+<p>pattern without worrying too much about the naming.</p>
+<p>I&rsquo;m also going to be using some terminology which comes from object oriented programming languages and</p>
+<p>which might not directly be applicable to go.</p>
+<p>So, for example, I use the term hierarchy and when I&rsquo;m going to be talking about hierarchies that</p>
+<p>go, that would mean simply a set of related types.</p>
+<p>There is no inheritance and so we don&rsquo;t talk about inheritance hierarchies.</p>
+<p>But in go you&rsquo;re going to have types which share in the interface and you can also have embedding.</p>
+<p>So when I will talk about hierarchy, I will talk about hierarchy in this context.</p>
+<p>Also, I will talk about properties once again.</p>
+<p>Properties are not an idiomatic go construct, but a property is quite simply a combination of the getter</p>
+<p>and setter methods and in most cases will get away with not using properties.</p>
+<h1 id="single-r">single R</h1>
+<p>The  premise of the single responsibility principle is that your class or your type
+or whatever constructor you&rsquo;re using, your package has a single primary responsibility.</p>
+<p>So in this case, the Journal has a primary responsibility of storing entries and allowing some manipulationof entries like adding or removing and maybe representing those entries as a string.</p>
+<p>And that&rsquo;s it.</p>
+<p>And when it comes to other concerns like persistence, we adopt the idea of separation of concerns.</p>
+<p>So we take those concerns and we put them somewhere else because we realize that those concerns can be crosscutting concerns.</p>
+<p>They can influence not only the way journals are saved, but also the way, I don&rsquo;t know, books are saved or manuscripts are saved or some other types of structures are saved.
+So that way you take out the concern and you keep it in one place.</p>
+<p>And that way you have common settings like, for example, line separator settings that you can control,</p>
+<p>not in a million places in your code, but in just one place.</p>
+<p>You just control this in a single place, in a single setting, and you can change the setting.</p>
+<p>And it affects everything that your application does with regards to persistence.</p>
+
+            <ul class="share-buttons">
+    <li>Share this article:</li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fdesign-patterns%2fsolid%2fsingle-responsibility-principle%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook"></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Desing%20Patterns%20in%20GO%20-%20SOLID%20%28Single%20Responsibility%20Principle%20pattern%29&amp;url=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fdesign-patterns%2fsolid%2fsingle-responsibility-principle%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Tweet this article"></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fdesign-patterns%2fsolid%2fsingle-responsibility-principle%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google&#43;"></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fvalde.ci%2fpost%2fgolang%2fdesign-patterns%2fsolid%2fsingle-responsibility-principle%2f&title=Desing%20Patterns%20in%20GO%20-%20SOLID%20%28Single%20Responsibility%20Principle%20pattern%29" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title="Share on Linkedin"></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3>Comments</h3>
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coderade" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+    <img class="profile-image" src="https://valde.ci/img/profile-image.jpg" alt="Valdeci Gomes" />
+    <p class="name">by
+        <strong>Valdeci Gomes</strong>
+    </p>
+    <p class="address">Curitiba, PR, Brazil</p>
+    <p class="link"></p>
+    <ul class="social">
+        
+
+
+
+
+<li><a href="//br.linkedin.com/in/valdeci/en" class="icon-linkedin" target="_blank" title="Linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/coderade" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+<li><a href="//stackoverflow.com/users/4157589" class="icon-stackoverflow" target="_blank" title="StackOverflow"></a></li>
+
+
+
+<li><a href="//stackexchange.com/users/5196485?tab=accounts" class="icon-stackexchange" target="_blank" title="stackExchange"></a></li>
+
+
+
+<li><a href="//www.goodreads.com/valdeci" class="fab fa-goodreads" target="_blank" title="goodreads"></a></li>
+
+
+
+
+
+
+<li><a href="https://valde.ci/post/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+    </ul>
+    <br><br>
+</aside>
+    <aside class="author">
+   <div class="tags">
+      <h2><span>Categories</span></h2>
+      <div class="widget-content cloud-label-widget-content">
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/android">Android</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/aws">Aws</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/coding">Coding</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/desing-patterns">Desing-Patterns</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/es6">Es6</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/go">Go</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/imho">Imho</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/nodejs">Nodejs</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/projects">Projects</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a href="/categories/rails">Rails</a>
+         </span>
+         
+      </div>
+   </div>
+</aside>
+<aside class="author">
+   <div class="tags">
+      <h2><span>Tags</span></h2>
+      <div class="widget-content cloud-label-widget-content">
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/android">Android</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/aws">Aws</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/coding">Coding</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/desing-patterns">Desing-Patterns</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/ec2">Ec2</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/es6">Es6</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/go">Go</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/graphql">Graphql</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/idea">Idea</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/imho">Imho</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/js">Js</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/mobile">Mobile</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/nodejs">Nodejs</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/postgres">Postgres</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/projects">Projects</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/rails">Rails</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/react">React</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/ruby">Ruby</a>
+         </span>
+         
+         <span class="label-size label-size-4">
+           <a dir="ltr" href="/tags/web">Web</a>
+         </span>
+         
+      </div>
+   </div>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="https://valde.ci/post/index.xml" title="RSS"></a>
+        <p>&copy; 2022 &middot; Powered by <a href="http://gohugo.io">Hugo</a>.</p>
+  </div>
+</footer>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="https:\/\/valde.ci\/js\/vendor\/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="https://valde.ci/js/plugins.js"></script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-106618202-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</body>
+</html>
+

@@ -9,6 +9,17 @@
     <lastBuildDate>Thu, 28 Apr 2022 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Games Shelf REST/GraphQL App developed with Go and React </title>
+      <link>https://valde.ci/post/golang/go-react-rest-graphql-app/</link>
+      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
+      
+      <guid>https://valde.ci/post/golang/go-react-rest-graphql-app/</guid>
+      <description>Since I started to use Go on a project at my current job, I decided to create some real projects using the language to understand the language more.
+After studying some patterns and understanding how the language works, I decided to create a Games Shelf Application with REST communication, and then, I added GraphQL to the game.
+I decided to use PostgreSQL as my database and React.js in the front-end, because, even as I have not used it for a long time, both are my preferred technologies when I think about a database and a front-end framework.</description>
+    </item>
+    
+    <item>
+      <title>Games Shelf REST/GraphQL App developed with Go and React </title>
       <link>https://valde.ci/post/projects/go-react-rest-graphql-app/</link>
       <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
       
