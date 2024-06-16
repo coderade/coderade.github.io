@@ -4,170 +4,135 @@
     <title>Tags on Coderade blog</title>
     <link>https://valde.ci/tags/</link>
     <description>Recent content in Tags on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Apr 2022 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 18:14:00 +0000</lastBuildDate>
+    <atom:link href="https://valde.ci/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>go</title>
+      <title>Go</title>
       <link>https://valde.ci/tags/go/</link>
-      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/go/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>graphql</title>
+      <title>Graphql</title>
       <link>https://valde.ci/tags/graphql/</link>
-      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/graphql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>postgres</title>
+      <title>Postgres</title>
       <link>https://valde.ci/tags/postgres/</link>
-      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/postgres/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>projects</title>
+      <title>Projects</title>
       <link>https://valde.ci/tags/projects/</link>
-      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/projects/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>react</title>
+      <title>React</title>
       <link>https://valde.ci/tags/react/</link>
-      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/react/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>coding</title>
+      <title>Coding</title>
       <link>https://valde.ci/tags/coding/</link>
-      <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/coding/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>imho</title>
+      <title>Imho</title>
       <link>https://valde.ci/tags/imho/</link>
-      <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/imho/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>aws</title>
+      <title>Aws</title>
       <link>https://valde.ci/tags/aws/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/aws/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ec2</title>
+      <title>Ec2</title>
       <link>https://valde.ci/tags/ec2/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/ec2/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>js</title>
+      <title>Js</title>
       <link>https://valde.ci/tags/js/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/js/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>nodejs</title>
+      <title>Nodejs</title>
       <link>https://valde.ci/tags/nodejs/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/nodejs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>android</title>
+      <title>Android</title>
       <link>https://valde.ci/tags/android/</link>
-      <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/android/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mobile</title>
+      <title>Mobile</title>
       <link>https://valde.ci/tags/mobile/</link>
-      <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/mobile/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>es6</title>
+      <title>Es6</title>
       <link>https://valde.ci/tags/es6/</link>
-      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/es6/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>web</title>
+      <title>Web</title>
       <link>https://valde.ci/tags/web/</link>
-      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/web/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>idea</title>
+      <title>Idea</title>
       <link>https://valde.ci/tags/idea/</link>
-      <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/idea/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>rails</title>
+      <title>Rails</title>
       <link>https://valde.ci/tags/rails/</link>
-      <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/rails/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>ruby</title>
+      <title>Ruby</title>
       <link>https://valde.ci/tags/ruby/</link>
-      <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/tags/ruby/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

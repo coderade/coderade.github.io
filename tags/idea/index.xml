@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>idea on Coderade blog</title>
+    <title>Idea on Coderade blog</title>
     <link>https://valde.ci/tags/idea/</link>
-    <description>Recent content in idea on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Idea on Coderade blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Dec 2016 13:47:08 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/idea/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Dec 2016 13:47:08 +0200</lastBuildDate>
+    <atom:link href="https://valde.ci/tags/idea/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Android Studio and IntelliJ IDEA</title>
       <link>https://valde.ci/post/android/android-studio-idea/</link>
       <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/android/android-studio-idea/</guid>
-      <description>I personally love the JetBrains tools.
-When I started to code with the Eclipse, Netbeans, ADT tool (For android development on Eclipse), Text editors and others tools, I thought to myself:
-&amp;ldquo;The development with these tools is pretty cool, but the tolls are very far from being awesome, can they be better?&amp;rdquo;
-So, after some time with a hard time with these tools I had the opportunity to try Intellij Idea working with Java development.</description>
+      <description>I personally love the JetBrains tools.&#xA;When I started coding with Eclipse, NetBeans, ADT (for Android development on Eclipse), text editors, and other tools, I thought to myself:&#xA;&amp;ldquo;The development with these tools is pretty cool, but the tools are very far from being awesome. Can they be better?&amp;rdquo;&#xA;After struggling with these tools for a while, I had the opportunity to try IntelliJ IDEA for Java development.&#xA;I must be honest: at first, I found the IDEA IDE a little complicated because it seemed years ahead of everything I had worked with before.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>nodejs on Coderade blog</title>
+    <title>Nodejs on Coderade blog</title>
     <link>https://valde.ci/tags/nodejs/</link>
-    <description>Recent content in nodejs on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Nodejs on Coderade blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Jun 2018 13:47:08 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jun 2018 13:47:08 +0200</lastBuildDate>
+    <atom:link href="https://valde.ci/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Launching EC2 instances using the Node.js AWS SDK</title>
       <link>https://valde.ci/post/aws/launching-ec2-instances-nodejs-aws-sdk/</link>
       <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/aws/launching-ec2-instances-nodejs-aws-sdk/</guid>
-      <description>The EC2 service is one of the most fundamental services offered by AWS. It underpins many of the other services in AWS, so it’s always a good idea to understand how to use and the best way to use it.
-In this post, I’ll show how to create EC2 instances directly in the code using the AWS SDK for JavaScript in Node.js.
-To run your application in AWS, we need to have one or more EC2 instances to execute that code.</description>
+      <description>The EC2 service is one of the most fundamental services offered by AWS. It underpins many of the other services in AWS, so it’s always a good idea to understand how to use and the best way to use it.&#xA;In this post, I’ll show how to create EC2 instances directly in the code using the AWS SDK for JavaScript in Node.js.&#xA;To run your application in AWS, we need to have one or more EC2 instances to execute that code.</description>
     </item>
-    
   </channel>
 </rss>

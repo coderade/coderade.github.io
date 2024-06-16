@@ -1,73 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>web on Coderade blog</title>
+    <title>Web on Coderade blog</title>
     <link>https://valde.ci/tags/web/</link>
-    <description>Recent content in web on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Web on Coderade blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Sep 2017 21:44:08 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 18:14:00 +0000</lastBuildDate>
+    <atom:link href="https://valde.ci/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ES6 Destructuring assignments</title>
       <link>https://valde.ci/post/es6/destructuring-assignments/</link>
       <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/es6/destructuring-assignments/</guid>
-      <description>In this article I&amp;rsquo;m going to talk about the Destructuring assignments in ES6.
-The Destructuring Assignments don&amp;rsquo;t really offer us any new features, but rather they enable us to write more readable and less repetitive code.
-So, have you ever had a function that was dealing with these enormous deeply nested objects and it felt like your code was kind of sprawling out of control, it was getting hard to read?</description>
+      <description>In this article I&amp;rsquo;m going to talk about the Destructuring assignments in ES6.&#xA;The Destructuring Assignments don&amp;rsquo;t really offer us any new features, but rather they enable us to write more readable and less repetitive code.&#xA;So, have you ever had a function that was dealing with these enormous deeply nested objects and it felt like your code was kind of sprawling out of control, it was getting hard to read?</description>
     </item>
-    
     <item>
       <title>ES6 Arrow Functions</title>
       <link>https://valde.ci/post/es6/arrow-functions/</link>
       <pubDate>Thu, 14 Sep 2017 21:44:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/es6/arrow-functions/</guid>
-      <description>Arrow functions are another notable addition that came with ES5 and are available here in ES2016. They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and the second thing is that they allow us to preserve the context of the wrapping function.
-As I write before, the arrow function, one of its main features is that it&amp;rsquo;s more succinct, it reduces boilerplate.</description>
+      <description>Arrow functions are another notable addition that came with ES5 and are available here in ES2016. They are useful for two essential reasons: the first is that they reduce boilerplate and are more succinct and the second thing is that they allow us to preserve the context of the wrapping function.&#xA;As I write before, the arrow function, one of its main features is that it&amp;rsquo;s more succinct, it reduces boilerplate.</description>
     </item>
-    
     <item>
       <title>ES6 - Limitations of using const and let</title>
       <link>https://valde.ci/post/es6/const-and-let-limitations/</link>
       <pubDate>Sun, 10 Sep 2017 21:44:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/es6/const-and-let-limitations/</guid>
-      <description>As I mentioned at my previous article, one of the main things that we need to understand about const and let: is that const, is a constant, so, it&amp;rsquo;s not going to change and let is something that might change, it could change.
-Let&amp;rsquo;s explore a little bit what that means because this is actually a gotcha in some cases. So, be careful, const isn&amp;rsquo;t actually an immutable variable, it can be changed.</description>
+      <description>As I mentioned at my previous article, one of the main things that we need to understand about const and let: is that const, is a constant, so, it&amp;rsquo;s not going to change and let is something that might change, it could change.&#xA;Let&amp;rsquo;s explore a little bit what that means because this is actually a gotcha in some cases. So, be careful, const isn&amp;rsquo;t actually an immutable variable, it can be changed.</description>
     </item>
-    
     <item>
       <title>var, const and let in ES6, when I use? They can be hoisted?</title>
       <link>https://valde.ci/post/es6/const-and-let/</link>
       <pubDate>Mon, 04 Sep 2017 21:44:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/es6/const-and-let/</guid>
-      <description>Perhaps the most recognizable addition to the JavaScript language was that of const and let. Two new key words that allow us to declare variables, which behave differently than var.
-When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables? That means, what can it be called?</description>
+      <description>Perhaps the most recognizable addition to the JavaScript language was that of const and let. Two new key words that allow us to declare variables, which behave differently than var.&#xA;When choosing which JavaScript variable to use, there are a number of factors we have to weigh. We have var, const, and let available to us, and we need to think what is the scope of each of these variables? That means, what can it be called?</description>
     </item>
-    
     <item>
       <title>ES5, ES6, ES7 and ES2015 and ES2016. Isn&#39;t it just all JS?</title>
       <link>https://valde.ci/post/es6/js-es6/</link>
       <pubDate>Tue, 29 Aug 2017 21:44:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/es6/js-es6/</guid>
-      <description>JS, Why we love you? One of my biggest loves on the coding word is the JS (JavaScript) language.
-I don&amp;rsquo;t know why, but since I started to make simple code with JQuery and to research about the language under your hood and I got what is JS, the first thing that I did was thanked how the coding world can be really beautiful and simple with a programming language like that.</description>
+      <description>JS, Why we love you? One of my biggest loves on the coding word is the JS (JavaScript) language.&#xA;I don&amp;rsquo;t know why, but since I started to make simple code with JQuery and to research about the language under your hood and I got what is JS, the first thing that I did was thanked how the coding world can be really beautiful and simple with a programming language like that.</description>
     </item>
-    
     <item>
       <title>Rails 5 new features</title>
       <link>https://valde.ci/post/rails/rails-5-new-features/</link>
       <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/rails/rails-5-new-features/</guid>
-      <description>On this article I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.
-I will try to show how to use the most important features of Rails 5, including Action Cable, Action Controller Renderer, Turbolinks, the Active records, Attributes API and how to use Rails exclusively as a JSON API.
-Besides that I will discuss the many other smaller changes in improvements such as the Rails command Router, new Date and Time methods, Secure Tokens and changes to parameters.</description>
+      <description>On this article I will try to show the new features, improvements and other important changes to Ruby on Rails version 5.&#xA;I will try to show how to use the most important features of Rails 5, including Action Cable, Action Controller Renderer, Turbolinks, the Active records, Attributes API and how to use Rails exclusively as a JSON API.&#xA;Besides that I will discuss the many other smaller changes in improvements such as the Rails command Router, new Date and Time methods, Secure Tokens and changes to parameters.</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,80 +4,65 @@
     <title>Categories on Coderade blog</title>
     <link>https://valde.ci/categories/</link>
     <description>Recent content in Categories on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Apr 2022 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 18:14:00 +0000</lastBuildDate>
+    <atom:link href="https://valde.ci/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>projects</title>
+      <title>Projects</title>
       <link>https://valde.ci/categories/projects/</link>
-      <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/projects/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>coding</title>
+      <title>Coding</title>
       <link>https://valde.ci/categories/coding/</link>
-      <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/coding/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>imho</title>
+      <title>Imho</title>
       <link>https://valde.ci/categories/imho/</link>
-      <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/imho/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>aws</title>
+      <title>Aws</title>
       <link>https://valde.ci/categories/aws/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/aws/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>nodejs</title>
+      <title>Nodejs</title>
       <link>https://valde.ci/categories/nodejs/</link>
-      <pubDate>Sun, 24 Jun 2018 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/nodejs/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>android</title>
+      <title>Android</title>
       <link>https://valde.ci/categories/android/</link>
-      <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/android/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>es6</title>
+      <title>Es6</title>
       <link>https://valde.ci/categories/es6/</link>
-      <pubDate>Sun, 17 Sep 2017 21:44:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/es6/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>rails</title>
+      <title>Rails</title>
       <link>https://valde.ci/categories/rails/</link>
-      <pubDate>Mon, 29 Aug 2016 13:47:08 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://valde.ci/categories/rails/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

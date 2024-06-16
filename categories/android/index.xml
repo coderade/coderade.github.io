@@ -1,47 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>android on Coderade blog</title>
+    <title>Android on Coderade blog</title>
     <link>https://valde.ci/categories/android/</link>
-    <description>Recent content in android on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Android on Coderade blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Sep 2017 13:47:08 +0200</lastBuildDate><atom:link href="https://valde.ci/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2017 13:47:08 +0200</lastBuildDate>
+    <atom:link href="https://valde.ci/categories/android/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Converting graphic files to WebP format on Android Studio 2.3</title>
       <link>https://valde.ci/post/android/converting-graphic-files-to-webp-format/</link>
       <pubDate>Sun, 24 Sep 2017 13:47:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/android/converting-graphic-files-to-webp-format/</guid>
-      <description>For all who don&amp;rsquo;t know the webP format, Android has supported this image format for many years.
-As I said on my previous article: the WebP files are smaller than JPGs or PNGs and like PNGs, they support transparency. But creating them files has always been a bit of a chore.
-Now, with Android Studio 2.3, you can convert your existing graphical files into WebP files very easily.
-On this article, I&amp;rsquo;ll show how to convert your created image files to the WebP format on the new version of the Android Studio.</description>
+      <description>For all who don&amp;rsquo;t know the webP format, Android has supported this image format for many years.&#xA;As I said on my previous article: the WebP files are smaller than JPGs or PNGs and like PNGs, they support transparency. But creating them files has always been a bit of a chore.&#xA;Now, with Android Studio 2.3, you can convert your existing graphical files into WebP files very easily.&#xA;On this article, I&amp;rsquo;ll show how to convert your created image files to the WebP format on the new version of the Android Studio.</description>
     </item>
-    
     <item>
       <title>Inspect APK files with the APK Analyzer on Android Studio</title>
       <link>https://valde.ci/post/android/inspecting-apk-files-after-packaging/</link>
       <pubDate>Fri, 22 Sep 2017 13:47:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/android/inspecting-apk-files-after-packaging/</guid>
-      <description>The Android Studio 2.2 added a new tool called the APK Analyzer.
-It lets you look at packaged apps, those APK files that are in zip archive format that you use to deploy an application.
-Using the APK Analyzer, you can see inside the APK file and see what files and directories are largest so you can decide how you can shrink down that APK.
-The example application I&amp;rsquo;ll show you how to use the Apk Analyzer tool with an existing project that is available on my GitHub, where you can clone or download and try to follow the below steps on your own Android Studio.</description>
+      <description>The Android Studio 2.2 added a new tool called the APK Analyzer.&#xA;It lets you look at packaged apps, those APK files that are in zip archive format that you use to deploy an application.&#xA;Using the APK Analyzer, you can see inside the APK file and see what files and directories are largest so you can decide how you can shrink down that APK.&#xA;The example application I&amp;rsquo;ll show you how to use the Apk Analyzer tool with an existing project that is available on my GitHub, where you can clone or download and try to follow the below steps on your own Android Studio.</description>
     </item>
-    
     <item>
       <title>Android Studio and IntelliJ IDEA</title>
       <link>https://valde.ci/post/android/android-studio-idea/</link>
       <pubDate>Mon, 12 Dec 2016 13:47:08 +0200</pubDate>
-      
       <guid>https://valde.ci/post/android/android-studio-idea/</guid>
-      <description>I personally love the JetBrains tools.
-When I started to code with the Eclipse, Netbeans, ADT tool (For android development on Eclipse), Text editors and others tools, I thought to myself:
-&amp;ldquo;The development with these tools is pretty cool, but the tolls are very far from being awesome, can they be better?&amp;rdquo;
-So, after some time with a hard time with these tools I had the opportunity to try Intellij Idea working with Java development.</description>
+      <description>I personally love the JetBrains tools.&#xA;When I started coding with Eclipse, NetBeans, ADT (for Android development on Eclipse), text editors, and other tools, I thought to myself:&#xA;&amp;ldquo;The development with these tools is pretty cool, but the tools are very far from being awesome. Can they be better?&amp;rdquo;&#xA;After struggling with these tools for a while, I had the opportunity to try IntelliJ IDEA for Java development.&#xA;I must be honest: at first, I found the IDEA IDE a little complicated because it seemed years ahead of everything I had worked with before.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>imho on Coderade blog</title>
+    <title>Imho on Coderade blog</title>
     <link>https://valde.ci/tags/imho/</link>
-    <description>Recent content in imho on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Imho on Coderade blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Aug 2019 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/tags/imho/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Aug 2020 18:14:00 +0000</lastBuildDate>
+    <atom:link href="https://valde.ci/tags/imho/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Why I love Open Source?</title>
+      <title>Why Love Open Source?</title>
       <link>https://valde.ci/post/imho/why-love-open-source/</link>
       <pubDate>Sat, 10 Aug 2019 21:17:21 +0200</pubDate>
-      
       <guid>https://valde.ci/post/imho/why-love-open-source/</guid>
-      <description>Since I started to code in 2012, I learned to love the open-source life and to love how the community is open to share and help other people, sharing the coding which they worked hard and making it possible to run in a couple of minutes for anybody in the world, sharing your knowledge with questions and answers on the StackOverflow and all of the StackExchange sites, creating docs and tutorials in blogs and sites like Medium and GitHub.</description>
+      <description>Since I started coding in 2012, I learned to love the open-source life and how the community is open to sharing and helping others. People share the code they worked hard on, making it possible for anyone in the world to run it in a couple of minutes. They also share their knowledge with questions and answers on StackOverflow and all of the StackExchange sites, creating docs and tutorials on blogs and sites like Medium and GitHub.</description>
     </item>
-    
   </channel>
 </rss>

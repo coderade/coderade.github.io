@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>projects on Coderade blog</title>
+    <title>Projects on Coderade blog</title>
     <link>https://valde.ci/categories/projects/</link>
-    <description>Recent content in projects on Coderade blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Projects on Coderade blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Apr 2022 21:17:21 +0200</lastBuildDate><atom:link href="https://valde.ci/categories/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 18:14:00 +0000</lastBuildDate>
+    <atom:link href="https://valde.ci/categories/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Games Shelf REST/GraphQL App developed with Go and React </title>
       <link>https://valde.ci/post/projects/go-react-rest-graphql-app/</link>
       <pubDate>Thu, 28 Apr 2022 21:17:21 +0200</pubDate>
-      
       <guid>https://valde.ci/post/projects/go-react-rest-graphql-app/</guid>
-      <description>Since I started to use Go on a project at my current job, I decided to create some real projects using the language to understand the language more.
-After studying some patterns and understanding how the language works, I decided to create a Games Shelf Application with REST communication, and then, I added GraphQL to the game.
-I decided to use PostgreSQL as my database and React.js in the front-end, because, even as I have not used it for a long time, both are my preferred technologies when I think about a database and a front-end framework.</description>
+      <description>Since I started using Go on a project at my current job, I decided to create some real projects with the language to understand it better.&#xA;After studying some patterns and understanding how Go works, I decided to create a Games Shelf Application with REST communication, and later, I added GraphQL to the mix.&#xA;I chose PostgreSQL as my database and React.js for the front-end. Even though I haven&amp;rsquo;t used them for a long time, both are my preferred technologies for databases and front-end frameworks.</description>
     </item>
-    
   </channel>
 </rss>
